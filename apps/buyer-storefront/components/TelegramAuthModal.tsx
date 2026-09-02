@@ -460,31 +460,31 @@ export default function TelegramAuthModal({
       <div className="relative w-full max-w-lg bg-[#FAF8F5] border-t sm:border border-[#E2DDD3] rounded-t-3xl sm:rounded-3xl shadow-2xl overflow-hidden my-0 sm:my-8 max-h-[92vh] flex flex-col">
         
         {/* Header */}
-        <div className="flex items-center justify-between p-4 sm:p-6 border-b border-[#E8E4DC] bg-[#FAF8F5] shrink-0">
-          <div className="flex items-center gap-2.5">
+        <div className="flex items-center justify-between p-3.5 sm:p-6 border-b border-[#E8E4DC] bg-[#FAF8F5] shrink-0">
+          <div className="flex items-center gap-2">
             <img
               src="/assets/gelgay_icon.png"
               alt="ገልጋይ"
-              className="w-7 h-7 sm:w-8 sm:h-8 object-contain"
+              className="w-6 h-6 sm:w-8 sm:h-8 object-contain"
             />
             <div>
-              <h3 className="font-serif text-lg sm:text-xl font-normal text-[#1F1E1B]">
+              <h3 className="font-serif text-base sm:text-xl font-normal text-[#1F1E1B]">
                 {currentUser ? 'ገልጋይ Profile & Role' : authMode === 'signup' ? 'Create ገልጋይ Account' : 'Sign In to ገልጋይ (Gelgay)'}
               </h3>
-              <p className="font-mono text-[10px] sm:text-[11px] text-[#7C776E] tracking-tight line-clamp-1">
+              <p className="font-mono text-[9px] sm:text-[11px] text-[#7C776E] tracking-tight line-clamp-1">
                 Curated Ethiopian Marketplace · Escrow Protected
               </p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-2 rounded-full text-[#7C776E] hover:text-[#1F1E1B] hover:bg-[#E8E4DC]/60 transition-colors"
+            className="p-1.5 sm:p-2 rounded-full text-[#7C776E] hover:text-[#1F1E1B] hover:bg-[#E8E4DC]/60 transition-colors"
           >
-            <X className="w-5 h-5" />
+            <X className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
         </div>
 
-        <div className="p-4 sm:p-6 space-y-5 sm:space-y-6 overflow-y-auto overscroll-contain flex-1">
+        <div className="p-3.5 sm:p-6 space-y-3.5 sm:space-y-6 overflow-y-auto overscroll-contain flex-1">
 
           {/* Feedback Message */}
           {message && (
@@ -995,72 +995,72 @@ export default function TelegramAuthModal({
               )}
 
               {/* Sign In vs Sign Up Tabs */}
-              <div className="flex p-1 bg-[#E8E4DC]/60 rounded-2xl border border-[#E2DDD3]">
+              <div className="flex p-0.5 sm:p-1 bg-[#E8E4DC]/60 rounded-xl sm:rounded-2xl border border-[#E2DDD3]">
                 <button
                   type="button"
                   onClick={() => { setAuthMode('signin'); setMessage(null); }}
-                  className={`flex-1 py-2.5 font-mono text-xs font-semibold rounded-xl transition-all flex items-center justify-center gap-2 ${
+                  className={`flex-1 py-1.5 sm:py-2.5 font-mono text-[11px] sm:text-xs font-semibold rounded-lg sm:rounded-xl transition-all flex items-center justify-center gap-1.5 sm:gap-2 ${
                     authMode === 'signin'
                       ? 'bg-white text-[#1F1E1B] shadow-xs'
                       : 'text-[#7C776E] hover:text-[#1F1E1B]'
                   }`}
                 >
-                  <LogIn className="w-4 h-4" />
+                  <LogIn className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   <span>Sign In</span>
                 </button>
                 <button
                   type="button"
                   onClick={() => { setAuthMode('signup'); setMessage(null); }}
-                  className={`flex-1 py-2.5 font-mono text-xs font-semibold rounded-xl transition-all flex items-center justify-center gap-2 ${
+                  className={`flex-1 py-1.5 sm:py-2.5 font-mono text-[11px] sm:text-xs font-semibold rounded-lg sm:rounded-xl transition-all flex items-center justify-center gap-1.5 sm:gap-2 ${
                     authMode === 'signup'
                       ? 'bg-white text-[#1F1E1B] shadow-xs'
                       : 'text-[#7C776E] hover:text-[#1F1E1B]'
                   }`}
                 >
-                  <UserPlus className="w-4 h-4" />
+                  <UserPlus className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   <span>Create Account</span>
                 </button>
               </div>
 
               {/* Role Selector during Sign Up */}
               {authMode === 'signup' && (
-                <div className="space-y-2">
-                  <label className="font-mono text-xs text-[#7C776E] font-semibold uppercase tracking-wider block">
+                <div className="space-y-1.5 sm:space-y-2">
+                  <label className="font-mono text-[10px] sm:text-xs text-[#7C776E] font-semibold uppercase tracking-wider block">
                     Account Role:
                   </label>
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="grid grid-cols-2 gap-2 sm:gap-3">
                     <button
                       type="button"
                       onClick={() => setSelectedRole('buyer')}
-                      className={`p-3.5 rounded-2xl border text-left transition-all ${
+                      className={`p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl border text-left transition-all ${
                         selectedRole === 'buyer'
                           ? 'bg-white border-[#C85A32] ring-1 ring-[#C85A32] shadow-xs'
                           : 'bg-white/60 border-[#E2DDD3] hover:border-[#1F1E1B]'
                       }`}
                     >
-                      <div className="flex items-center gap-2 font-serif text-sm font-bold text-[#1F1E1B]">
-                        <ShoppingBag className="w-4 h-4 text-[#C85A32]" />
+                      <div className="flex items-center gap-1.5 sm:gap-2 font-serif text-xs sm:text-sm font-bold text-[#1F1E1B]">
+                        <ShoppingBag className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C85A32]" />
                         <span>Buyer</span>
                       </div>
-                      <p className="font-sans text-[11px] text-[#625D54] mt-1 font-light">
-                        Discover & purchase items with 100% escrow protection.
+                      <p className="font-sans text-[10px] sm:text-[11px] text-[#625D54] mt-0.5 sm:mt-1 font-light leading-tight">
+                        Discover &amp; purchase items with 100% escrow protection.
                       </p>
                     </button>
 
                     <button
                       type="button"
                       onClick={() => setSelectedRole('vendor')}
-                      className={`p-3.5 rounded-2xl border text-left transition-all ${
+                      className={`p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl border text-left transition-all ${
                         selectedRole === 'vendor'
                           ? 'bg-white border-[#C85A32] ring-1 ring-[#C85A32] shadow-xs'
                           : 'bg-white/60 border-[#E2DDD3] hover:border-[#1F1E1B]'
                       }`}
                     >
-                      <div className="flex items-center gap-2 font-serif text-sm font-bold text-[#1F1E1B]">
-                        <Store className="w-4 h-4 text-[#C85A32]" />
+                      <div className="flex items-center gap-1.5 sm:gap-2 font-serif text-xs sm:text-sm font-bold text-[#1F1E1B]">
+                        <Store className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C85A32]" />
                         <span>Seller / Curator</span>
                       </div>
-                      <p className="font-sans text-[11px] text-[#625D54] mt-1 font-light">
+                      <p className="font-sans text-[10px] sm:text-[11px] text-[#625D54] mt-0.5 sm:mt-1 font-light leading-tight">
                         List archival pieces and receive payouts to your bank.
                       </p>
                     </button>
@@ -1069,21 +1069,21 @@ export default function TelegramAuthModal({
               )}
 
               {/* Email & Password Form */}
-              <form onSubmit={handleEmailAuth} className="space-y-4">
+              <form onSubmit={handleEmailAuth} className="space-y-2.5 sm:space-y-4">
                 {authMode === 'signup' && (
                   <div>
-                    <label className="font-mono text-xs text-[#7C776E] block mb-1 font-semibold">
+                    <label className="font-mono text-[10px] sm:text-xs text-[#7C776E] block mb-0.5 sm:mb-1 font-semibold">
                       Full Name / Display Name
                     </label>
                     <div className="relative">
-                      <User className="w-4 h-4 absolute left-3.5 top-3.5 text-[#7C776E]" />
+                      <User className="w-3.5 h-3.5 absolute left-3 top-3 sm:top-3.5 text-[#7C776E]" />
                       <input
                         type="text"
                         required
                         value={displayName}
                         onChange={(e) => setDisplayName(e.target.value)}
                         placeholder="e.g. Makeda Tadesse"
-                        className="w-full pl-10 pr-4 py-2.5 bg-white border border-[#E2DDD3] rounded-xl text-sm focus:outline-hidden focus:border-[#C85A32] font-sans"
+                        className="w-full pl-9 pr-3 py-2 sm:py-2.5 bg-white border border-[#E2DDD3] rounded-lg sm:rounded-xl text-xs sm:text-sm focus:outline-hidden focus:border-[#C85A32] font-sans"
                       />
                     </div>
                   </div>
@@ -1091,46 +1091,46 @@ export default function TelegramAuthModal({
 
                 {authMode === 'signup' && selectedRole === 'vendor' && (
                   <div>
-                    <label className="font-mono text-xs text-[#7C776E] block mb-1 font-semibold">
+                    <label className="font-mono text-[10px] sm:text-xs text-[#7C776E] block mb-0.5 sm:mb-1 font-semibold">
                       Store / Studio Name
                     </label>
                     <div className="relative">
-                      <Store className="w-4 h-4 absolute left-3.5 top-3.5 text-[#7C776E]" />
+                      <Store className="w-3.5 h-3.5 absolute left-3 top-3 sm:top-3.5 text-[#7C776E]" />
                       <input
                         type="text"
                         required
                         value={storeName}
                         onChange={(e) => setStoreName(e.target.value)}
                         placeholder="e.g. Kazanchis Analog Vault"
-                        className="w-full pl-10 pr-4 py-2.5 bg-white border border-[#E2DDD3] rounded-xl text-sm focus:outline-hidden focus:border-[#C85A32] font-sans"
+                        className="w-full pl-9 pr-3 py-2 sm:py-2.5 bg-white border border-[#E2DDD3] rounded-lg sm:rounded-xl text-xs sm:text-sm focus:outline-hidden focus:border-[#C85A32] font-sans"
                       />
                     </div>
                   </div>
                 )}
 
                 <div>
-                  <label className="font-mono text-xs text-[#7C776E] block mb-1 font-semibold">
+                  <label className="font-mono text-[10px] sm:text-xs text-[#7C776E] block mb-0.5 sm:mb-1 font-semibold">
                     Email Address
                   </label>
                   <div className="relative">
-                    <Mail className="w-4 h-4 absolute left-3.5 top-3.5 text-[#7C776E]" />
+                    <Mail className="w-3.5 h-3.5 absolute left-3 top-3 sm:top-3.5 text-[#7C776E]" />
                     <input
                       type="email"
                       required
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="you@domain.et"
-                      className="w-full pl-10 pr-4 py-2.5 bg-white border border-[#E2DDD3] rounded-xl text-sm focus:outline-hidden focus:border-[#C85A32] font-sans"
+                      className="w-full pl-9 pr-3 py-2 sm:py-2.5 bg-white border border-[#E2DDD3] rounded-lg sm:rounded-xl text-xs sm:text-sm focus:outline-hidden focus:border-[#C85A32] font-sans"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="font-mono text-xs text-[#7C776E] block mb-1 font-semibold">
+                  <label className="font-mono text-[10px] sm:text-xs text-[#7C776E] block mb-0.5 sm:mb-1 font-semibold">
                     Password
                   </label>
                   <div className="relative">
-                    <Lock className="w-4 h-4 absolute left-3.5 top-3.5 text-[#7C776E]" />
+                    <Lock className="w-3.5 h-3.5 absolute left-3 top-3 sm:top-3.5 text-[#7C776E]" />
                     <input
                       type="password"
                       required
@@ -1138,7 +1138,7 @@ export default function TelegramAuthModal({
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       placeholder="Minimum 6 characters"
-                      className="w-full pl-10 pr-4 py-2.5 bg-white border border-[#E2DDD3] rounded-xl text-sm focus:outline-hidden focus:border-[#C85A32] font-sans"
+                      className="w-full pl-9 pr-3 py-2 sm:py-2.5 bg-white border border-[#E2DDD3] rounded-lg sm:rounded-xl text-xs sm:text-sm focus:outline-hidden focus:border-[#C85A32] font-sans"
                     />
                   </div>
                 </div>
@@ -1146,28 +1146,28 @@ export default function TelegramAuthModal({
                 <button
                   type="submit"
                   disabled={busy}
-                  className="w-full py-3.5 bg-[#1F1E1B] text-[#FAF8F5] font-mono text-xs uppercase tracking-wider font-semibold rounded-xl hover:bg-[#C85A32] transition-colors flex items-center justify-center gap-2 shadow-xs disabled:opacity-50"
+                  className="w-full py-2.5 sm:py-3.5 bg-[#1F1E1B] text-[#FAF8F5] font-mono text-[11px] sm:text-xs uppercase tracking-wider font-semibold rounded-lg sm:rounded-xl hover:bg-[#C85A32] transition-colors flex items-center justify-center gap-1.5 sm:gap-2 shadow-xs disabled:opacity-50"
                 >
-                  {busy ? <Loader2 className="w-4 h-4 animate-spin" /> : authMode === 'signup' ? <UserPlus className="w-4 h-4" /> : <LogIn className="w-4 h-4" />}
+                  {busy ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : authMode === 'signup' ? <UserPlus className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> : <LogIn className="w-3.5 h-3.5 sm:w-4 sm:h-4" />}
                   <span>{busy ? 'Processing...' : authMode === 'signup' ? `Register as ${selectedRole.toUpperCase()}` : 'Sign In'}</span>
                 </button>
               </form>
 
               {/* Divider */}
-              <div className="relative my-4">
+              <div className="relative my-3 sm:my-4">
                 <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-[#E8E4DC]" /></div>
-                <div className="relative flex justify-center text-xs uppercase"><span className="bg-[#FAF8F5] px-3 font-mono text-[10px] text-[#7C776E]">Or continue with</span></div>
+                <div className="relative flex justify-center text-xs uppercase"><span className="bg-[#FAF8F5] px-2.5 font-mono text-[9px] sm:text-[10px] text-[#7C776E]">Or continue with</span></div>
               </div>
 
               {/* Alternate Providers: Google & Telegram */}
-              <div className="space-y-3">
+              <div className="space-y-2 sm:space-y-3">
                 <button
                   type="button"
                   onClick={handleGoogleAuth}
                   disabled={busy}
-                  className="w-full p-3 bg-white border border-[#E2DDD3] hover:border-[#C85A32] rounded-2xl flex items-center justify-center gap-2.5 transition-colors font-sans text-xs font-medium text-[#1F1E1B] shadow-xs"
+                  className="w-full py-2 px-3 sm:p-3 bg-white border border-[#E2DDD3] hover:border-[#C85A32] rounded-xl sm:rounded-2xl flex items-center justify-center gap-2 transition-colors font-sans text-[11px] sm:text-xs font-medium text-[#1F1E1B] shadow-xs"
                 >
-                  <svg className="w-4 h-4" viewBox="0 0 24 24">
+                  <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" viewBox="0 0 24 24">
                     <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
                     <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
                     <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
@@ -1184,15 +1184,15 @@ export default function TelegramAuthModal({
 
                 {/* Telegram Bot Direct Deep Link */}
                 {telegramSession ? (
-                  <div className="p-4 bg-white border border-[#229ED9]/30 rounded-2xl space-y-3 shadow-xs">
+                  <div className="p-2.5 sm:p-4 bg-white border border-[#229ED9]/30 rounded-xl sm:rounded-2xl space-y-2 sm:space-y-3 shadow-xs">
                     <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <div className="w-6 h-6 rounded-full bg-[#229ED9] text-white flex items-center justify-center">
-                          <Send className="w-3.5 h-3.5" />
+                      <div className="flex items-center gap-1.5 sm:gap-2">
+                        <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#229ED9] text-white flex items-center justify-center">
+                          <Send className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                         </div>
-                        <span className="font-serif text-sm font-bold text-[#1F1E1B]">Telegram One-Click Auth</span>
+                        <span className="font-serif text-xs sm:text-sm font-bold text-[#1F1E1B]">Telegram One-Click Auth</span>
                       </div>
-                      <span className="font-mono text-[10px] text-[#0088cc] font-semibold animate-pulse">
+                      <span className="font-mono text-[9px] sm:text-[10px] text-[#0088cc] font-semibold animate-pulse">
                         Waiting for Bot Start...
                       </span>
                     </div>
@@ -1202,25 +1202,25 @@ export default function TelegramAuthModal({
                         href={telegramSession.deepLink}
                         target="_blank"
                         rel="noreferrer"
-                        className="flex-1 py-2.5 bg-[#229ED9] text-white text-center font-mono text-xs font-semibold rounded-xl hover:bg-[#1E88C7] transition-colors flex items-center justify-center gap-1.5"
+                        className="flex-1 py-2 sm:py-2.5 bg-[#229ED9] text-white text-center font-mono text-[11px] sm:text-xs font-semibold rounded-lg sm:rounded-xl hover:bg-[#1E88C7] transition-colors flex items-center justify-center gap-1.5"
                       >
-                        <Send className="w-3.5 h-3.5" />
+                        <Send className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                         <span>Open @PaleoMarketBot</span>
                       </a>
 
                       <button
                         type="button"
                         onClick={handleCopy}
-                        className="p-2.5 border border-[#E2DDD3] rounded-xl hover:bg-[#FAF8F5] text-[#7C776E] transition-colors"
+                        className="p-2 sm:p-2.5 border border-[#E2DDD3] rounded-lg sm:rounded-xl hover:bg-[#FAF8F5] text-[#7C776E] transition-colors"
                         title="Copy link"
                       >
-                        {copied ? <CheckCircle2 className="w-4 h-4 text-emerald-600" /> : <Copy className="w-4 h-4" />}
+                        {copied ? <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
                       </button>
                     </div>
                   </div>
                 ) : (
-                  <div className="p-3 text-center font-mono text-xs text-[#7C776E] flex items-center justify-center gap-2">
-                    <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                  <div className="p-2.5 text-center font-mono text-[11px] sm:text-xs text-[#7C776E] flex items-center justify-center gap-1.5">
+                    <Loader2 className="w-3 h-3 animate-spin" />
                     <span>Preparing Telegram Bot link...</span>
                   </div>
                 )}

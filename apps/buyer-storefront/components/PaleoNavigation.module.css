@@ -687,7 +687,9 @@
   }
 
   .themeButton {
-    display: none;
+    display: grid;
+    width: 34px;
+    height: 34px;
   }
 
   .accountName {

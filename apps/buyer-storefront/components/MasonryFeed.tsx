@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
 import { Product } from '../data/paleoData';
 import { Heart, MapPin, Star, ShieldCheck, Eye, Plus, Check } from './Icons';
 
@@ -115,134 +117,148 @@ export default function MasonryFeed({
             )}
           </div>
         ) : (
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-6">
-            {filteredProducts.map((product) => {
-            const isWishlisted = wishlistIds.includes(product.id);
-            const isInCart = cartIds.includes(product.id);
+          <div>
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-2.5 sm:gap-4 lg:gap-6">
+              {filteredProducts.slice(0, 8).map((product) => {
+              const isWishlisted = wishlistIds.includes(product.id);
+              const isInCart = cartIds.includes(product.id);
 
-            return (
-              <div
-                key={product.id}
-                className="group bg-white/85 dark:bg-[#1E1C1A]/95 backdrop-blur-md border border-white/70 dark:border-[#33302B] overflow-hidden flex flex-col hover:border-[#C85A32]/60 hover:bg-white/95 dark:hover:bg-[#252320] transition-all duration-500 rounded-xl sm:rounded-3xl shadow-xs sm:shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-2xl"
-              >
-                {/* Image Container */}
-                <div className="relative aspect-square sm:aspect-4/3 bg-[#EFECE6] dark:bg-[#252320] overflow-hidden">
-                  <img
-                    src={product.image}
-                    alt={product.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
-                    onError={(e) => {
-                      (e.currentTarget as HTMLImageElement).src = 'https://images.unsplash.com/photo-1587049352851-8d4e89133924?auto=format&fit=crop&w=1200&q=80';
-                    }}
-                  />
-
-                  {/* Top Overlay Badges */}
-                  <div className="absolute top-1.5 left-1.5 right-1.5 sm:top-3 sm:left-3 sm:right-3 flex items-center justify-between pointer-events-none">
-                    <span className="px-1.5 py-0.5 sm:px-2.5 sm:py-1 bg-[#1F1E1B]/85 dark:bg-[#141312]/90 text-[#FAF8F5] backdrop-blur-md text-[8px] sm:text-[10px] font-mono tracking-wider uppercase rounded-sm">
-                      {product.tag?.split('/')[1] || product.tag}
-                    </span>
-
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        onToggleWishlist(product.id);
+              return (
+                <div
+                  key={product.id}
+                  className="group bg-white/85 dark:bg-[#1E1C1A]/95 backdrop-blur-md border border-white/70 dark:border-[#33302B] overflow-hidden flex flex-col hover:border-[#C85A32]/60 hover:bg-white/95 dark:hover:bg-[#252320] transition-all duration-500 rounded-xl sm:rounded-3xl shadow-xs sm:shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-2xl"
+                >
+                  {/* Image Container */}
+                  <div className="relative aspect-square sm:aspect-4/3 bg-[#EFECE6] dark:bg-[#252320] overflow-hidden">
+                    <img
+                      src={product.image}
+                      alt={product.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                      onError={(e) => {
+                        (e.currentTarget as HTMLImageElement).src = 'https://images.unsplash.com/photo-1587049352851-8d4e89133924?auto=format&fit=crop&w=1200&q=80';
                       }}
-                      className={`pointer-events-auto w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center transition-colors shadow-xs ${
-                        isWishlisted
-                          ? 'bg-[#C85A32] text-white'
-                          : 'bg-white/85 dark:bg-[#2B2824]/90 backdrop-blur-md text-[#1F1E1B] dark:text-[#FAF8F5] hover:bg-white dark:hover:bg-[#363430]'
-                      }`}
-                      title={isWishlisted ? 'Remove from wishlist' : 'Save to wishlist'}
-                    >
-                      <Heart className={`w-3 h-3 sm:w-4 sm:h-4 ${isWishlisted ? 'fill-current' : ''}`} />
-                    </button>
-                  </div>
+                    />
 
-                  {/* Quick Inspect Button Overlay */}
-                  <div className="hidden sm:flex absolute inset-x-0 bottom-0 p-3 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity justify-center">
-                    <button
-                      onClick={() => onSelectProduct(product)}
-                      className="px-3.5 py-1.5 sm:px-4 sm:py-2 bg-white dark:bg-[#1F1E1B] text-[#1F1E1B] dark:text-[#FAF8F5] font-mono text-[11px] sm:text-xs uppercase tracking-wider flex items-center gap-1.5 hover:bg-[#C85A32] hover:text-white transition-colors rounded-lg"
-                    >
-                      <Eye className="w-3.5 h-3.5" />
-                      Quick Inspect &amp; Specs
-                    </button>
-                  </div>
-                </div>
+                    {/* Top Overlay Badges */}
+                    <div className="absolute top-1.5 left-1.5 right-1.5 sm:top-3 sm:left-3 sm:right-3 flex items-center justify-between pointer-events-none">
+                      <span className="px-1.5 py-0.5 sm:px-2.5 sm:py-1 bg-[#1F1E1B]/85 dark:bg-[#141312]/90 text-[#FAF8F5] backdrop-blur-md text-[8px] sm:text-[10px] font-mono tracking-wider uppercase rounded-sm">
+                        {product.tag?.split('/')[1] || product.tag}
+                      </span>
 
-                {/* Card Content */}
-                <div className="p-2 sm:p-4 flex-1 flex flex-col justify-between space-y-2 sm:space-y-3">
-                  <div>
-                    {/* Location & Rating */}
-                    <div className="flex items-center justify-between text-[9px] sm:text-xs font-mono text-[#7C776E] dark:text-[#A8A296] mb-1">
-                      <span className="flex items-center gap-0.5 sm:gap-1 text-[#524E46] dark:text-[#D1CBC0] truncate max-w-[50%]">
-                        <MapPin className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 text-[#C85A32] shrink-0" />
-                        <span className="truncate">{product.location?.split(',')[0]}</span>
-                      </span>
-                      <span className="flex items-center gap-0.5 text-amber-700 dark:text-amber-500 shrink-0">
-                        <Star className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 fill-current" />
-                        {(Number(typeof product.vendorRating === 'object' && product.vendorRating !== null ? (product.vendorRating as any).average : product.vendorRating) || 4.9).toFixed(1)}
-                      </span>
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          onToggleWishlist(product.id);
+                        }}
+                        className={`pointer-events-auto w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center transition-colors shadow-xs ${
+                          isWishlisted
+                            ? 'bg-[#C85A32] text-white'
+                            : 'bg-white/85 dark:bg-[#2B2824]/90 backdrop-blur-md text-[#1F1E1B] dark:text-[#FAF8F5] hover:bg-white dark:hover:bg-[#363430]'
+                        }`}
+                        title={isWishlisted ? 'Remove from wishlist' : 'Save to wishlist'}
+                      >
+                        <Heart className={`w-3 h-3 sm:w-4 sm:h-4 ${isWishlisted ? 'fill-current' : ''}`} />
+                      </button>
                     </div>
 
-                    {/* Title */}
-                    <h3 
-                      onClick={() => onSelectProduct(product)}
-                      className="font-serif text-xs sm:text-lg font-medium text-[#1F1E1B] dark:text-[#FAF8F5] hover:text-[#C85A32] dark:hover:text-[#EB5B00] transition-colors cursor-pointer line-clamp-1 sm:line-clamp-2 leading-snug"
-                    >
-                      {product.title}
-                    </h3>
+                    {/* Quick Inspect Button Overlay */}
+                    <div className="hidden sm:flex absolute inset-x-0 bottom-0 p-3 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity justify-center">
+                      <button
+                        onClick={() => onSelectProduct(product)}
+                        className="px-3.5 py-1.5 sm:px-4 sm:py-2 bg-white dark:bg-[#1F1E1B] text-[#1F1E1B] dark:text-[#FAF8F5] font-mono text-[11px] sm:text-xs uppercase tracking-wider flex items-center gap-1.5 hover:bg-[#C85A32] hover:text-white transition-colors rounded-lg"
+                      >
+                        <Eye className="w-3.5 h-3.5" />
+                        Quick Inspect &amp; Specs
+                      </button>
+                    </div>
                   </div>
 
-                  {/* Condition & Price Footer */}
-                  <div className="pt-1.5 sm:pt-2.5 border-t border-[#E8E4DC] dark:border-[#33302B] flex items-center justify-between">
+                  {/* Card Content */}
+                  <div className="p-2 sm:p-4 flex-1 flex flex-col justify-between space-y-2 sm:space-y-3">
                     <div>
-                      <span className="text-[8px] sm:text-[10px] font-mono text-[#7C776E] dark:text-[#A8A296] uppercase tracking-wider block">
-                        Condition
-                      </span>
-                      <span className="font-mono text-[9px] sm:text-xs font-semibold text-[#1F1E1B] dark:text-[#FAF8F5] truncate block max-w-[70px] sm:max-w-none">
-                        {product.condition}
-                      </span>
+                      {/* Location & Rating */}
+                      <div className="flex items-center justify-between text-[9px] sm:text-xs font-mono text-[#7C776E] dark:text-[#A8A296] mb-1">
+                        <span className="flex items-center gap-0.5 sm:gap-1 text-[#524E46] dark:text-[#D1CBC0] truncate max-w-[50%]">
+                          <MapPin className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 text-[#C85A32] shrink-0" />
+                          <span className="truncate">{product.location?.split(',')[0]}</span>
+                        </span>
+                        <span className="flex items-center gap-0.5 text-amber-700 dark:text-amber-500 shrink-0">
+                          <Star className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 fill-current" />
+                          {(Number(typeof product.vendorRating === 'object' && product.vendorRating !== null ? (product.vendorRating as any).average : product.vendorRating) || 4.9).toFixed(1)}
+                        </span>
+                      </div>
+
+                      {/* Title */}
+                      <h3 
+                        onClick={() => onSelectProduct(product)}
+                        className="font-serif text-xs sm:text-lg font-medium text-[#1F1E1B] dark:text-[#FAF8F5] hover:text-[#C85A32] dark:hover:text-[#EB5B00] transition-colors cursor-pointer line-clamp-1 sm:line-clamp-2 leading-snug"
+                      >
+                        {product.title}
+                      </h3>
                     </div>
 
-                    <div className="text-right">
-                      <span className="text-[8px] sm:text-[10px] font-mono text-[#7C776E] dark:text-[#A8A296] uppercase tracking-wider block">
-                        Price
-                      </span>
-                      <span className="font-serif text-xs sm:text-base font-bold text-[#1F1E1B] dark:text-[#FAF8F5]">
-                        {formatPrice(product.priceETB)}
-                      </span>
+                    {/* Condition & Price Footer */}
+                    <div className="pt-1.5 sm:pt-2.5 border-t border-[#E8E4DC] dark:border-[#33302B] flex items-center justify-between">
+                      <div>
+                        <span className="text-[8px] sm:text-[10px] font-mono text-[#7C776E] dark:text-[#A8A296] uppercase tracking-wider block">
+                          Condition
+                        </span>
+                        <span className="font-mono text-[9px] sm:text-xs font-semibold text-[#1F1E1B] dark:text-[#FAF8F5] truncate block max-w-[70px] sm:max-w-none">
+                          {product.condition}
+                        </span>
+                      </div>
+
+                      <div className="text-right">
+                        <span className="text-[8px] sm:text-[10px] font-mono text-[#7C776E] dark:text-[#A8A296] uppercase tracking-wider block">
+                          Price
+                        </span>
+                        <span className="font-serif text-xs sm:text-base font-bold text-[#1F1E1B] dark:text-[#FAF8F5]">
+                          {formatPrice(product.priceETB)}
+                        </span>
+                      </div>
                     </div>
+
+                    {/* Cart Action Button */}
+                    <button
+                      onClick={() => onAddToCart(product)}
+                      className={`w-full py-1.5 sm:py-2.5 rounded-md sm:rounded-xl font-mono text-[9px] sm:text-xs uppercase tracking-wider font-semibold transition-all flex items-center justify-center gap-1 sm:gap-2 ${
+                        isInCart
+                          ? 'bg-emerald-800 text-white'
+                          : 'bg-[#1F1E1B] dark:bg-[#2B2824] text-[#FAF8F5] border border-transparent dark:border-[#3A3732] hover:bg-[#C85A32] dark:hover:bg-[#C85A32]'
+                      }`}
+                    >
+                      {isInCart ? (
+                        <>
+                          <Check className="w-3 h-3 sm:w-4 sm:h-4" /> 
+                          <span className="hidden sm:inline">In Cart / Escrow Locked</span>
+                          <span className="inline sm:hidden">In Cart</span>
+                        </>
+                      ) : (
+                        <>
+                          <Plus className="w-3 h-3 sm:w-4 sm:h-4" /> 
+                          <span className="hidden sm:inline">Reserve in Escrow</span>
+                          <span className="inline sm:hidden">Reserve</span>
+                        </>
+                      )}
+                    </button>
                   </div>
-
-                  {/* Cart Action Button */}
-                  <button
-                    onClick={() => onAddToCart(product)}
-                    className={`w-full py-1.5 sm:py-2.5 rounded-md sm:rounded-xl font-mono text-[9px] sm:text-xs uppercase tracking-wider font-semibold transition-all flex items-center justify-center gap-1 sm:gap-2 ${
-                      isInCart
-                        ? 'bg-emerald-800 text-white'
-                        : 'bg-[#1F1E1B] dark:bg-[#2B2824] text-[#FAF8F5] border border-transparent dark:border-[#3A3732] hover:bg-[#C85A32] dark:hover:bg-[#C85A32]'
-                    }`}
-                  >
-                    {isInCart ? (
-                      <>
-                        <Check className="w-3 h-3 sm:w-4 sm:h-4" /> 
-                        <span className="hidden sm:inline">In Cart / Escrow Locked</span>
-                        <span className="inline sm:hidden">In Cart</span>
-                      </>
-                    ) : (
-                      <>
-                        <Plus className="w-3 h-3 sm:w-4 sm:h-4" /> 
-                        <span className="hidden sm:inline">Reserve in Escrow</span>
-                        <span className="inline sm:hidden">Reserve</span>
-                      </>
-                    )}
-                  </button>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
+
+          {filteredProducts.length > 8 && (
+            <div className="mt-8 text-center">
+              <Link
+                href="/shop"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-[#1F1E1B] dark:bg-[#2B2824] text-[#FAF8F5] font-mono text-xs uppercase tracking-wider font-semibold rounded-full hover:bg-[#C85A32] transition-colors shadow-xs"
+              >
+                <span>View All {filteredProducts.length} Curated Pieces</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+          )}
         </div>
         )}
 

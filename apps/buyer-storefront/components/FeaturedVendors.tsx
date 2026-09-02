@@ -78,7 +78,7 @@ export default function FeaturedVendors({
   }, [apiUrl]);
 
   return (
-    <section id="vendors" className="relative py-24 border-b border-[#E8E4DC] dark:border-[#33302B] overflow-hidden bg-[#FAF8F5] dark:bg-[#141312]">
+    <section id="vendors" className="relative py-10 sm:py-24 border-b border-[#E8E4DC] dark:border-[#33302B] overflow-hidden bg-[#FAF8F5] dark:bg-[#141312]">
       {/* Background Atmosphere */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0 opacity-20 pointer-events-none"
@@ -91,96 +91,96 @@ export default function FeaturedVendors({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-[#E8E4DC] dark:border-[#33302B]">
-          <div className="space-y-2">
-            <span className="font-mono text-xs uppercase tracking-widest text-[#C85A32] font-semibold flex items-center gap-1.5">
-              <Award className="w-4 h-4 text-[#C85A32]" />
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 sm:mb-16 pb-3 sm:pb-6 border-b border-[#E8E4DC] dark:border-[#33302B]">
+          <div className="space-y-1 sm:space-y-2">
+            <span className="font-mono text-[9px] sm:text-xs uppercase tracking-widest text-[#C85A32] font-semibold flex items-center gap-1.5">
+              <Award className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C85A32]" />
               VERIFIED LOCAL SELLERS
             </span>
-            <h2 className="font-serif text-3xl sm:text-5xl font-normal text-[#1F1E1B] dark:text-[#FAF8F5] tracking-tight">
+            <h2 className="font-serif text-xl sm:text-3xl md:text-5xl font-normal text-[#1F1E1B] dark:text-[#FAF8F5] tracking-tight">
               Adama neighborhood merchants
             </h2>
           </div>
           
-          <div className="flex flex-col sm:flex-row sm:items-center gap-4 mt-6 md:mt-0">
-            <p className="font-sans text-sm text-[#625D54] dark:text-[#A8A296] max-w-sm font-light leading-relaxed">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-2.5 sm:gap-4 mt-3 sm:mt-6 md:mt-0">
+            <p className="font-sans text-[11px] sm:text-sm text-[#625D54] dark:text-[#A8A296] max-w-sm font-light leading-relaxed">
               Identity-verified curators across Posta Bet, Geda, and Boku Shenen. All purchases protected under PALEO Escrow.
             </p>
             <Link
               href="/shop"
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#1F1E1B] dark:bg-[#2B2824] text-[#FAF8F5] dark:border dark:border-[#3A3732] rounded-full font-mono text-xs uppercase tracking-wider font-semibold hover:bg-[#C85A32] transition-all shadow-sm shrink-0 self-start sm:self-auto"
+              className="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 py-1.5 sm:px-5 sm:py-2.5 bg-[#1F1E1B] dark:bg-[#2B2824] text-[#FAF8F5] dark:border dark:border-[#3A3732] rounded-full font-mono text-[10px] sm:text-xs uppercase tracking-wider font-semibold hover:bg-[#C85A32] transition-all shadow-xs shrink-0 self-start sm:self-auto"
             >
               <span>Explore All Curators</span>
-              <ArrowRight className="w-3.5 h-3.5" />
+              <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
             </Link>
           </div>
         </div>
 
         {/* Vendor Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-8 mb-8 sm:mb-16">
           {vendors.map((vendor) => (
             <div
               key={vendor.id}
-              className="bg-white/95 dark:bg-[#1E1C1A]/95 backdrop-blur-md border border-[#E2DDD3] dark:border-[#33302B] p-8 rounded-3xl shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col justify-between group hover:border-[#C85A32]"
+              className="bg-white/95 dark:bg-[#1E1C1A]/95 backdrop-blur-md border border-[#E2DDD3] dark:border-[#33302B] p-3.5 sm:p-8 rounded-xl sm:rounded-3xl shadow-xs hover:shadow-xl transition-all duration-500 flex flex-col justify-between group hover:border-[#C85A32]"
             >
               <div>
-                <div className="flex items-center justify-between mb-6">
-                  <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-[#C85A32]/40 group-hover:border-[#C85A32] transition-colors">
+                <div className="flex items-center justify-between mb-3 sm:mb-6">
+                  <div className="w-11 h-11 sm:w-16 sm:h-16 rounded-full overflow-hidden border-2 border-[#C85A32]/40 group-hover:border-[#C85A32] transition-colors">
                     <img
                       src={vendor.avatar}
                       alt={vendor.name}
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <span className="px-3 py-1 bg-[#FAF3F0] dark:bg-[#2B2824] border border-[#C85A32]/20 rounded-full text-[11px] font-mono text-[#C85A32] font-semibold">
+                  <span className="px-2.5 py-0.5 sm:px-3 sm:py-1 bg-[#FAF3F0] dark:bg-[#2B2824] border border-[#C85A32]/20 rounded-full text-[9px] sm:text-[11px] font-mono text-[#C85A32] font-semibold">
                     {vendor.badge}
                   </span>
                 </div>
 
-                <h3 className="font-serif text-2xl font-bold text-[#1F1E1B] dark:text-[#FAF8F5] mb-1 group-hover:text-[#C85A32] transition-colors">
+                <h3 className="font-serif text-base sm:text-2xl font-bold text-[#1F1E1B] dark:text-[#FAF8F5] mb-0.5 sm:mb-1 group-hover:text-[#C85A32] transition-colors">
                   {vendor.name}
                 </h3>
                 
-                <p className="font-mono text-xs text-[#7C776E] dark:text-[#A8A296] font-medium mb-3">
+                <p className="font-mono text-[10px] sm:text-xs text-[#7C776E] dark:text-[#A8A296] font-medium mb-2 sm:mb-3">
                   {vendor.specialty}
                 </p>
 
-                <div className="space-y-2 pt-3 border-t border-[#E8E4DC] dark:border-[#33302B] font-mono text-xs text-[#625D54] dark:text-[#A8A296]">
+                <div className="space-y-1.5 sm:space-y-2 pt-2 sm:pt-3 border-t border-[#E8E4DC] dark:border-[#33302B] font-mono text-[10px] sm:text-xs text-[#625D54] dark:text-[#A8A296]">
                   <div className="flex items-center justify-between">
                     <span className="flex items-center gap-1">
-                      <MapPin className="w-3.5 h-3.5 text-[#C85A32]" /> {vendor.location}
+                      <MapPin className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#C85A32]" /> {vendor.location}
                     </span>
                     <span className="flex items-center gap-1 font-bold text-[#1F1E1B] dark:text-[#FAF8F5]">
-                      <Star className="w-3.5 h-3.5 fill-amber-500 text-amber-500" /> {(Number(typeof vendor.rating === 'object' && vendor.rating !== null ? (vendor.rating as any).average : vendor.rating) || 4.9).toFixed(1)}
+                      <Star className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-amber-500 text-amber-500" /> {(Number(typeof vendor.rating === 'object' && vendor.rating !== null ? (vendor.rating as any).average : vendor.rating) || 4.9).toFixed(1)}
                     </span>
                   </div>
 
-                  <div className="flex items-center justify-between pt-1">
+                  <div className="flex items-center justify-between pt-0.5">
                     <span>Verified Handoffs:</span>
                     <span className="font-semibold text-[#1F1E1B] dark:text-[#FAF8F5]">{vendor.salesCount} orders</span>
                   </div>
                 </div>
 
-                <div className="mt-4 p-3 bg-[#FAF8F5] dark:bg-[#141312] border border-[#E2DDD3] dark:border-[#33302B] rounded-xl text-xs font-sans text-[#524E46] dark:text-[#A8A296]">
-                  <span className="font-mono text-[10px] uppercase text-[#7C776E] dark:text-[#A8A296] block mb-0.5 font-bold">Top Curation:</span>
+                <div className="mt-2.5 sm:mt-4 p-2 sm:p-3 bg-[#FAF8F5] dark:bg-[#141312] border border-[#E2DDD3] dark:border-[#33302B] rounded-lg sm:rounded-xl text-[10px] sm:text-xs font-sans text-[#524E46] dark:text-[#A8A296]">
+                  <span className="font-mono text-[8px] sm:text-[10px] uppercase text-[#7C776E] dark:text-[#A8A296] block mb-0.5 font-bold">Top Curation:</span>
                   <p className="font-medium text-[#1F1E1B] dark:text-[#FAF8F5] line-clamp-1">{vendor.featuredItem}</p>
                 </div>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-[#E8E4DC] dark:border-[#33302B] flex items-center justify-between font-mono text-xs text-[#1F1E1B] dark:text-[#FAF8F5]">
+              <div className="mt-3 sm:mt-6 pt-2.5 sm:pt-4 border-t border-[#E8E4DC] dark:border-[#33302B] flex items-center justify-between font-mono text-[10px] sm:text-xs text-[#1F1E1B] dark:text-[#FAF8F5]">
                 <Link
                   href={`/shop?category=${encodeURIComponent(vendor.category)}`}
                   className="inline-flex items-center gap-1 text-[#C85A32] font-semibold hover:underline"
                 >
                   <span>View Archive</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                 </Link>
 
                 <Link
                   href={`/shop?category=${encodeURIComponent(vendor.category)}`}
-                  className="text-[11px] text-[#7C776E] hover:text-[#1F1E1B] flex items-center gap-1"
+                  className="text-[9px] sm:text-[11px] text-[#7C776E] hover:text-[#1F1E1B] flex items-center gap-1"
                 >
-                  <Store className="w-3.5 h-3.5 text-[#C85A32]" />
+                  <Store className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#C85A32]" />
                   <span>Verified Studio</span>
                 </Link>
               </div>
@@ -189,38 +189,38 @@ export default function FeaturedVendors({
         </div>
 
         {/* 3 Escrow Pillars */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-8 border-t border-[#E8E4DC]">
-          <div className="flex items-start gap-4 p-5 bg-white border border-[#E2DDD3] rounded-2xl shadow-xs">
-            <div className="p-2.5 bg-[#FAF3F0] text-[#C85A32] rounded-xl shrink-0">
-              <ShieldCheck className="w-6 h-6" />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-2.5 sm:gap-6 pt-4 sm:pt-8 border-t border-[#E8E4DC]">
+          <div className="flex items-start gap-2.5 sm:gap-4 p-3 sm:p-5 bg-white border border-[#E2DDD3] rounded-xl sm:rounded-2xl shadow-xs">
+            <div className="p-2 sm:p-2.5 bg-[#FAF3F0] text-[#C85A32] rounded-lg sm:rounded-xl shrink-0">
+              <ShieldCheck className="w-4 h-4 sm:w-6 sm:h-6" />
             </div>
             <div>
-              <h4 className="font-serif text-base font-bold text-[#1F1E1B]">100% Escrow Protection</h4>
-              <p className="font-sans text-xs text-[#625D54] mt-1 font-light leading-relaxed">
+              <h4 className="font-serif text-xs sm:text-base font-bold text-[#1F1E1B]">100% Escrow Protection</h4>
+              <p className="font-sans text-[10px] sm:text-xs text-[#625D54] mt-0.5 sm:mt-1 font-light leading-relaxed">
                 Funds are held in secure platform escrow until you inspect your item upon physical delivery.
               </p>
             </div>
           </div>
 
-          <div className="flex items-start gap-4 p-5 bg-white border border-[#E2DDD3] rounded-2xl shadow-xs">
-            <div className="p-2.5 bg-[#FAF3F0] text-[#C85A32] rounded-xl shrink-0">
-              <Truck className="w-6 h-6" />
+          <div className="flex items-start gap-2.5 sm:gap-4 p-3 sm:p-5 bg-white border border-[#E2DDD3] rounded-xl sm:rounded-2xl shadow-xs">
+            <div className="p-2 sm:p-2.5 bg-[#FAF3F0] text-[#C85A32] rounded-lg sm:rounded-xl shrink-0">
+              <Truck className="w-4 h-4 sm:w-6 sm:h-6" />
             </div>
             <div>
-              <h4 className="font-serif text-base font-bold text-[#1F1E1B]">Adama Same-Day Handoff</h4>
-              <p className="font-sans text-xs text-[#625D54] mt-1 font-light leading-relaxed">
+              <h4 className="font-serif text-xs sm:text-base font-bold text-[#1F1E1B]">Adama Same-Day Handoff</h4>
+              <p className="font-sans text-[10px] sm:text-xs text-[#625D54] mt-0.5 sm:mt-1 font-light leading-relaxed">
                 Direct neighborhood courier delivery across Posta Bet, Geda, Boku Shenen, Daka Adu, and Goro ASTU.
               </p>
             </div>
           </div>
 
-          <div className="flex items-start gap-4 p-5 bg-white border border-[#E2DDD3] rounded-2xl shadow-xs">
-            <div className="p-2.5 bg-[#FAF3F0] text-[#C85A32] rounded-xl shrink-0">
-              <CheckCircle2 className="w-6 h-6" />
+          <div className="flex items-start gap-2.5 sm:gap-4 p-3 sm:p-5 bg-white border border-[#E2DDD3] rounded-xl sm:rounded-2xl shadow-xs">
+            <div className="p-2 sm:p-2.5 bg-[#FAF3F0] text-[#C85A32] rounded-lg sm:rounded-xl shrink-0">
+              <CheckCircle2 className="w-4 h-4 sm:w-6 sm:h-6" />
             </div>
             <div>
-              <h4 className="font-serif text-base font-bold text-[#1F1E1B]">Verified Condition Guarantee</h4>
-              <p className="font-sans text-xs text-[#625D54] mt-1 font-light leading-relaxed">
+              <h4 className="font-serif text-xs sm:text-base font-bold text-[#1F1E1B]">Verified Condition Guarantee</h4>
+              <p className="font-sans text-[10px] sm:text-xs text-[#625D54] mt-0.5 sm:mt-1 font-light leading-relaxed">
                 Every piece is authenticated with real photos, condition ratings, and working guarantees.
               </p>
             </div>

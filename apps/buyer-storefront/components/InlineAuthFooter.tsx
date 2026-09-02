@@ -49,25 +49,25 @@ export default function InlineAuthFooter({
         <div className="bg-[#2B2824] border border-[#3A3732] p-4 sm:p-8 md:p-10 mb-8 sm:mb-14 rounded-xl sm:rounded-2xl grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-8 items-center">
           
           {/* Left Side: Editorial Prompt */}
-          <div className="lg:col-span-6 space-y-2.5 sm:space-y-4">
-            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 sm:px-3 sm:py-1 bg-[#1F1E1B] border border-[#3A3732] rounded-full text-[9px] sm:text-xs font-mono text-[#C85A32]">
+          <div className="lg:col-span-6 space-y-2 sm:space-y-4">
+            <div className="inline-flex items-center gap-1.5 px-2 py-0.5 sm:px-3 sm:py-1 bg-[#1F1E1B] border border-[#3A3732] rounded-full text-[8px] sm:text-xs font-mono text-[#C85A32]">
               <span className="w-1.5 h-1.5 rounded-full bg-[#C85A32] animate-pulse"></span>
               <span>IDENTITY &amp; SECURITY GATEWAY</span>
             </div>
             
-            <h3 className="font-serif text-xl sm:text-3xl md:text-4xl font-normal text-white leading-tight">
+            <h3 className="font-serif text-lg sm:text-3xl md:text-4xl font-normal text-white leading-tight">
               Make room for <br className="hidden sm:inline" />
               <span className="italic text-[#C85A32]">better</span> finds.
             </h3>
             
-            <p className="font-sans text-xs sm:text-sm text-[#A5A096] font-light leading-relaxed max-w-md line-clamp-2 sm:line-clamp-none">
+            <p className="font-sans text-[11px] sm:text-sm text-[#A5A096] font-light leading-relaxed max-w-md line-clamp-2 sm:line-clamp-none">
               Sign in to manage your saved archives, track physical escrow deliveries in real time, or list vintage goods across Adama.
             </p>
 
             <div className="hidden sm:flex pt-1 flex-wrap items-center gap-2 sm:gap-3">
               <button
                 onClick={onAccountClick}
-                className="inline-flex items-center gap-1.5 sm:gap-2 px-4 py-2.5 bg-[#229ED9] text-white font-mono text-[11px] sm:text-xs uppercase tracking-wider font-semibold hover:bg-[#1D82B2] transition-colors rounded-xl shadow-xs"
+                className="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 py-2 sm:px-4 sm:py-2.5 bg-[#229ED9] text-white font-mono text-[10px] sm:text-xs uppercase tracking-wider font-semibold hover:bg-[#1D82B2] transition-colors rounded-lg sm:rounded-xl shadow-xs"
               >
                 <Send className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> 
                 <span>Telegram Bot Auth</span>
@@ -75,7 +75,7 @@ export default function InlineAuthFooter({
 
               <button
                 onClick={onAccountClick}
-                className="inline-flex items-center gap-1.5 sm:gap-2 px-4 py-2.5 bg-[#363430] text-[#FAF8F5] font-mono text-[11px] sm:text-xs uppercase tracking-wider font-semibold hover:bg-[#45423C] transition-colors rounded-xl"
+                className="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 py-2 sm:px-4 sm:py-2.5 bg-[#363430] text-[#FAF8F5] font-mono text-[10px] sm:text-xs uppercase tracking-wider font-semibold hover:bg-[#45423C] transition-colors rounded-lg sm:rounded-xl"
               >
                 <User className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C85A32]" />
                 <span>Account Hub</span>
@@ -84,47 +84,47 @@ export default function InlineAuthFooter({
           </div>
 
           {/* Right Side: Google & Identity Portal */}
-          <div className="lg:col-span-6 bg-[#1F1E1B] p-3.5 sm:p-6 border border-[#3A3732] rounded-xl sm:rounded-2xl shadow-lg space-y-3 sm:space-y-4">
-            <div className="flex items-center justify-between border-b border-[#3A3732] pb-2 sm:pb-3">
-              <span className="font-serif text-sm sm:text-lg font-medium text-white">
+          <div className="lg:col-span-6 bg-[#1F1E1B] p-3 sm:p-6 border border-[#3A3732] rounded-xl sm:rounded-2xl shadow-md space-y-2.5 sm:space-y-4">
+            <div className="flex items-center justify-between border-b border-[#3A3732] pb-1.5 sm:pb-3">
+              <span className="font-serif text-xs sm:text-lg font-medium text-white">
                 {isAuthenticated && currentUser ? 'Active Account Session' : 'Sign In to ገልጋይ (Gelgay)'}
               </span>
-              <span className="font-mono text-[9px] sm:text-xs text-[#EB5B00] font-semibold">100% ESCROW</span>
+              <span className="font-mono text-[8px] sm:text-xs text-[#EB5B00] font-semibold">100% ESCROW</span>
             </div>
 
             {authMsg ? (
-              <div className="p-3 bg-emerald-950/60 border border-emerald-500/30 text-emerald-300 rounded-lg text-xs font-mono flex items-center gap-2">
+              <div className="p-2 sm:p-3 bg-emerald-950/60 border border-emerald-500/30 text-emerald-300 rounded-lg text-[10px] sm:text-xs font-mono flex items-center gap-2">
                 <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
                 <span>{authMsg}</span>
               </div>
             ) : null}
 
             {isAuthenticated && currentUser ? (
-              <div className="p-3.5 sm:p-5 bg-[#2B2824] border border-[#3A3732] rounded-xl space-y-3 sm:space-y-4">
+              <div className="p-2.5 sm:p-5 bg-[#2B2824] border border-[#3A3732] rounded-lg sm:rounded-xl space-y-2.5 sm:space-y-4">
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2.5 sm:gap-3">
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#FAF3F0] text-[#EB5B00] font-serif font-bold text-sm sm:text-base flex items-center justify-center">
+                  <div className="flex items-center gap-2 sm:gap-3">
+                    <div className="w-7 h-7 sm:w-10 sm:h-10 rounded-full bg-[#FAF3F0] text-[#EB5B00] font-serif font-bold text-xs sm:text-base flex items-center justify-center">
                       {currentUser.displayName ? currentUser.displayName[0] : (currentUser.telegramUsername ? currentUser.telegramUsername[0].toUpperCase() : 'U')}
                     </div>
                     <div>
-                      <p className="font-serif text-sm sm:text-base font-bold text-white">
+                      <p className="font-serif text-xs sm:text-base font-bold text-white">
                         {currentUser.displayName || (currentUser.telegramUsername ? `@${currentUser.telegramUsername}` : 'Verified User')}
                       </p>
-                      <p className="font-mono text-[10px] sm:text-xs text-[#A5A096]">
+                      <p className="font-mono text-[9px] sm:text-xs text-[#A5A096]">
                         {currentUser.email || (currentUser.telegramUsername ? `@${currentUser.telegramUsername}` : 'Verified ID')}
                       </p>
                     </div>
                   </div>
-                  <span className="px-2 py-0.5 bg-[#1F1E1B] text-[#FAF8F5] rounded-full font-mono text-[9px] sm:text-[10px] uppercase font-bold tracking-wider">
+                  <span className="px-1.5 py-0.5 bg-[#1F1E1B] text-[#FAF8F5] rounded-full font-mono text-[8px] sm:text-[10px] uppercase font-bold tracking-wider">
                     {currentUser.role || 'BUYER'}
                   </span>
                 </div>
 
                 <button
                   onClick={onAccountClick}
-                  className="w-full py-2.5 sm:py-3 bg-[#EB5B00] hover:bg-[#FF6B10] text-white font-mono text-[11px] sm:text-xs uppercase tracking-wider font-semibold rounded-lg sm:rounded-xl transition-colors flex items-center justify-center gap-2 shadow-xs"
+                  className="w-full py-2 sm:py-3 bg-[#EB5B00] hover:bg-[#FF6B10] text-white font-mono text-[10px] sm:text-xs uppercase tracking-wider font-semibold rounded-lg sm:rounded-xl transition-colors flex items-center justify-center gap-2 shadow-xs"
                 >
-                  <User className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                  <User className="w-3 h-3 sm:w-4 sm:h-4" />
                   <span>Open Account &amp; Orders Menu</span>
                 </button>
               </div>
@@ -134,9 +134,9 @@ export default function InlineAuthFooter({
                 <button
                   onClick={handleGoogleAuth}
                   disabled={busy}
-                  className="w-full py-2.5 sm:py-3.5 bg-white text-[#1F1E1B] font-mono text-[11px] sm:text-xs uppercase tracking-wider font-semibold hover:bg-[#EFECE6] transition-all flex items-center justify-center gap-2.5 rounded-lg sm:rounded-xl shadow-xs"
+                  className="w-full py-2 sm:py-3 bg-white text-[#1F1E1B] font-mono text-[10px] sm:text-xs uppercase tracking-wider font-semibold hover:bg-[#EFECE6] transition-all flex items-center justify-center gap-2 rounded-lg sm:rounded-xl shadow-xs"
                 >
-                  <svg width="16" height="16" viewBox="0 0 24 24">
+                  <svg width="14" height="14" viewBox="0 0 24 24">
                     <path fill="#EA4335" d="M12 5c1.6 0 3 .6 4.1 1.7l3.1-3.1C17.3 1.8 14.8 1 12 1 7.5 1 3.7 3.6 1.9 7.3l3.7 2.9C6.5 7.3 9 5 12 5z"/>
                     <path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.7-.2-2.3H12v4.6h6.5c-.3 1.5-1.1 2.8-2.4 3.7l3.7 2.9c2.2-2 3.7-5 3.7-8.9z"/>
                     <path fill="#FBBC05" d="M5.6 14.8c-.2-.7-.4-1.5-.4-2.3s.2-1.6.4-2.3L1.9 7.3C.7 9.7 0 12.3 0 15.2s.7 5.5 1.9 7.9l3.7-2.9z"/>
@@ -147,15 +147,15 @@ export default function InlineAuthFooter({
 
                 <div className="flex items-center gap-2 sm:gap-3">
                   <div className="h-px bg-[#363430] flex-1" />
-                  <span className="font-mono text-[9px] uppercase text-[#706C64]">or access account</span>
+                  <span className="font-mono text-[8px] sm:text-[9px] uppercase text-[#706C64]">or access account</span>
                   <div className="h-px bg-[#363430] flex-1" />
                 </div>
 
                 <button
                   onClick={onAccountClick}
-                  className="w-full py-2.5 sm:py-3 bg-[#2B2824] hover:bg-[#363430] text-[#FAF8F5] border border-[#3A3732] rounded-lg sm:rounded-xl font-mono text-[11px] sm:text-xs uppercase tracking-wider font-semibold transition-colors flex items-center justify-center gap-2"
+                  className="w-full py-2 sm:py-2.5 bg-[#2B2824] hover:bg-[#363430] text-[#FAF8F5] border border-[#3A3732] rounded-lg sm:rounded-xl font-mono text-[10px] sm:text-xs uppercase tracking-wider font-semibold transition-colors flex items-center justify-center gap-1.5 sm:gap-2"
                 >
-                  <Send className="w-3.5 h-3.5 text-[#229ED9]" />
+                  <Send className="w-3 h-3 text-[#229ED9]" />
                   <span>Telegram Bot Auth</span>
                 </button>
               </>

@@ -44,8 +44,8 @@ export default function HeroSection({
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-8 items-center">
           
           {/* Main Headline & CTAs */}
-          <div className="md:col-span-7 space-y-5 md:space-y-8">
-            <h1 className="font-serif text-3xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-[#1F1E1B] dark:text-[#FAF8F5] leading-[1.08] sm:leading-[1.05] md:leading-[1.02] font-normal break-words">
+          <div className="md:col-span-7 space-y-4 md:space-y-8">
+            <h1 className="font-serif text-xl sm:text-4xl md:text-6xl lg:text-7xl tracking-tight text-[#1F1E1B] dark:text-[#FAF8F5] leading-[1.1] sm:leading-[1.05] md:leading-[1.02] font-normal break-words">
               Good things <br />
               <span className="italic font-light text-[#EB5B00]">deserve</span> second life.
             </h1>
@@ -109,8 +109,8 @@ export default function HeroSection({
           </div>
 
           {/* Right Side: Rectangular Shaped Video Frame (animate.mp4) */}
-          <div className="md:col-span-5 max-w-[280px] sm:max-w-sm md:max-w-none mx-auto w-full">
-            <div className="relative bg-[#121316] text-[#FAF8F5] p-1.5 sm:p-3 border border-[#363430] shadow-2xl rounded-xl sm:rounded-2xl overflow-hidden group">
+          <div className="md:col-span-5 max-w-[190px] sm:max-w-[240px] md:max-w-none mx-auto w-full">
+            <div className="relative bg-[#121316] text-[#FAF8F5] p-1 sm:p-3 border border-[#363430] shadow-2xl rounded-lg sm:rounded-2xl overflow-hidden group">
               
               {/* Window Header Bar (Browser / Screen Mockup) */}
               <div className="flex items-center justify-between pb-1.5 sm:pb-3 px-1.5 sm:px-2 border-b border-[#2A2B30] mb-1.5 sm:mb-2 font-mono text-[9px] sm:text-[11px] text-[#A5A096]">

@@ -241,7 +241,7 @@ export default function PaleoNavigation({
         )}
 
         <button
-          className={`${styles.themeButton} hidden sm:grid`}
+          className={`${styles.themeButton} grid`}
           type="button"
           onClick={toggleTheme}
           aria-pressed={isDarkMode}

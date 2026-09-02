@@ -49,15 +49,15 @@ export default function BuyerProtectionPage() {
         onOpenAccount={() => setIsTelegramAuthOpen(true)}
       />
 
-      <div className="py-16 bg-[#FAF8F5] border-b border-[#E8E4DC]">
+      <div className="py-8 sm:py-16 bg-[#FAF8F5] border-b border-[#E8E4DC]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="font-mono text-xs uppercase tracking-widest text-[#EB5B00] font-semibold">
+          <span className="font-mono text-[9px] sm:text-xs uppercase tracking-widest text-[#EB5B00] font-semibold">
             GELGAY (ገልጋይ) ESCROW PROTOCOL
           </span>
-          <h1 className="font-serif text-4xl sm:text-6xl font-normal text-[#1F1E1B] mt-2 mb-4">
+          <h1 className="font-serif text-2xl sm:text-4xl md:text-6xl font-normal text-[#1F1E1B] mt-1.5 mb-2 sm:mb-4">
             Buyer Protection & Escrow
           </h1>
-          <p className="font-sans text-base text-[#625D54] max-w-2xl mx-auto font-light leading-relaxed">
+          <p className="font-sans text-xs sm:text-base text-[#625D54] max-w-2xl mx-auto font-light leading-relaxed">
             Eliminating peer-to-peer transaction risk across Ethiopia. 
             Your payment is held safely until you physically inspect your purchase upon delivery.
           </p>

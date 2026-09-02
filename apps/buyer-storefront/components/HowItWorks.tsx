@@ -73,91 +73,91 @@ export default function HowItWorks({ onSellClick }: HowItWorksProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-16 pb-4 sm:pb-6 border-b border-[#E8E4DC] dark:border-[#33302B]">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 sm:mb-12 pb-3 sm:pb-5 border-b border-[#E8E4DC] dark:border-[#33302B]">
           <div>
-            <span className="font-mono text-[10px] sm:text-xs uppercase tracking-widest text-[#C85A32] font-semibold flex items-center gap-1.5">
+            <span className="font-mono text-[9px] sm:text-xs uppercase tracking-widest text-[#C85A32] font-semibold flex items-center gap-1.5">
               <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> BUYER PROTECTION &amp; ESCROW
             </span>
-            <h2 className="font-serif text-2xl sm:text-4xl md:text-5xl font-normal text-[#1F1E1B] dark:text-[#FAF8F5] mt-1 sm:mt-2">
+            <h2 className="font-serif text-xl sm:text-3xl md:text-4xl font-normal text-[#1F1E1B] dark:text-[#FAF8F5] mt-1 sm:mt-2">
               How ገልጋይ (Gelgay) works
             </h2>
           </div>
-          <p className="font-sans text-xs sm:text-sm text-[#625D54] dark:text-[#A8A296] max-w-md mt-2 sm:mt-4 md:mt-0 font-light leading-relaxed">
+          <p className="font-sans text-[11px] sm:text-sm text-[#625D54] dark:text-[#A8A296] max-w-md mt-1.5 sm:mt-3 md:mt-0 font-light leading-relaxed">
             Eliminating peer-to-peer marketplace risk across Ethiopia. 
             Funds are safely held in escrow until you physically inspect and confirm delivery of your purchase.
           </p>
         </div>
 
         {/* 3 Step Numerals Breakdown */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-8 mb-12 sm:mb-24">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-2.5 sm:gap-6 mb-8 sm:mb-16">
           
           {/* Step 01 */}
-          <div className="bg-white/80 dark:bg-[#1E1C1A]/90 backdrop-blur-md border border-white/70 dark:border-[#33302B] p-4 sm:p-8 flex flex-col justify-between relative group hover:border-[#C85A32]/60 hover:bg-white/95 dark:hover:bg-[#252320] transition-all duration-500 rounded-2xl sm:rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-2xl">
+          <div className="bg-white/80 dark:bg-[#1E1C1A]/90 backdrop-blur-md border border-white/70 dark:border-[#33302B] p-3.5 sm:p-6 flex flex-col justify-between relative group hover:border-[#C85A32]/60 hover:bg-white/95 dark:hover:bg-[#252320] transition-all duration-500 rounded-xl sm:rounded-2xl shadow-xs hover:shadow-lg">
             <div>
-              <div className="flex items-center justify-between mb-2.5 sm:mb-4">
-                <span className="font-serif text-3xl sm:text-5xl font-light text-[#C85A32]">
+              <div className="flex items-center justify-between mb-2 sm:mb-3">
+                <span className="font-serif text-2xl sm:text-4xl font-light text-[#C85A32]">
                   01
                 </span>
-                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#FAF3F0] dark:bg-[#2B2824] text-[#C85A32] flex items-center justify-center">
-                  <Lock className="w-4 h-4 sm:w-5 sm:h-5" />
+                <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-[#FAF3F0] dark:bg-[#2B2824] text-[#C85A32] flex items-center justify-center">
+                  <Lock className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </div>
               </div>
-              <h3 className="font-serif text-base sm:text-2xl font-semibold text-[#1F1E1B] dark:text-[#FAF8F5] mb-1.5 sm:mb-3">
+              <h3 className="font-serif text-sm sm:text-xl font-semibold text-[#1F1E1B] dark:text-[#FAF8F5] mb-1 sm:mb-2">
                 Discover &amp; Reserve
               </h3>
-              <p className="font-sans text-xs sm:text-sm text-[#625D54] dark:text-[#A8A296] font-light leading-relaxed">
+              <p className="font-sans text-[11px] sm:text-xs text-[#625D54] dark:text-[#A8A296] font-light leading-relaxed">
                 Browse curated pieces with verified condition ratings. When checkout begins, the item is locked exclusively in escrow so no one else can purchase it.
               </p>
             </div>
-            <div className="mt-4 sm:mt-8 pt-3 sm:pt-4 border-t border-[#E8E4DC] dark:border-[#33302B] font-mono text-[10px] sm:text-xs text-[#7C776E] dark:text-[#A8A296] flex items-center justify-between">
+            <div className="mt-3 sm:mt-6 pt-2 sm:pt-3 border-t border-[#E8E4DC] dark:border-[#33302B] font-mono text-[9px] sm:text-xs text-[#7C776E] dark:text-[#A8A296] flex items-center justify-between">
               <span>Instant ACID Lock</span>
               <span className="text-[#C85A32] font-semibold">Zero Overselling</span>
             </div>
           </div>
 
           {/* Step 02 */}
-          <div className="bg-white/80 dark:bg-[#1E1C1A]/90 backdrop-blur-md border border-white/70 dark:border-[#33302B] p-4 sm:p-8 flex flex-col justify-between relative group hover:border-[#C85A32]/60 hover:bg-white/95 dark:hover:bg-[#252320] transition-all duration-500 rounded-2xl sm:rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-2xl">
+          <div className="bg-white/80 dark:bg-[#1E1C1A]/90 backdrop-blur-md border border-white/70 dark:border-[#33302B] p-3.5 sm:p-6 flex flex-col justify-between relative group hover:border-[#C85A32]/60 hover:bg-white/95 dark:hover:bg-[#252320] transition-all duration-500 rounded-xl sm:rounded-2xl shadow-xs hover:shadow-lg">
             <div>
-              <div className="flex items-center justify-between mb-2.5 sm:mb-4">
-                <span className="font-serif text-3xl sm:text-5xl font-light text-[#C85A32]">
+              <div className="flex items-center justify-between mb-2 sm:mb-3">
+                <span className="font-serif text-2xl sm:text-4xl font-light text-[#C85A32]">
                   02
                 </span>
-                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#FAF3F0] dark:bg-[#2B2824] text-[#C85A32] flex items-center justify-center">
-                  <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5" />
+                <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-[#FAF3F0] dark:bg-[#2B2824] text-[#C85A32] flex items-center justify-center">
+                  <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </div>
               </div>
-              <h3 className="font-serif text-base sm:text-2xl font-semibold text-[#1F1E1B] dark:text-[#FAF8F5] mb-1.5 sm:mb-3">
+              <h3 className="font-serif text-sm sm:text-xl font-semibold text-[#1F1E1B] dark:text-[#FAF8F5] mb-1 sm:mb-2">
                 Secure Escrow Payment
               </h3>
-              <p className="font-sans text-xs sm:text-sm text-[#625D54] dark:text-[#A8A296] font-light leading-relaxed">
+              <p className="font-sans text-[11px] sm:text-xs text-[#625D54] dark:text-[#A8A296] font-light leading-relaxed">
                 Transfer via CBE Birr, Telebirr, or Dashen and upload your receipt screenshot. High-speed OCR validates your payment and locks funds in escrow.
               </p>
             </div>
-            <div className="mt-4 sm:mt-8 pt-3 sm:pt-4 border-t border-[#E8E4DC] dark:border-[#33302B] font-mono text-[10px] sm:text-xs text-[#7C776E] dark:text-[#A8A296] flex items-center justify-between">
+            <div className="mt-3 sm:mt-6 pt-2 sm:pt-3 border-t border-[#E8E4DC] dark:border-[#33302B] font-mono text-[9px] sm:text-xs text-[#7C776E] dark:text-[#A8A296] flex items-center justify-between">
               <span>Python OCR Verified</span>
               <span className="text-[#C85A32] font-semibold">4.2s Processing</span>
             </div>
           </div>
 
           {/* Step 03 */}
-          <div className="bg-white/80 dark:bg-[#1E1C1A]/90 backdrop-blur-md border border-white/70 dark:border-[#33302B] p-4 sm:p-8 flex flex-col justify-between relative group hover:border-[#C85A32]/60 hover:bg-white/95 dark:hover:bg-[#252320] transition-all duration-500 rounded-2xl sm:rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-2xl">
+          <div className="bg-white/80 dark:bg-[#1E1C1A]/90 backdrop-blur-md border border-white/70 dark:border-[#33302B] p-3.5 sm:p-6 flex flex-col justify-between relative group hover:border-[#C85A32]/60 hover:bg-white/95 dark:hover:bg-[#252320] transition-all duration-500 rounded-xl sm:rounded-2xl shadow-xs hover:shadow-lg">
             <div>
-              <div className="flex items-center justify-between mb-2.5 sm:mb-4">
-                <span className="font-serif text-3xl sm:text-5xl font-light text-[#C85A32]">
+              <div className="flex items-center justify-between mb-2 sm:mb-3">
+                <span className="font-serif text-2xl sm:text-4xl font-light text-[#C85A32]">
                   03
                 </span>
-                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#FAF3F0] dark:bg-[#2B2824] text-[#C85A32] flex items-center justify-center">
-                  <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5" />
+                <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-[#FAF3F0] dark:bg-[#2B2824] text-[#C85A32] flex items-center justify-center">
+                  <CheckCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </div>
               </div>
-              <h3 className="font-serif text-base sm:text-2xl font-semibold text-[#1F1E1B] dark:text-[#FAF8F5] mb-1.5 sm:mb-3">
+              <h3 className="font-serif text-sm sm:text-xl font-semibold text-[#1F1E1B] dark:text-[#FAF8F5] mb-1 sm:mb-2">
                 Inspect &amp; Release
               </h3>
-              <p className="font-sans text-xs sm:text-sm text-[#625D54] dark:text-[#A8A296] font-light leading-relaxed">
+              <p className="font-sans text-[11px] sm:text-xs text-[#625D54] dark:text-[#A8A296] font-light leading-relaxed">
                 Meet the courier in your Adama neighborhood or receive doorstep delivery. Inspect the item in person; vendor payout is released only upon your approval.
               </p>
             </div>
-            <div className="mt-4 sm:mt-8 pt-3 sm:pt-4 border-t border-[#E8E4DC] dark:border-[#33302B] font-mono text-[10px] sm:text-xs text-[#7C776E] dark:text-[#A8A296] flex items-center justify-between">
+            <div className="mt-3 sm:mt-6 pt-2 sm:pt-3 border-t border-[#E8E4DC] dark:border-[#33302B] font-mono text-[9px] sm:text-xs text-[#7C776E] dark:text-[#A8A296] flex items-center justify-between">
               <span>Physical Inspection</span>
               <span className="text-[#C85A32] font-semibold">100% Guaranteed</span>
             </div>
@@ -168,21 +168,21 @@ export default function HowItWorks({ onSellClick }: HowItWorksProps) {
         <div className="mb-24">
           
           {/* Sub-header & Filter Bar */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 sm:mb-10 pb-3 sm:pb-4 border-b border-[#E8E4DC]">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-4 sm:mb-8 pb-2.5 sm:pb-4 border-b border-[#E8E4DC]">
             <div>
-              <span className="font-mono text-[10px] sm:text-xs uppercase tracking-widest text-[#EB5B00] font-semibold flex items-center gap-1.5">
+              <span className="font-mono text-[9px] sm:text-xs uppercase tracking-widest text-[#EB5B00] font-semibold flex items-center gap-1.5">
                 <Award className="w-3.5 h-3.5" /> THE GELGAY (ገልጋይ) LEDGER
               </span>
-              <h3 className="font-serif text-xl sm:text-3xl md:text-4xl font-normal text-[#1F1E1B] mt-1">
+              <h3 className="font-serif text-lg sm:text-2xl md:text-3xl font-normal text-[#1F1E1B] mt-1">
                 Verified handoff stories
               </h3>
             </div>
 
             {/* Filter Pills */}
-            <div className="mt-3 sm:mt-4 md:mt-0 flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-1">
+            <div className="mt-2.5 sm:mt-4 md:mt-0 flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-1">
               <button
                 onClick={() => setActiveFilter('all')}
-                className={`px-3 py-1.5 sm:px-4 sm:py-2 text-[10px] sm:text-xs font-mono rounded-full uppercase tracking-wider transition-all whitespace-nowrap border ${
+                className={`px-2.5 py-1 sm:px-4 sm:py-2 text-[9px] sm:text-xs font-mono rounded-full uppercase tracking-wider transition-all whitespace-nowrap border ${
                   activeFilter === 'all'
                     ? 'bg-[#1F1E1B] text-white border-[#1F1E1B] shadow-xs'
                     : 'bg-[#EFECE6] text-[#625D54] border-[#E2DDD3] hover:border-[#1F1E1B]'
@@ -192,7 +192,7 @@ export default function HowItWorks({ onSellClick }: HowItWorksProps) {
               </button>
               <button
                 onClick={() => setActiveFilter('buyer')}
-                className={`px-3 py-1.5 sm:px-4 sm:py-2 text-[10px] sm:text-xs font-mono rounded-full uppercase tracking-wider transition-all whitespace-nowrap border ${
+                className={`px-2.5 py-1 sm:px-4 sm:py-2 text-[9px] sm:text-xs font-mono rounded-full uppercase tracking-wider transition-all whitespace-nowrap border ${
                   activeFilter === 'buyer'
                     ? 'bg-[#1F1E1B] text-white border-[#1F1E1B] shadow-xs'
                     : 'bg-[#EFECE6] text-[#625D54] border-[#E2DDD3] hover:border-[#1F1E1B]'
@@ -202,7 +202,7 @@ export default function HowItWorks({ onSellClick }: HowItWorksProps) {
               </button>
               <button
                 onClick={() => setActiveFilter('vendor')}
-                className={`px-3 py-1.5 sm:px-4 sm:py-2 text-[10px] sm:text-xs font-mono rounded-full uppercase tracking-wider transition-all whitespace-nowrap border ${
+                className={`px-2.5 py-1 sm:px-4 sm:py-2 text-[9px] sm:text-xs font-mono rounded-full uppercase tracking-wider transition-all whitespace-nowrap border ${
                   activeFilter === 'vendor'
                     ? 'bg-[#1F1E1B] text-white border-[#1F1E1B] shadow-xs'
                     : 'bg-[#EFECE6] text-[#625D54] border-[#E2DDD3] hover:border-[#1F1E1B]'
@@ -214,53 +214,53 @@ export default function HowItWorks({ onSellClick }: HowItWorksProps) {
           </div>
 
           {/* Testimonial Cards Editorial Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-2.5 sm:gap-6">
             {filteredReviews.map((rev) => (
               <div
                 key={rev.id}
-                className="bg-white/80 backdrop-blur-md border border-white/70 p-4 sm:p-8 rounded-2xl sm:rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-2xl hover:bg-white/95 transition-all duration-500 flex flex-col justify-between group hover:border-[#C85A32]/60 relative overflow-hidden"
+                className="bg-white/80 backdrop-blur-md border border-white/70 p-3.5 sm:p-6 rounded-xl sm:rounded-2xl shadow-xs hover:shadow-xl hover:bg-white/95 transition-all duration-500 flex flex-col justify-between group hover:border-[#C85A32]/60 relative overflow-hidden"
               >
                 {/* Subtle top indicator bar */}
                 <div 
-                  className="absolute top-0 inset-x-0 h-1 bg-[#C85A32] opacity-80 group-hover:opacity-100 transition-opacity" 
+                  className="absolute top-0 inset-x-0 h-0.5 sm:h-1 bg-[#C85A32] opacity-80 group-hover:opacity-100 transition-opacity" 
                 />
 
-                <div className="space-y-3 sm:space-y-4">
+                <div className="space-y-2.5 sm:space-y-3">
                   {/* Badge & Stars */}
-                  <div className="flex items-center justify-between pb-2.5 sm:pb-3 border-b border-[#F0ECE1]">
-                    <span className="font-mono text-[9px] sm:text-[10px] uppercase tracking-wider px-2 py-0.5 sm:px-2.5 sm:py-1 bg-[#FAF3F0] text-[#C85A32] rounded-md font-semibold border border-[#EAD5CD]">
+                  <div className="flex items-center justify-between pb-2 sm:pb-2.5 border-b border-[#F0ECE1]">
+                    <span className="font-mono text-[8px] sm:text-[10px] uppercase tracking-wider px-2 py-0.5 bg-[#FAF3F0] text-[#C85A32] rounded font-semibold border border-[#EAD5CD]">
                       {rev.badge}
                     </span>
                     <div className="flex items-center gap-0.5 text-amber-500">
                       {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-current" />
+                        <Star key={i} className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 fill-current" />
                       ))}
                     </div>
                   </div>
 
                   {/* Purchased Item Snippet */}
-                  <div className="p-2 sm:p-2.5 bg-[#FAF8F5] border border-[#E8E4DC] rounded-lg sm:rounded-xl">
-                    <span className="font-mono text-[9px] sm:text-[10px] text-[#7C776E] uppercase block font-semibold">
+                  <div className="p-1.5 sm:p-2 bg-[#FAF8F5] border border-[#E8E4DC] rounded-md sm:rounded-lg">
+                    <span className="font-mono text-[8px] sm:text-[10px] text-[#7C776E] uppercase block font-semibold">
                       Verified Transaction:
                     </span>
-                    <p className="font-serif text-[11px] sm:text-xs font-semibold text-[#1F1E1B] truncate mt-0.5">
+                    <p className="font-serif text-[10px] sm:text-xs font-semibold text-[#1F1E1B] truncate mt-0.5">
                       {rev.acquiredItem}
                     </p>
                   </div>
 
                   {/* Quote Body */}
-                  <div className="relative pt-1 sm:pt-2">
-                    <Quote className="w-4 h-4 sm:w-6 sm:h-6 text-[#C85A32]/20 absolute -top-1 -left-1 rotate-180" />
-                    <p className="font-serif text-xs sm:text-base italic text-[#2E2C28] leading-relaxed relative z-10 pl-2">
+                  <div className="relative pt-1">
+                    <Quote className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-[#C85A32]/20 absolute -top-1 -left-1 rotate-180" />
+                    <p className="font-serif text-[11px] sm:text-sm italic text-[#2E2C28] leading-relaxed relative z-10 pl-2">
                       "{rev.quote}"
                     </p>
                   </div>
                 </div>
 
                 {/* Reviewer Bio & Footnote */}
-                <div className="mt-4 sm:mt-8 pt-3 sm:pt-4 border-t border-[#E8E4DC] space-y-2 sm:space-y-3">
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-full overflow-hidden border border-[#C85A32] shrink-0">
+                <div className="mt-3 sm:mt-6 pt-2.5 sm:pt-3 border-t border-[#E8E4DC] space-y-1.5 sm:space-y-2">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-full overflow-hidden border border-[#C85A32] shrink-0">
                       <img
                         src={rev.avatar}
                         alt={rev.name}
@@ -268,21 +268,21 @@ export default function HowItWorks({ onSellClick }: HowItWorksProps) {
                       />
                     </div>
                     <div>
-                      <h4 className="font-serif text-sm font-bold text-[#1F1E1B]">
+                      <h4 className="font-serif text-xs sm:text-sm font-bold text-[#1F1E1B]">
                         {rev.name}
                       </h4>
-                      <p className="font-mono text-[11px] text-[#7C776E]">
+                      <p className="font-mono text-[10px] sm:text-[11px] text-[#7C776E]">
                         {rev.role}
                       </p>
-                      <p className="font-sans text-[11px] text-[#A5A096]">
+                      <p className="font-sans text-[10px] sm:text-[11px] text-[#A5A096]">
                         {rev.location}
                       </p>
                     </div>
                   </div>
 
                   {/* Escrow Guarantee Footnote */}
-                  <div className="flex items-center gap-1.5 text-[11px] font-mono text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200/60">
-                    <CheckCircle2 className="w-3.5 h-3.5 shrink-0 text-emerald-600" />
+                  <div className="flex items-center gap-1 text-[10px] sm:text-[11px] font-mono text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200/60">
+                    <CheckCircle2 className="w-3 h-3 shrink-0 text-emerald-600" />
                     <span className="truncate">{rev.verificationPoint}</span>
                   </div>
                 </div>
@@ -292,44 +292,44 @@ export default function HowItWorks({ onSellClick }: HowItWorksProps) {
           </div>
 
           {/* Trust Metrics Ribbon */}
-          <div className="mt-12 p-6 bg-[#1F1E1B] text-[#FAF8F5] rounded-3xl border border-[#363430] grid grid-cols-2 md:grid-cols-4 gap-6 text-center shadow-lg">
-            <div className="space-y-1">
-              <span className="font-serif text-2xl md:text-3xl font-bold text-[#FAF8F5] block">100%</span>
-              <span className="font-mono text-[11px] text-[#A5A096] uppercase tracking-wider">Escrow Protection</span>
+          <div className="mt-6 sm:mt-12 p-3.5 sm:p-6 bg-[#1F1E1B] text-[#FAF8F5] rounded-xl sm:rounded-3xl border border-[#363430] grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 text-center shadow-md">
+            <div className="space-y-0.5">
+              <span className="font-serif text-lg sm:text-2xl md:text-3xl font-bold text-[#FAF8F5] block">100%</span>
+              <span className="font-mono text-[9px] sm:text-[11px] text-[#A5A096] uppercase tracking-wider">Escrow Protection</span>
             </div>
-            <div className="space-y-1 border-l border-[#363430]">
-              <span className="font-serif text-2xl md:text-3xl font-bold text-[#FAF8F5] block">148+</span>
-              <span className="font-mono text-[11px] text-[#A5A096] uppercase tracking-wider">Adama Handoffs</span>
+            <div className="space-y-0.5 border-l border-[#363430]">
+              <span className="font-serif text-lg sm:text-2xl md:text-3xl font-bold text-[#FAF8F5] block">148+</span>
+              <span className="font-mono text-[9px] sm:text-[11px] text-[#A5A096] uppercase tracking-wider">Adama Handoffs</span>
             </div>
-            <div className="space-y-1 border-l border-[#363430]">
-              <span className="font-serif text-2xl md:text-3xl font-bold text-amber-400 block">4.96 ★</span>
-              <span className="font-mono text-[11px] text-[#A5A096] uppercase tracking-wider">Inspection Score</span>
+            <div className="space-y-0.5 border-l border-[#363430]">
+              <span className="font-serif text-lg sm:text-2xl md:text-3xl font-bold text-amber-400 block">4.96 ★</span>
+              <span className="font-mono text-[9px] sm:text-[11px] text-[#A5A096] uppercase tracking-wider">Inspection Score</span>
             </div>
-            <div className="space-y-1 border-l border-[#363430]">
-              <span className="font-serif text-2xl md:text-3xl font-bold text-emerald-400 block">0 Birr</span>
-              <span className="font-mono text-[11px] text-[#A5A096] uppercase tracking-wider">Disputed Loss</span>
+            <div className="space-y-0.5 border-l border-[#363430]">
+              <span className="font-serif text-lg sm:text-2xl md:text-3xl font-bold text-emerald-400 block">0 Birr</span>
+              <span className="font-mono text-[9px] sm:text-[11px] text-[#A5A096] uppercase tracking-wider">Disputed Loss</span>
             </div>
           </div>
 
         </div>
 
         {/* Vendor Conversion Banner CTA */}
-        <div className="bg-white/75 backdrop-blur-lg border border-white/70 p-4 sm:p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6 rounded-2xl sm:rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+        <div className="bg-white/75 backdrop-blur-lg border border-white/70 p-3.5 sm:p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-3.5 sm:gap-6 rounded-xl sm:rounded-3xl shadow-xs sm:shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
           <div className="max-w-2xl">
-            <span className="font-mono text-[10px] sm:text-xs text-[#C85A32] uppercase tracking-wider block mb-1.5 sm:mb-2 font-semibold flex items-center gap-1.5">
+            <span className="font-mono text-[9px] sm:text-xs text-[#C85A32] uppercase tracking-wider block mb-1 sm:mb-2 font-semibold flex items-center gap-1.5">
               <HeartHandshake className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> JOIN OUR VENDOR NETWORK
             </span>
-            <h3 className="font-serif text-xl sm:text-3xl md:text-4xl font-normal text-[#1F1E1B]">
+            <h3 className="font-serif text-lg sm:text-2xl md:text-3xl font-normal text-[#1F1E1B]">
               Your unused items could be someone else's best find.
             </h3>
-            <p className="font-sans text-xs sm:text-sm text-[#625D54] mt-1.5 sm:mt-2 font-light">
+            <p className="font-sans text-[11px] sm:text-xs text-[#625D54] mt-1 sm:mt-1.5 font-light">
               List curated pieces in under 2 minutes with zero listing fees. Reach design enthusiasts across Adama.
             </p>
           </div>
 
           <button
             onClick={onSellClick}
-            className="w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 bg-[#1F1E1B] text-[#FAF8F5] font-mono text-[11px] sm:text-xs uppercase tracking-wider font-semibold hover:bg-[#C85A32] transition-colors shrink-0 flex items-center justify-center gap-2 sm:gap-3 rounded-xl shadow-md"
+            className="w-full sm:w-auto px-5 py-2.5 sm:px-8 sm:py-4 bg-[#1F1E1B] text-[#FAF8F5] font-mono text-[10px] sm:text-xs uppercase tracking-wider font-semibold hover:bg-[#C85A32] transition-colors shrink-0 flex items-center justify-center gap-2 sm:gap-3 rounded-lg sm:rounded-xl shadow-xs"
           >
             <span>Start Selling</span>
             <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
