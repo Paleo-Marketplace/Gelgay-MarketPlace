@@ -45,30 +45,31 @@ export default function CategoryGrid({ onSelectCategory }: CategoryGridProps) {
   };
 
   // Explicit, fail-safe Bento Grid layout classes for all 5 cards
+  // Balanced, responsive Bento Grid layout: 2-col on mobile, full bento on tablet/desktop
   const getCardLayoutClass = (index: number) => {
     switch (index) {
       case 0:
-        // 01: Electronics (Left Large Hero Card)
-        return 'col-span-12 lg:col-span-7 lg:row-span-2 min-h-[380px] lg:min-h-[620px]';
+        // 01: Electronics (Hero Card: full width on mobile, 7 cols / 2 rows on tablet+)
+        return 'col-span-12 md:col-span-7 md:row-span-2 min-h-[250px] sm:min-h-[320px] md:min-h-[580px]';
       case 1:
-        // 02: Furniture (Top Right Card)
-        return 'col-span-12 sm:col-span-6 lg:col-span-5 min-h-[295px]';
+        // 02: Furniture (6 cols on mobile = 2-column grid, 5 cols on tablet+)
+        return 'col-span-6 md:col-span-5 min-h-[170px] sm:min-h-[220px] md:min-h-[275px]';
       case 2:
-        // 03: Studio Gear (Middle Right Card)
-        return 'col-span-12 sm:col-span-6 lg:col-span-5 min-h-[295px]';
+        // 03: Studio Gear (6 cols on mobile = 2-column grid, 5 cols on tablet+)
+        return 'col-span-6 md:col-span-5 min-h-[170px] sm:min-h-[220px] md:min-h-[275px]';
       case 3:
-        // 04: Archival Wear (Bottom Left Wide Card)
-        return 'col-span-12 md:col-span-6 min-h-[320px]';
+        // 04: Archival Wear (6 cols on mobile = 2-column grid, 6 cols on tablet+)
+        return 'col-span-6 md:col-span-6 min-h-[170px] sm:min-h-[220px] md:min-h-[290px]';
       case 4:
-        // 05: Rare Reads (Bottom Right Wide Card)
-        return 'col-span-12 md:col-span-6 min-h-[320px]';
+        // 05: Rare Reads (6 cols on mobile = 2-column grid, 6 cols on tablet+)
+        return 'col-span-6 md:col-span-6 min-h-[170px] sm:min-h-[220px] md:min-h-[290px]';
       default:
-        return 'col-span-12 md:col-span-6 min-h-[300px]';
+        return 'col-span-6 md:col-span-6 min-h-[170px]';
     }
   };
 
   return (
-    <section id="categories" className="relative py-20 lg:py-24 border-b border-[#E8E4DC] dark:border-[#33302B] overflow-hidden bg-[#FAF8F5] dark:bg-[#141312]">
+    <section id="categories" className="relative py-12 md:py-20 lg:py-24 border-b border-[#E8E4DC] dark:border-[#33302B] overflow-hidden bg-[#FAF8F5] dark:bg-[#141312]">
       {/* Organic Tree Texture Overlay */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0 opacity-15 pointer-events-none"
@@ -81,7 +82,7 @@ export default function CategoryGrid({ onSelectCategory }: CategoryGridProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-[#E8E4DC] dark:border-[#33302B]">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 md:mb-12 pb-6 border-b border-[#E8E4DC] dark:border-[#33302B]">
           <div className="space-y-2">
             <span className="font-mono text-xs uppercase tracking-widest text-[#C85A32] font-semibold flex items-center gap-1.5">
               <Sparkles className="w-3.5 h-3.5 text-[#C85A32]" />
@@ -105,8 +106,8 @@ export default function CategoryGrid({ onSelectCategory }: CategoryGridProps) {
           </div>
         </div>
 
-        {/* Rock-Solid Bento Grid (12 Columns) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-6">
+        {/* Rock-Solid Responsive Bento Grid (12 Columns) */}
+        <div className="grid grid-cols-12 gap-3 sm:gap-4 md:gap-6">
           {categoriesList.map((cat: any, idx) => {
             const filterKey = cat.filterKey || cat.name;
             const layoutClass = getCardLayoutClass(idx);
@@ -115,7 +116,7 @@ export default function CategoryGrid({ onSelectCategory }: CategoryGridProps) {
               <div
                 key={cat.id || cat.slug || cat.name || `cat-grid-key-${idx}`}
                 onClick={() => handleCategoryClick(filterKey)}
-                className={`${layoutClass} group relative overflow-hidden bg-[#1F1E1B] border border-[#E2DDD3] cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500 rounded-3xl flex flex-col justify-between p-6 sm:p-8`}
+                className={`${layoutClass} group relative overflow-hidden bg-[#1F1E1B] border border-[#E2DDD3] cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500 rounded-2xl md:rounded-3xl flex flex-col justify-between p-3.5 sm:p-6 md:p-8`}
               >
                 {/* Background Image with Guaranteed Fit and Contrast */}
                 <img
@@ -132,28 +133,28 @@ export default function CategoryGrid({ onSelectCategory }: CategoryGridProps) {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/20 group-hover:from-black/95 transition-opacity" />
 
                 {/* Top Header: Badge Pill + Item Counter */}
-                <div className="relative z-10 flex items-center justify-between text-white/90 font-mono text-xs">
-                  <span className="px-3.5 py-1.5 bg-black/60 backdrop-blur-md border border-white/20 uppercase tracking-wider text-[11px] rounded-xl font-semibold text-white shadow-xs">
+                <div className="relative z-10 flex items-center justify-between text-white/90 font-mono text-xs gap-1">
+                  <span className="px-2 sm:px-3.5 py-1 bg-black/60 backdrop-blur-md border border-white/20 uppercase tracking-wider text-[9px] sm:text-[11px] rounded-lg sm:rounded-xl font-semibold text-white shadow-xs truncate max-w-[120px] sm:max-w-none">
                     {cat.tag}
                   </span>
-                  <span className="px-3 py-1 bg-white/15 backdrop-blur-md border border-white/20 rounded-full text-white font-mono text-[11px] font-medium shadow-xs">
+                  <span className="px-2 sm:px-3 py-0.5 sm:py-1 bg-white/15 backdrop-blur-md border border-white/20 rounded-full text-white font-mono text-[9px] sm:text-[11px] font-medium shadow-xs shrink-0">
                     {cat.itemCount}
                   </span>
                 </div>
 
                 {/* Bottom Content: Title + Subtitle + Action Icon */}
-                <div className="relative z-10 text-white flex items-end justify-between pt-16 gap-4">
-                  <div className="space-y-1.5 flex-1 min-w-0">
-                    <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white group-hover:text-[#F3A582] transition-colors truncate">
+                <div className="relative z-10 text-white flex items-end justify-between pt-6 sm:pt-16 gap-2 sm:gap-4">
+                  <div className="space-y-0.5 sm:space-y-1.5 flex-1 min-w-0">
+                    <h3 className="font-serif text-base sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-white group-hover:text-[#F3A582] transition-colors truncate">
                       {cat.name}
                     </h3>
-                    <p className="font-sans text-xs sm:text-sm text-white/80 font-light line-clamp-2 leading-relaxed">
+                    <p className="hidden sm:block font-sans text-xs sm:text-sm text-white/80 font-light line-clamp-2 leading-relaxed">
                       {cat.description}
                     </p>
                   </div>
 
-                  <div className="w-11 h-11 rounded-full bg-[#C85A32] text-white flex items-center justify-center group-hover:bg-[#D96B42] group-hover:scale-110 transition-all duration-300 shadow-lg shrink-0">
-                    <ArrowUpRight className="w-5 h-5 text-white" />
+                  <div className="w-7 h-7 sm:w-11 sm:h-11 rounded-full bg-[#C85A32] text-white flex items-center justify-center group-hover:bg-[#D96B42] group-hover:scale-110 transition-all duration-300 shadow-lg shrink-0">
+                    <ArrowUpRight className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-white" />
                   </div>
                 </div>
               </div>
