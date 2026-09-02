@@ -1,14 +1,21 @@
 import { Suspense } from 'react';
 import ShopBrowseClient from '../../components/ShopBrowseClient';
+import { PRODUCTS } from '../../data/paleoData';
 
 async function fetchProducts(apiUrl) {
   try {
-    const res = await fetch(`${apiUrl}/api/products`, { cache: 'no-store' });
-    if (!res.ok) return [];
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 2000);
+    const res = await fetch(`${apiUrl}/api/products`, { 
+      cache: 'no-store',
+      signal: controller.signal
+    });
+    clearTimeout(timeoutId);
+    if (!res.ok) return PRODUCTS;
     const data = await res.json();
-    return data.products || [];
+    return (Array.isArray(data.products) && data.products.length > 0) ? data.products : PRODUCTS;
   } catch (err) {
-    return [];
+    return PRODUCTS;
   }
 }
 
