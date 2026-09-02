@@ -32,6 +32,7 @@ const shopRoutes = require('./routes/shops');
 const { initSystemData, seedDemoData } = require('./seed');
 
 const app = express();
+app.set('trust proxy', 1);
 const httpServer = http.createServer(app);
 const PORT = Number(process.env.PORT || 5000);
 
@@ -53,6 +54,11 @@ const isAllowedOrigin = (origin) => {
     .split(',')
     .map((item) => item.trim());
   if (configured.includes(origin)) return true;
+
+  try {
+    const url = new URL(origin);
+    if (url.hostname.endsWith('.vercel.app') || url.hostname === 'paleo.market' || url.hostname.endsWith('.paleo.market')) return true;
+  } catch (e) {}
 
   // Allow localhost & 127.0.0.1 on any port in development
   if (/^https?:\/\/(localhost|127\.0\.0\.1|0\.0\.0\.0|\[::1\])(:\d+)?$/.test(origin)) return true;
