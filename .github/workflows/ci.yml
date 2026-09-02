@@ -1,0 +1,38 @@
+name: PALEO Enterprise Production Pipeline
+
+on:
+  push:
+    branches: [ main, master, production ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  audit-and-test:
+    name: Codebase Audit & Security Testing
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js Environment (v20)
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Monorepo Dependencies
+        run: npm ci
+
+      - name: Run Hardcoded Localhost Audit
+        run: node scripts/check-localhost.js
+
+      - name: Execute Server Unit & Security Test Suites
+        run: npm run test
+        env:
+          NODE_ENV: test
+          JWT_SECRET: super_secret_jwt_key_that_is_at_least_32_characters_long
+          JWT_REFRESH_SECRET: another_super_secret_refresh_jwt_key_that_is_at_least_32_characters_long
+
+      - name: Build Production Applications
+        run: npm run build
