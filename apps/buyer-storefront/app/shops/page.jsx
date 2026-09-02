@@ -692,9 +692,6 @@ export default function ShopsNearMePage() {
         onClose={() => setIsAuthModalOpen(false)}
         apiUrl={apiUrl}
       />
-
-      {/* Mobile Bottom Navigation Bar */}
-      <MobileBottomNav onOpenCart={() => setIsCartOpen(true)} />
     </div>
   );
 }
