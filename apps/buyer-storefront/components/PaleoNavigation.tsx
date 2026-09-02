@@ -156,7 +156,7 @@ export default function PaleoNavigation({
               <FileText className={styles.navLinkIcon} aria-hidden="true" />
               <span>Orders</span>
             </Link>
-            <a className={styles.navLink} href="http://localhost:5173" target="_blank" rel="noreferrer">
+            <a className={styles.navLink} href={process.env.NEXT_PUBLIC_VENDOR_URL || '/vendor/'} target="_blank" rel="noreferrer">
               <Store className={styles.navLinkIcon} aria-hidden="true" />
               <span>Vendor Studio</span>
             </a>
@@ -169,7 +169,7 @@ export default function PaleoNavigation({
 
         {/* Superuser Admin Operations link */}
         {isAuthenticated && user?.role === 'admin' && (
-          <a className={styles.navLink} href="http://localhost:5174" target="_blank" rel="noreferrer">
+          <a className={styles.navLink} href={process.env.NEXT_PUBLIC_ADMIN_URL || '/admin/'} target="_blank" rel="noreferrer">
             <ShieldAlert className={styles.navLinkIcon} aria-hidden="true" />
             <span>Admin Console</span>
           </a>
@@ -430,7 +430,7 @@ export default function PaleoNavigation({
               </Link>
               <a
                 className={styles.mobileNavLink}
-                href="http://localhost:5173"
+                href={process.env.NEXT_PUBLIC_VENDOR_URL || '/vendor/'}
                 target="_blank"
                 rel="noreferrer"
                 onClick={() => setIsMobileMenuOpen(false)}
@@ -461,7 +461,7 @@ export default function PaleoNavigation({
           {isAuthenticated && user?.role === 'admin' && (
             <a
               className={`${styles.mobileNavLink} ${styles.mobileNavLinkAdmin}`}
-              href="http://localhost:5174"
+              href={process.env.NEXT_PUBLIC_ADMIN_URL || '/admin/'}
               target="_blank"
               rel="noreferrer"
               onClick={() => setIsMobileMenuOpen(false)}
