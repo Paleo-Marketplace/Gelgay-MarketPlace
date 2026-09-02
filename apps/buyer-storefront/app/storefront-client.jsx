@@ -143,11 +143,11 @@ export default function StorefrontClient({ initialProducts, apiUrl }) {
 
   const handleAddToCart = (product) => {
     addToCartZustand({
-      _id: product.id,
+      _id: product._id || product.id,
       title: product.title,
-      price: product.priceETB,
-      images: [product.image],
-      vendorId: { _id: 'vendor-1', storeName: product.vendorName },
+      price: Number(product.price) || Number(product.priceETB) || 0,
+      images: Array.isArray(product.images) ? product.images : [product.image],
+      vendorId: product.vendorId || { _id: 'vendor-1', storeName: product.vendorName },
       qty: 1
     });
     setIsCartOpen(true);

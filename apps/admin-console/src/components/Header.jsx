@@ -57,7 +57,7 @@ export function Header({ onExportBackup, onRefresh, onLogout, isDarkMode, onTogg
       <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
         <nav className="portal-nav-group" aria-label="Portal Navigation">
           <a
-            href="http://localhost:3000"
+            href="/"
             target="_blank"
             rel="noreferrer"
             className="portal-nav-link"
@@ -68,7 +68,7 @@ export function Header({ onExportBackup, onRefresh, onLogout, isDarkMode, onTogg
           </a>
 
           <a
-            href="http://localhost:5173"
+            href="/vendor/"
             target="_blank"
             rel="noreferrer"
             className="portal-nav-link"
@@ -79,7 +79,7 @@ export function Header({ onExportBackup, onRefresh, onLogout, isDarkMode, onTogg
           </a>
 
           <a
-            href="http://localhost:5175"
+            href="/courier/"
             target="_blank"
             rel="noreferrer"
             className="portal-nav-link"

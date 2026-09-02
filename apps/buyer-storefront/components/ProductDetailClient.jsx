@@ -430,11 +430,11 @@ export default function ProductDetailClient({
               <button
                 onClick={() => {
                   addToCartZustand({
-                    _id: resolvedProduct.id,
+                    _id: resolvedProduct._id || resolvedProduct.id,
                     title: selectedVariant?.title ? `${resolvedProduct.title} (${selectedVariant.title})` : resolvedProduct.title,
                     price: effectivePrice,
                     images: images,
-                    vendorId: { storeName: resolvedProduct.vendorName },
+                    vendorId: resolvedProduct.vendorId || { storeName: resolvedProduct.vendorName },
                     variantSku: selectedVariant?.sku
                   });
                   setIsCartOpen(true);

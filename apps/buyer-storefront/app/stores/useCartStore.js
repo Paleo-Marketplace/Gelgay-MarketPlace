@@ -43,18 +43,6 @@ export const useCartStore = create((setStore, getStore) => ({
 
   // Synchronize cart with active authenticated session & role
   syncUserCart: async (userId, role) => {
-    const normalizedRole = (role || '').toUpperCase();
-    
-    // Check if role is VENDOR or ADMIN: if true, do not hydrate buyer cart data
-    if (normalizedRole === 'VENDOR' || normalizedRole === 'ADMIN') {
-      setStore({
-        items: [],
-        currentUserId: userId || null,
-        currentUserRole: role || null
-      });
-      return;
-    }
-
     const key = getStorageKey(userId);
     const storedItems = await readCartFromStorage(key);
 
@@ -66,15 +54,22 @@ export const useCartStore = create((setStore, getStore) => ({
   },
 
   addItem: (product) => {
-    const { currentUserRole, currentUserId, items } = getStore();
-    const normalizedRole = (currentUserRole || '').toUpperCase();
-    
-    // Vendors and Admins do not add items to a buyer cart
-    if (normalizedRole === 'VENDOR' || normalizedRole === 'ADMIN') {
-      return;
-    }
-
+    if (!product) return;
+    const { currentUserId, items } = getStore();
     const productId = product._id || product.id;
+    if (!productId) return;
+
+    const normalizedProduct = {
+      ...product,
+      _id: productId,
+      id: productId,
+      title: product.title || 'Marketplace Item',
+      price: Number(product.price) || Number(product.priceETB) || 0,
+      priceETB: Number(product.price) || Number(product.priceETB) || 0,
+      image: (Array.isArray(product.images) && product.images[0]) || product.image || '/assets/categories/electronics.jpg',
+      images: Array.isArray(product.images) ? product.images : [product.image || '/assets/categories/electronics.jpg']
+    };
+
     const existing = items.find((item) => (item._id || item.id) === productId);
     let nextItems;
 
@@ -83,7 +78,7 @@ export const useCartStore = create((setStore, getStore) => ({
         (item._id || item.id) === productId ? { ...item, qty: (item.qty || 1) + 1 } : item
       );
     } else {
-      nextItems = [...items, { ...product, qty: 1 }];
+      nextItems = [...items, { ...normalizedProduct, qty: 1 }];
     }
 
     setStore({ items: nextItems });

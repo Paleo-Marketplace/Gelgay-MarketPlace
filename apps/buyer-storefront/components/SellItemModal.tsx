@@ -329,7 +329,7 @@ export default function SellItemModal({
                   </div>
                 </div>
                 <a
-                  href="http://localhost:5173/vendor/"
+                  href={process.env.NEXT_PUBLIC_VENDOR_URL || '/vendor/'}
                   target="_blank"
                   rel="noreferrer"
                   className="px-4 py-2 bg-white border border-[#E2DDD3] text-[#1F1E1B] font-mono text-xs font-semibold rounded-lg hover:border-[#C85A32] flex items-center gap-1.5 shrink-0"

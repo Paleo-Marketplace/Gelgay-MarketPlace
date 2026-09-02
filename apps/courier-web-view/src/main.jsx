@@ -6,8 +6,25 @@ import { io } from 'socket.io-client';
 import { Camera, LocateFixed, Navigation, Pause, Send, Truck, ShoppingBag, Store, ShieldCheck, Sun, Moon, LogOut } from 'lucide-react';
 import './styles.css';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
-const SOCKET_URL = import.meta.env.VITE_SOCKET_URL || API_URL;
+const getBaseApiUrl = () => {
+  if (typeof window !== 'undefined') {
+    if (window.__API_URL__) return window.__API_URL__;
+    const hostname = window.location.hostname;
+    if (hostname !== 'localhost' && hostname !== '127.0.0.1') {
+      const configured = import.meta.env.VITE_API_URL;
+      if (configured && !configured.includes('localhost') && !configured.includes('127.0.0.1')) {
+        return configured.replace(/\/+$/, '');
+      }
+      return 'https://gelgay-api.onrender.com';
+    }
+  }
+  return (import.meta.env.VITE_API_URL || 'http://localhost:5000').replace(/\/+$/, '');
+};
+
+const API_URL = getBaseApiUrl();
+const SOCKET_URL = import.meta.env.VITE_SOCKET_URL && !import.meta.env.VITE_SOCKET_URL.includes('localhost')
+  ? import.meta.env.VITE_SOCKET_URL
+  : API_URL;
 
 function App() {
   const mapNode = React.useRef(null);
@@ -383,7 +400,7 @@ function App() {
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
           <nav className="portal-nav-group" aria-label="Portal Navigation">
             <a
-              href="http://localhost:3000"
+              href="/"
               target="_blank"
               rel="noreferrer"
               className="portal-nav-link"
@@ -393,7 +410,7 @@ function App() {
               <span>Storefront</span>
             </a>
             <a
-              href="http://localhost:5173"
+              href="/vendor/"
               target="_blank"
               rel="noreferrer"
               className="portal-nav-link"
@@ -403,7 +420,7 @@ function App() {
               <span>Vendor Studio</span>
             </a>
             <a
-              href="http://localhost:5174"
+              href="/admin/"
               target="_blank"
               rel="noreferrer"
               className="portal-nav-link"
@@ -440,7 +457,7 @@ function App() {
               try {
                 await fetch(`${API_URL}/api/auth/logout`, { method: 'POST', credentials: 'include' }).catch(() => {});
               } finally {
-                window.location.href = 'http://localhost:3000/';
+                window.location.href = '/';
               }
             }}
             style={{

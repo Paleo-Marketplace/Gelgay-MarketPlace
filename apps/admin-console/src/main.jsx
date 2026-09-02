@@ -348,7 +348,7 @@ function App() {
     } catch (error) {
       console.error(error);
     } finally {
-      window.location.href = 'http://localhost:3000/';
+      window.location.href = '/';
     }
   };
 
@@ -436,7 +436,7 @@ function App() {
           {/* Navigation */}
           <div style={{ marginTop: '20px', paddingTop: '16px', borderTop: '1px solid rgba(255,255,255,0.08)', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', fontSize: '11px', color: '#a5b4ac' }}>
             <a
-              href="http://localhost:3000"
+              href="/"
               style={{ color: '#a5b4ac', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '4px' }}
             >
               <span>Storefront</span>

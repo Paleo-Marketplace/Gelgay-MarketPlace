@@ -10,7 +10,7 @@
     "dev:vendor": "npm run dev --workspace=@paleo/vendor-dashboard",
     "dev:admin": "npm run dev --workspace=@paleo/admin-console",
     "dev:courier": "npm run dev --workspace=@paleo/courier-web-view",
-    "build": "npm run build --workspace=@paleo/buyer-storefront && npm run build --workspace=@paleo/vendor-dashboard && npm run build --workspace=@paleo/admin-console && npm run build --workspace=@paleo/courier-web-view",
+    "build": "npm run build --workspace=@paleo/vendor-dashboard && npm run build --workspace=@paleo/admin-console && npm run build --workspace=@paleo/courier-web-view && npm run build --workspace=@paleo/buyer-storefront",
     "check:api": "npm run check --workspace=@paleo/api-gateway",
     "check": "npm run check:api",
     "test": "npm run test --workspace=@paleo/api-gateway",

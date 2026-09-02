@@ -386,7 +386,13 @@ export default function ShopBrowseClient({ initialProducts, apiUrl = process.env
 
                       <button
                         onClick={() => {
-                          addToCartZustand({ _id: p.id, title: p.title, price: p.priceETB, images: [p.image], vendorId: { storeName: p.vendorName } });
+                          addToCartZustand({
+                            _id: p._id || p.id,
+                            title: p.title,
+                            price: Number(p.price) || Number(p.priceETB) || 0,
+                            images: Array.isArray(p.images) ? p.images : [p.image],
+                            vendorId: p.vendorId || { storeName: p.vendorName }
+                          });
                           setIsCartOpen(true);
                         }}
                         className={`px-3.5 py-2 rounded-xl font-mono text-xs font-semibold uppercase tracking-wider transition-all flex items-center gap-1.5 ${
@@ -443,7 +449,13 @@ export default function ShopBrowseClient({ initialProducts, apiUrl = process.env
         isInCart={selectedProduct ? cart.some((c) => c._id === selectedProduct.id) : false}
         onToggleWishlist={(id) => toggleWishlist(id, apiUrl)}
         onAddToCart={(p) => {
-          addToCartZustand({ _id: p.id, title: p.title, price: p.priceETB, images: [p.image], vendorId: { storeName: p.vendorName } });
+          addToCartZustand({
+            _id: p._id || p.id,
+            title: p.title,
+            price: Number(p.price) || Number(p.priceETB) || 0,
+            images: Array.isArray(p.images) ? p.images : [p.image],
+            vendorId: p.vendorId || { storeName: p.vendorName }
+          });
           setIsCartOpen(true);
         }}
       />

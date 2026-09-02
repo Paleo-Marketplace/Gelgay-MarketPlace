@@ -247,7 +247,7 @@ function App() {
     } catch (error) {
       console.error(error);
     } finally {
-      window.location.href = 'http://localhost:3000/';
+      window.location.href = '/';
     }
   };
 
@@ -335,18 +335,18 @@ function App() {
           {/* Portal Switcher Navigation */}
           <div style={{ marginTop: '20px', paddingTop: '16px', borderTop: '1px solid rgba(255,255,255,0.08)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '11px', color: '#A5A096' }}>
             <a
-              href="http://localhost:3000"
+              href="/"
               style={{ color: '#A5A096', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '4px' }}
             >
               <ShoppingBag size={12} />
-              <span>Buyer Storefront (:3000)</span>
+              <span>Buyer Storefront</span>
             </a>
 
             <a
-              href="http://localhost:5174"
+              href="/admin/"
               style={{ color: '#d96b43', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '4px', fontWeight: 600 }}
             >
-              <span>Admin Console (:5174)</span>
+              <span>Admin Console</span>
               <ExternalLink size={12} />
             </a>
           </div>
@@ -386,7 +386,7 @@ function App() {
 
           <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
             <a
-              href="http://localhost:3000"
+              href="/"
               style={{ flex: 1, padding: '12px', background: '#1F1E1B', border: '1px solid rgba(255,255,255,0.15)', color: '#FAF8F5', borderRadius: '12px', fontSize: '13px', fontWeight: 600, textAlign: 'center', textDecoration: 'none' }}
             >
               Buyer Storefront
@@ -457,7 +457,7 @@ function App() {
         <div style={{ display: 'flex', gap: '10px', alignItems: 'center', flexWrap: 'wrap' }}>
           <nav className="portal-nav-group" aria-label="Portal Navigation">
             <a
-              href="http://localhost:3000"
+              href="/"
               target="_blank"
               rel="noreferrer"
               className="portal-nav-link"
@@ -467,7 +467,7 @@ function App() {
               <span>Storefront</span>
             </a>
             <a
-              href="http://localhost:5174"
+              href="/admin/"
               target="_blank"
               rel="noreferrer"
               className="portal-nav-link"
@@ -477,7 +477,7 @@ function App() {
               <span>Admin</span>
             </a>
             <a
-              href="http://localhost:5175"
+              href="/courier/"
               target="_blank"
               rel="noreferrer"
               className="portal-nav-link"

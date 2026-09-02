@@ -103,7 +103,10 @@ export default function CheckoutClient({
   // Cart products resolution
   const resolvedCart = cart;
 
-  const itemSubtotal = resolvedCart.reduce((sum, item) => sum + (item.price || 0), 0);
+  const itemSubtotal = resolvedCart.reduce(
+    (sum, item) => sum + ((Number(item.price) || Number(item.priceETB) || 0) * (item.qty || 1)),
+    0
+  );
   const discountAmount = appliedCoupon ? appliedCoupon.discountAmount : 0;
   const discountedSubtotal = Math.max(0, itemSubtotal - discountAmount);
   const tax15 = Math.round(discountedSubtotal * 0.15);
@@ -472,32 +475,37 @@ export default function CheckoutClient({
                 </div>
 
                 <div className="space-y-4">
-                  {resolvedCart.map((item) => (
+                  {resolvedCart.map((item, idx) => (
                     <div
-                      key={item._id}
+                      key={item._id || item.id || `cart_item_${idx}`}
                       className="flex items-center justify-between gap-4 p-4 bg-white/80 backdrop-blur-xs border border-white/80 rounded-2xl shadow-2xs"
                     >
                       <div className="flex items-center gap-4">
                         <img
-                          src={item.images?.[0] || 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&h=1000&fit=crop&auto=format'}
+                          src={item.images?.[0] || item.image || 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&h=1000&fit=crop&auto=format'}
                           alt={item.title}
                           className="w-16 h-16 rounded-xl object-cover bg-[#EFECE6]"
                         />
                         <div>
                           <h4 className="font-serif text-base font-bold text-[#1F1E1B]">{item.title}</h4>
                           <p className="font-mono text-xs text-[#7C776E]">
-                            Curator: {item.vendorId?.storeName || 'PALEO Verified'}
+                            Curator: {item.vendorId?.storeName || item.vendorName || 'PALEO Verified'}
                           </p>
                         </div>
                       </div>
 
                       <div className="text-right">
                         <span className="font-mono text-base font-bold text-[#1F1E1B] block">
-                          {(item.price || 0).toLocaleString()} ETB
+                          {((Number(item.price) || Number(item.priceETB) || 0) * (item.qty || 1)).toLocaleString()} ETB
                         </span>
+                        {item.qty > 1 && (
+                          <span className="text-[11px] text-[#7C776E] block font-mono">
+                            {(Number(item.price) || Number(item.priceETB) || 0).toLocaleString()} × {item.qty}
+                          </span>
+                        )}
                         <button
-                          onClick={() => removeOneZustand(item._id)}
-                          className="text-red-600 hover:text-red-800 p-1 text-xs font-mono"
+                          onClick={() => removeOneZustand(item._id || item.id)}
+                          className="text-red-600 hover:text-red-800 p-1 text-xs font-mono inline-flex items-center gap-1"
                           title="Remove item"
                         >
                           <Trash2 className="w-4 h-4" />

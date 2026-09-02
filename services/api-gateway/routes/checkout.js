@@ -31,7 +31,7 @@ router.post(
 router.post(
   '/',
   authenticateJWT,
-  requireRole('buyer'),
+  requireRole('buyer', 'vendor', 'admin'),
   requireIdempotency(),
   asyncHandler(async (req, res) => {
     try {
@@ -61,7 +61,7 @@ router.post(
 router.post(
   '/:masterOrderId/manual-receipt',
   authenticateJWT,
-  requireRole('buyer'),
+  requireRole('buyer', 'vendor', 'admin'),
   requireIdempotency(),
   memoryUpload.single('receipt'),
   asyncHandler(async (req, res) => {

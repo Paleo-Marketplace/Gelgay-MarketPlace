@@ -135,13 +135,17 @@ export default function TelegramAuthModal({
   const handleAuthenticatedUser = (authenticatedUser: any) => {
     setUser(authenticatedUser);
 
+    const adminUrl = process.env.NEXT_PUBLIC_ADMIN_URL || '/admin/';
+    const vendorUrl = process.env.NEXT_PUBLIC_VENDOR_URL || '/vendor/';
+    const courierUrl = process.env.NEXT_PUBLIC_COURIER_URL || '/courier/';
+
     if (authenticatedUser?.role === 'admin') {
       setMessage({
         type: 'success',
-        text: '🛡️ Welcome System Administrator! Redirecting to Admin Console at http://localhost:5174...'
+        text: '🛡️ Welcome System Administrator! Redirecting to Admin Console...'
       });
       setTimeout(() => {
-        window.location.href = 'http://localhost:5174';
+        window.location.href = adminUrl;
       }, 750);
       return;
     }
@@ -149,10 +153,10 @@ export default function TelegramAuthModal({
     if (authenticatedUser?.role === 'vendor' && authenticatedUser?.isProfileComplete === true && (selectedRole === 'vendor' || !selectedRole)) {
       setMessage({
         type: 'success',
-        text: '🏪 Welcome Merchant! Redirecting to Vendor Studio Dashboard at http://localhost:5173...'
+        text: '🏪 Welcome Merchant! Redirecting to Vendor Studio Dashboard...'
       });
       setTimeout(() => {
-        window.location.href = 'http://localhost:5173';
+        window.location.href = vendorUrl;
       }, 750);
       return;
     }
@@ -164,10 +168,10 @@ export default function TelegramAuthModal({
     if (authenticatedUser?.role === 'courier') {
       setMessage({
         type: 'success',
-        text: '🛵 Welcome Courier! Redirecting to Dispatch Web View at http://localhost:5175...'
+        text: '🛵 Welcome Courier! Redirecting to Dispatch Web View...'
       });
       setTimeout(() => {
-        window.location.href = 'http://localhost:5175';
+        window.location.href = courierUrl;
       }, 750);
       return;
     }
@@ -887,7 +891,7 @@ export default function TelegramAuthModal({
                     Authorized Seller Portal:
                   </span>
                   <a
-                    href="http://localhost:5173/vendor/"
+                    href={process.env.NEXT_PUBLIC_VENDOR_URL || '/vendor/'}
                     target="_blank"
                     rel="noreferrer"
                     className="p-4 bg-white border border-[#C85A32] rounded-2xl hover:bg-[#FAF3F0] transition-colors flex items-center justify-between group shadow-xs"
@@ -911,7 +915,7 @@ export default function TelegramAuthModal({
                   </span>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <a
-                      href="http://localhost:5174/admin/"
+                      href={process.env.NEXT_PUBLIC_ADMIN_URL || '/admin/'}
                       target="_blank"
                       rel="noreferrer"
                       className="p-4 bg-white border border-stone-800 rounded-2xl hover:bg-stone-900 hover:text-white transition-all flex items-center justify-between group shadow-xs"
@@ -926,7 +930,7 @@ export default function TelegramAuthModal({
                       <ArrowRight className="w-4 h-4 text-[#7C776E] group-hover:text-white group-hover:translate-x-0.5 transition-transform" />
                     </a>
                     <a
-                      href="http://localhost:5173/vendor/"
+                      href={process.env.NEXT_PUBLIC_VENDOR_URL || '/vendor/'}
                       target="_blank"
                       rel="noreferrer"
                       className="p-4 bg-white border border-[#E2DDD3] rounded-2xl hover:border-[#C85A32] transition-colors flex items-center justify-between group shadow-xs"
