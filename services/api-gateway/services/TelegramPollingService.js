@@ -122,9 +122,14 @@ class TelegramPollingService {
       return;
     }
 
+    if (process.env.DISABLE_TELEGRAM_POLLING === 'true') {
+      console.log('[Telegram Polling] Skipped: DISABLE_TELEGRAM_POLLING flag is true.');
+      return;
+    }
+
     if (isPolling) return;
     isPolling = true;
-    console.log('[Telegram Polling] Daemon started for local development. Listening for bot commands...');
+    console.log('[Telegram Polling] Daemon started. Listening for bot commands...');
 
     // Auto-register commands with Telegram on boot
     this.initBotMetadata(token);
@@ -144,6 +149,11 @@ class TelegramPollingService {
         );
 
         if (!response.ok) {
+          if (response.status === 409) {
+            console.warn('[Telegram Polling] HTTP 409 Conflict: Another bot instance is polling with this token. Backing off for 15s...');
+            await new Promise((r) => setTimeout(r, 15000));
+            continue;
+          }
           const errText = await response.text().catch(() => '');
           console.warn(`[Telegram Polling HTTP ${response.status}]:`, errText);
           await new Promise((r) => setTimeout(r, 4000));
