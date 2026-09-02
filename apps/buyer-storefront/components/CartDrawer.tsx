@@ -152,14 +152,14 @@ export default function CartDrawer({
         className="absolute inset-0 bg-black/60 backdrop-blur-xs transition-opacity" 
       />
 
-      <div className="absolute inset-y-0 right-0 max-w-full flex pl-6 sm:pl-10">
-        <div className="w-screen max-w-lg bg-[#FAF8F5] border-l border-[#E8E4DC] shadow-2xl flex flex-col justify-between text-[#1F1E1B]">
+      <div className="absolute inset-y-0 right-0 max-w-full flex pl-0 sm:pl-10">
+        <div className="w-screen max-w-full sm:max-w-lg bg-[#FAF8F5] border-l border-[#E8E4DC] shadow-2xl flex flex-col justify-between text-[#1F1E1B]">
           
           {/* Header */}
-          <div className="p-6 border-b border-[#E8E4DC] flex items-center justify-between bg-white">
+          <div className="p-4 sm:p-6 border-b border-[#E8E4DC] flex items-center justify-between bg-white">
             <div className="flex items-center gap-2">
               <ShieldCheck className="w-5 h-5 text-[#C85A32]" />
-              <h3 className="font-serif text-xl font-semibold">
+              <h3 className="font-serif text-lg sm:text-xl font-semibold">
                 Escrow Cart ({cartProducts.length})
               </h3>
             </div>
@@ -172,7 +172,7 @@ export default function CartDrawer({
           </div>
 
           {/* Body Content */}
-          <div className="p-6 flex-1 overflow-y-auto space-y-6">
+          <div className="p-4 sm:p-6 flex-1 overflow-y-auto overscroll-contain space-y-4 sm:space-y-6">
             
             {/* STEP 1: CART ITEMS */}
             {checkoutStep === 'cart' && (

@@ -33,11 +33,11 @@ export default function HeroSection({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Tagline Pill */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-[#EFECE6]/90 backdrop-blur-md border border-[#E2DDD3] rounded-full text-xs font-mono text-[#625D54] mb-8 shadow-xs">
-          <span className="w-2 h-2 rounded-full bg-[#C85A32] animate-pulse"></span>
-          <span>The marketplace for the next chapter.</span>
-          <span className="text-[#A5A096]">|</span>
-          <span className="text-[#1F1E1B] font-semibold">100% Verified Escrow Guarantee</span>
+        <div className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-3.5 sm:py-1.5 bg-[#EFECE6]/90 dark:bg-[#22201D]/90 backdrop-blur-md border border-[#E2DDD3] dark:border-[#33302B] rounded-full text-[11px] sm:text-xs font-mono text-[#625D54] dark:text-[#A8A296] mb-6 sm:mb-8 shadow-xs max-w-full">
+          <span className="w-2 h-2 rounded-full bg-[#C85A32] animate-pulse shrink-0"></span>
+          <span className="truncate">The marketplace for the next chapter.</span>
+          <span className="text-[#A5A096] hidden sm:inline">|</span>
+          <span className="text-[#1F1E1B] dark:text-[#FAF8F5] font-semibold hidden sm:inline">100% Verified Escrow Guarantee</span>
         </div>
 
         {/* Main Headline Grid */}
@@ -45,24 +45,24 @@ export default function HeroSection({
           
           {/* Main Headline & CTAs */}
           <div className="md:col-span-7 space-y-5 md:space-y-8">
-            <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-[#1F1E1B] leading-[1.05] md:leading-[1.02] font-normal">
+            <h1 className="font-serif text-3xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-[#1F1E1B] dark:text-[#FAF8F5] leading-[1.08] sm:leading-[1.05] md:leading-[1.02] font-normal break-words">
               Good things <br />
               <span className="italic font-light text-[#EB5B00]">deserve</span> second life.
             </h1>
 
-            <p className="font-sans text-base sm:text-xl text-[#524E46] max-w-2xl leading-relaxed font-light">
-              <strong className="text-[#1F1E1B] font-semibold">ገልጋይ (Gelgay)</strong> connects design enthusiasts, collectors, and verified vendors across Ethiopia. 
+            <p className="font-sans text-sm sm:text-xl text-[#524E46] dark:text-[#A8A296] max-w-2xl leading-relaxed font-light">
+              <strong className="text-[#1F1E1B] dark:text-[#FAF8F5] font-semibold">ገልጋይ (Gelgay)</strong> connects design enthusiasts, collectors, and verified vendors across Ethiopia. 
               Discover authenticated vintage electronics, mid-century furniture, archival fashion, 
               and studio gear with safe escrow buyer protection.
             </p>
 
             {/* Action Buttons */}
-            <div className="flex flex-wrap items-center gap-3 pt-1 md:pt-2">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 pt-1 md:pt-2 w-full sm:w-auto">
               {isSeller ? (
                 <>
                   <button
                     onClick={onSellClick}
-                    className="px-8 py-4 bg-[#EB5B00] text-[#FAF8F5] font-mono text-xs tracking-wider uppercase font-semibold hover:bg-[#FF6B10] transition-all flex items-center gap-3 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                    className="w-full sm:w-auto px-8 py-3.5 sm:py-4 bg-[#EB5B00] text-[#FAF8F5] font-mono text-xs tracking-wider uppercase font-semibold hover:bg-[#FF6B10] transition-all flex items-center justify-center gap-3 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                   >
                     <Store className="w-4 h-4" />
                     <span>List New Item (Sell)</span>
@@ -70,7 +70,7 @@ export default function HeroSection({
 
                   <Link
                     href="/orders"
-                    className="px-8 py-4 bg-white/80 backdrop-blur-md border border-[#1F1E1B] text-[#1F1E1B] font-mono text-xs tracking-wider uppercase font-semibold hover:bg-[#EFECE6] transition-all shadow-xs inline-flex items-center gap-2"
+                    className="w-full sm:w-auto px-8 py-3.5 sm:py-4 bg-white/80 dark:bg-[#1E1C1A]/80 backdrop-blur-md border border-[#1F1E1B] dark:border-[#3A3732] text-[#1F1E1B] dark:text-[#FAF8F5] font-mono text-xs tracking-wider uppercase font-semibold hover:bg-[#EFECE6] dark:hover:bg-[#2B2824] transition-all shadow-xs inline-flex items-center justify-center gap-2"
                   >
                     <span>Studio Orders & Handoffs</span>
                     <ArrowRight className="w-4 h-4" />
@@ -80,7 +80,7 @@ export default function HeroSection({
                 <>
                   <button
                     onClick={onExploreClick}
-                    className="px-7 py-4 bg-[#1F1E1B] text-[#FAF8F5] font-mono text-xs tracking-wider uppercase font-semibold hover:bg-[#EB5B00] transition-all flex items-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                    className="w-full sm:w-auto px-7 py-3.5 sm:py-4 bg-[#1F1E1B] dark:bg-[#FAF8F5] text-[#FAF8F5] dark:text-[#1F1E1B] font-mono text-xs tracking-wider uppercase font-semibold hover:bg-[#EB5B00] dark:hover:bg-[#EB5B00] dark:hover:text-white transition-all flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                   >
                     <span>Explore Market</span>
                     <ArrowRight className="w-4 h-4" />
@@ -88,7 +88,7 @@ export default function HeroSection({
 
                   <Link
                     href="/shops"
-                    className="px-6 py-4 bg-[#FAF3F0] border border-[#EB5B00]/40 text-[#EB5B00] font-mono text-xs tracking-wider uppercase font-semibold hover:bg-[#EB5B00] hover:text-white transition-all shadow-xs inline-flex items-center gap-2"
+                    className="w-full sm:w-auto px-6 py-3.5 sm:py-4 bg-[#FAF3F0] dark:bg-[#25211D] border border-[#EB5B00]/40 text-[#EB5B00] font-mono text-xs tracking-wider uppercase font-semibold hover:bg-[#EB5B00] hover:text-white transition-all shadow-xs inline-flex items-center justify-center gap-2"
                   >
                     <MapPin className="w-4 h-4" />
                     <span>Shops Near You</span>
@@ -97,7 +97,7 @@ export default function HeroSection({
                   {isBuyer && (
                     <Link
                       href="/track"
-                      className="px-6 py-4 bg-white/80 backdrop-blur-md border border-[#1F1E1B] text-[#1F1E1B] font-mono text-xs tracking-wider uppercase font-semibold hover:bg-[#EFECE6] transition-all shadow-xs inline-flex items-center gap-2"
+                      className="w-full sm:w-auto px-6 py-3.5 sm:py-4 bg-white/80 dark:bg-[#1E1C1A]/80 backdrop-blur-md border border-[#1F1E1B] dark:border-[#3A3732] text-[#1F1E1B] dark:text-[#FAF8F5] font-mono text-xs tracking-wider uppercase font-semibold hover:bg-[#EFECE6] dark:hover:bg-[#2B2824] transition-all shadow-xs inline-flex items-center justify-center gap-2"
                     >
                       <Truck className="w-4 h-4 text-[#EB5B00]" />
                       <span>Track Order</span>
@@ -163,22 +163,22 @@ export default function HeroSection({
         </div>
 
         {/* Bottom Social Proof Ticker */}
-        <div className="mt-16 pt-8 border-t border-[#E8E4DC] grid grid-cols-2 md:grid-cols-4 gap-6 font-mono text-xs">
+        <div className="mt-8 sm:mt-16 pt-6 sm:pt-8 border-t border-[#E8E4DC] dark:border-[#33302B] grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 font-mono text-xs">
           <div>
-            <div className="font-serif text-3xl font-semibold text-[#1F1E1B]">12,480+</div>
-            <div className="text-[#625D54] mt-1">Curated pieces rehomed</div>
+            <div className="font-serif text-xl sm:text-3xl font-semibold text-[#1F1E1B] dark:text-[#FAF8F5]">12,480+</div>
+            <div className="text-[10px] sm:text-xs text-[#625D54] dark:text-[#A8A296] mt-0.5 sm:mt-1">Curated pieces rehomed</div>
           </div>
           <div>
-            <div className="font-serif text-3xl font-semibold text-[#1F1E1B]">100%</div>
-            <div className="text-[#625D54] mt-1">Buyer Escrow protection</div>
+            <div className="font-serif text-xl sm:text-3xl font-semibold text-[#1F1E1B] dark:text-[#FAF8F5]">100%</div>
+            <div className="text-[10px] sm:text-xs text-[#625D54] dark:text-[#A8A296] mt-0.5 sm:mt-1">Buyer Escrow protection</div>
           </div>
           <div>
-            <div className="font-serif text-3xl font-semibold text-[#C85A32]">Same-Day</div>
-            <div className="text-[#625D54] mt-1">Adama delivery handoff</div>
+            <div className="font-serif text-xl sm:text-3xl font-semibold text-[#C85A32]">Same-Day</div>
+            <div className="text-[10px] sm:text-xs text-[#625D54] dark:text-[#A8A296] mt-0.5 sm:mt-1">Adama delivery handoff</div>
           </div>
           <div>
-            <div className="font-serif text-3xl font-semibold text-[#1F1E1B]">0 ETB</div>
-            <div className="text-[#625D54] mt-1">Seller listing fee</div>
+            <div className="font-serif text-xl sm:text-3xl font-semibold text-[#1F1E1B] dark:text-[#FAF8F5]">0 ETB</div>
+            <div className="text-[10px] sm:text-xs text-[#625D54] dark:text-[#A8A296] mt-0.5 sm:mt-1">Seller listing fee</div>
           </div>
         </div>
 

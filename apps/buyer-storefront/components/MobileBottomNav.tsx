@@ -32,7 +32,7 @@ export default function MobileBottomNav({
 
   const cartCount = cartItems.reduce((acc, i) => acc + (i.quantity || 1), 0);
   const isSeller = isAuthenticated && (user?.role === 'vendor' || user?.role === 'VENDOR');
-  const isBuyer = isAuthenticated && !isSeller;
+  const isBuyer = !isSeller;
 
   return (
     <div className="block md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#FAF8F5]/95 dark:bg-[#151412]/95 backdrop-blur-xl border-t border-[#E2DDD3] dark:border-[#2C2924] pb-safe shadow-lg">

@@ -22,21 +22,21 @@ export default function ProductDetailModal({
   if (!product) return null;
 
   return (
-    <div className="fixed inset-0 z-[9999] overflow-y-auto flex items-center justify-center p-4 bg-black/70 backdrop-blur-xs">
-      <div className="bg-[#FAF8F5] border border-[#E8E4DC] w-full max-w-4xl shadow-2xl overflow-hidden text-[#1F1E1B] relative">
+    <div className="fixed inset-0 z-[9999] overflow-y-auto flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/70 backdrop-blur-xs">
+      <div className="bg-[#FAF8F5] border-t sm:border border-[#E8E4DC] w-full max-w-4xl shadow-2xl overflow-hidden text-[#1F1E1B] relative rounded-t-3xl sm:rounded-3xl max-h-[92vh] flex flex-col">
         
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-20 p-2.5 bg-black/60 text-white rounded-full hover:bg-black transition-colors"
+          className="absolute top-3 right-3 sm:top-4 sm:right-4 z-20 p-2 sm:p-2.5 bg-black/60 text-white rounded-full hover:bg-black transition-colors"
         >
           <X className="w-5 h-5" />
         </button>
 
-        <div className="grid grid-cols-1 md:grid-cols-12">
+        <div className="grid grid-cols-1 md:grid-cols-12 overflow-y-auto overscroll-contain flex-1">
           
           {/* Product Image */}
-          <div className="md:col-span-6 bg-[#EFECE6] relative min-h-[320px] md:min-h-[480px]">
+          <div className="md:col-span-6 bg-[#EFECE6] relative min-h-[240px] sm:min-h-[320px] md:min-h-[480px]">
             <img
               src={product.image}
               alt={product.title}

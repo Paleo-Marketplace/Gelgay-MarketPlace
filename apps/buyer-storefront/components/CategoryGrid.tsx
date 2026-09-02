@@ -50,21 +50,21 @@ export default function CategoryGrid({ onSelectCategory }: CategoryGridProps) {
     switch (index) {
       case 0:
         // 01: Electronics (Hero Card: full width on mobile, 7 cols / 2 rows on tablet+)
-        return 'col-span-12 md:col-span-7 md:row-span-2 min-h-[250px] sm:min-h-[320px] md:min-h-[580px]';
+        return 'col-span-12 md:col-span-7 md:row-span-2 min-h-[200px] sm:min-h-[300px] md:min-h-[580px]';
       case 1:
         // 02: Furniture (6 cols on mobile = 2-column grid, 5 cols on tablet+)
-        return 'col-span-6 md:col-span-5 min-h-[170px] sm:min-h-[220px] md:min-h-[275px]';
+        return 'col-span-6 md:col-span-5 min-h-[140px] sm:min-h-[200px] md:min-h-[275px]';
       case 2:
         // 03: Studio Gear (6 cols on mobile = 2-column grid, 5 cols on tablet+)
-        return 'col-span-6 md:col-span-5 min-h-[170px] sm:min-h-[220px] md:min-h-[275px]';
+        return 'col-span-6 md:col-span-5 min-h-[140px] sm:min-h-[200px] md:min-h-[275px]';
       case 3:
         // 04: Archival Wear (6 cols on mobile = 2-column grid, 6 cols on tablet+)
-        return 'col-span-6 md:col-span-6 min-h-[170px] sm:min-h-[220px] md:min-h-[290px]';
+        return 'col-span-6 md:col-span-6 min-h-[140px] sm:min-h-[200px] md:min-h-[290px]';
       case 4:
         // 05: Rare Reads (6 cols on mobile = 2-column grid, 6 cols on tablet+)
-        return 'col-span-6 md:col-span-6 min-h-[170px] sm:min-h-[220px] md:min-h-[290px]';
+        return 'col-span-6 md:col-span-6 min-h-[140px] sm:min-h-[200px] md:min-h-[290px]';
       default:
-        return 'col-span-6 md:col-span-6 min-h-[170px]';
+        return 'col-span-6 md:col-span-6 min-h-[140px]';
     }
   };
 
@@ -82,18 +82,18 @@ export default function CategoryGrid({ onSelectCategory }: CategoryGridProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 md:mb-12 pb-6 border-b border-[#E8E4DC] dark:border-[#33302B]">
-          <div className="space-y-2">
-            <span className="font-mono text-xs uppercase tracking-widest text-[#C85A32] font-semibold flex items-center gap-1.5">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 sm:mb-8 md:mb-12 pb-4 sm:pb-6 border-b border-[#E8E4DC] dark:border-[#33302B]">
+          <div className="space-y-1.5 sm:space-y-2">
+            <span className="font-mono text-[10px] sm:text-xs uppercase tracking-widest text-[#C85A32] font-semibold flex items-center gap-1.5">
               <Sparkles className="w-3.5 h-3.5 text-[#C85A32]" />
               CURATED SELECTIONS
             </span>
-            <h2 className="font-serif text-3xl sm:text-5xl font-normal text-[#1F1E1B] dark:text-[#FAF8F5] tracking-tight">
+            <h2 className="font-serif text-2xl sm:text-4xl md:text-5xl font-normal text-[#1F1E1B] dark:text-[#FAF8F5] tracking-tight">
               Browse by feeling
             </h2>
           </div>
-          <div className="flex items-center gap-4 mt-4 md:mt-0">
-            <p className="font-sans text-sm text-[#625D54] dark:text-[#A8A296] max-w-md font-light leading-relaxed">
+          <div className="flex items-center gap-4 mt-2 sm:mt-4 md:mt-0">
+            <p className="font-sans text-xs sm:text-sm text-[#625D54] dark:text-[#A8A296] max-w-md font-light leading-relaxed">
               Every category is curated for timeless utility, craftsmanship, and longevity. Discover unique design objects saved from obscurity.
             </p>
             <Link
@@ -107,7 +107,7 @@ export default function CategoryGrid({ onSelectCategory }: CategoryGridProps) {
         </div>
 
         {/* Rock-Solid Responsive Bento Grid (12 Columns) */}
-        <div className="grid grid-cols-12 gap-3 sm:gap-4 md:gap-6">
+        <div className="grid grid-cols-12 gap-2.5 sm:gap-4 md:gap-6">
           {categoriesList.map((cat: any, idx) => {
             const filterKey = cat.filterKey || cat.name;
             const layoutClass = getCardLayoutClass(idx);
@@ -116,7 +116,7 @@ export default function CategoryGrid({ onSelectCategory }: CategoryGridProps) {
               <div
                 key={cat.id || cat.slug || cat.name || `cat-grid-key-${idx}`}
                 onClick={() => handleCategoryClick(filterKey)}
-                className={`${layoutClass} group relative overflow-hidden bg-[#1F1E1B] border border-[#E2DDD3] cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500 rounded-2xl md:rounded-3xl flex flex-col justify-between p-3.5 sm:p-6 md:p-8`}
+                className={`${layoutClass} group relative overflow-hidden bg-[#1F1E1B] border border-[#E2DDD3] cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500 rounded-xl sm:rounded-2xl md:rounded-3xl flex flex-col justify-between p-2.5 sm:p-5 md:p-8`}
               >
                 {/* Background Image with Guaranteed Fit and Contrast */}
                 <img
@@ -134,18 +134,18 @@ export default function CategoryGrid({ onSelectCategory }: CategoryGridProps) {
 
                 {/* Top Header: Badge Pill + Item Counter */}
                 <div className="relative z-10 flex items-center justify-between text-white/90 font-mono text-xs gap-1">
-                  <span className="px-2 sm:px-3.5 py-1 bg-black/60 backdrop-blur-md border border-white/20 uppercase tracking-wider text-[9px] sm:text-[11px] rounded-lg sm:rounded-xl font-semibold text-white shadow-xs truncate max-w-[120px] sm:max-w-none">
+                  <span className="px-2 sm:px-3.5 py-0.5 sm:py-1 bg-black/60 backdrop-blur-md border border-white/20 uppercase tracking-wider text-[8px] sm:text-[10px] md:text-xs rounded-md sm:rounded-xl font-semibold text-white shadow-xs truncate max-w-[100px] sm:max-w-none">
                     {cat.tag}
                   </span>
-                  <span className="px-2 sm:px-3 py-0.5 sm:py-1 bg-white/15 backdrop-blur-md border border-white/20 rounded-full text-white font-mono text-[9px] sm:text-[11px] font-medium shadow-xs shrink-0">
+                  <span className="px-1.5 sm:px-3 py-0.5 sm:py-1 bg-white/15 backdrop-blur-md border border-white/20 rounded-full text-white font-mono text-[8px] sm:text-[10px] md:text-xs font-medium shadow-xs shrink-0">
                     {cat.itemCount}
                   </span>
                 </div>
 
                 {/* Bottom Content: Title + Subtitle + Action Icon */}
-                <div className="relative z-10 text-white flex items-end justify-between pt-6 sm:pt-16 gap-2 sm:gap-4">
+                <div className="relative z-10 text-white flex items-end justify-between pt-4 sm:pt-12 md:pt-16 gap-2 sm:gap-4">
                   <div className="space-y-0.5 sm:space-y-1.5 flex-1 min-w-0">
-                    <h3 className="font-serif text-base sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-white group-hover:text-[#F3A582] transition-colors truncate">
+                    <h3 className="font-serif text-sm sm:text-xl md:text-2xl lg:text-3xl font-bold tracking-tight text-white group-hover:text-[#F3A582] transition-colors truncate">
                       {cat.name}
                     </h3>
                     <p className="hidden sm:block font-sans text-xs sm:text-sm text-white/80 font-light line-clamp-2 leading-relaxed">
@@ -153,8 +153,8 @@ export default function CategoryGrid({ onSelectCategory }: CategoryGridProps) {
                     </p>
                   </div>
 
-                  <div className="w-7 h-7 sm:w-11 sm:h-11 rounded-full bg-[#C85A32] text-white flex items-center justify-center group-hover:bg-[#D96B42] group-hover:scale-110 transition-all duration-300 shadow-lg shrink-0">
-                    <ArrowUpRight className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-white" />
+                  <div className="w-6 h-6 sm:w-10 sm:h-10 rounded-full bg-[#C85A32] text-white flex items-center justify-center group-hover:bg-[#D96B42] group-hover:scale-110 transition-all duration-300 shadow-lg shrink-0">
+                    <ArrowUpRight className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
                   </div>
                 </div>
               </div>

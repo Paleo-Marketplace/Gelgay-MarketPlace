@@ -456,23 +456,23 @@ export default function TelegramAuthModal({
   const userRole = (currentUser?.role || 'BUYER').toUpperCase();
 
   return (
-    <div className="fixed inset-0 z-[99999] flex items-center justify-center p-4 bg-[#1F1E1B]/80 backdrop-blur-md animate-fade-in overflow-y-auto">
-      <div className="relative w-full max-w-lg bg-[#FAF8F5] border border-[#E2DDD3] rounded-3xl shadow-2xl overflow-hidden my-8">
+    <div className="fixed inset-0 z-[99999] flex items-end sm:items-center justify-center p-0 sm:p-4 bg-[#1F1E1B]/80 backdrop-blur-md animate-fade-in">
+      <div className="relative w-full max-w-lg bg-[#FAF8F5] border-t sm:border border-[#E2DDD3] rounded-t-3xl sm:rounded-3xl shadow-2xl overflow-hidden my-0 sm:my-8 max-h-[92vh] flex flex-col">
         
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-[#E8E4DC] bg-[#FAF8F5]">
+        <div className="flex items-center justify-between p-4 sm:p-6 border-b border-[#E8E4DC] bg-[#FAF8F5] shrink-0">
           <div className="flex items-center gap-2.5">
             <img
               src="/assets/gelgay_icon.png"
               alt="ገልጋይ"
-              className="w-8 h-8 object-contain"
+              className="w-7 h-7 sm:w-8 sm:h-8 object-contain"
             />
             <div>
-              <h3 className="font-serif text-xl font-normal text-[#1F1E1B]">
+              <h3 className="font-serif text-lg sm:text-xl font-normal text-[#1F1E1B]">
                 {currentUser ? 'ገልጋይ Profile & Role' : authMode === 'signup' ? 'Create ገልጋይ Account' : 'Sign In to ገልጋይ (Gelgay)'}
               </h3>
-              <p className="font-mono text-[11px] text-[#7C776E] tracking-tight">
-                Curated Ethiopian Marketplace · Escrow Protected · Good things deserve second life
+              <p className="font-mono text-[10px] sm:text-[11px] text-[#7C776E] tracking-tight line-clamp-1">
+                Curated Ethiopian Marketplace · Escrow Protected
               </p>
             </div>
           </div>
@@ -484,7 +484,7 @@ export default function TelegramAuthModal({
           </button>
         </div>
 
-        <div className="p-6 space-y-6 max-h-[80vh] overflow-y-auto">
+        <div className="p-4 sm:p-6 space-y-5 sm:space-y-6 overflow-y-auto overscroll-contain flex-1">
 
           {/* Feedback Message */}
           {message && (

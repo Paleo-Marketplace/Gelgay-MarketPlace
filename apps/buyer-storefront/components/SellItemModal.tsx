@@ -140,8 +140,8 @@ export default function SellItemModal({
   };
 
   return (
-    <div className="fixed inset-0 z-[9999] overflow-y-auto flex items-center justify-center p-4 bg-black/70 backdrop-blur-xs">
-      <div className="bg-[#FAF8F5] border border-[#E8E4DC] w-full max-w-2xl shadow-2xl p-6 md:p-8 text-[#1F1E1B] relative rounded-2xl">
+    <div className="fixed inset-0 z-[9999] overflow-y-auto flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/70 backdrop-blur-xs">
+      <div className="bg-[#FAF8F5] border-t sm:border border-[#E8E4DC] w-full max-w-2xl shadow-2xl p-5 sm:p-8 text-[#1F1E1B] relative rounded-t-3xl sm:rounded-2xl max-h-[92vh] overflow-y-auto overscroll-contain">
         
         {/* Header */}
         <div className="flex items-center justify-between pb-4 border-b border-[#E8E4DC] mb-6">

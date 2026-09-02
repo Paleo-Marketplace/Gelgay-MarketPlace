@@ -162,23 +162,23 @@ export default function ShopBrowseClient({ initialProducts, apiUrl = process.env
       />
 
       {/* Frame 14-436: Main Shop Browse Hero Header */}
-      <div className="bg-[#FAF8F5] border-b border-[#E8E4DC] pt-12 pb-14">
+      <div className="bg-[#FAF8F5] border-b border-[#E8E4DC] pt-6 pb-8 sm:pt-12 sm:pb-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6">
             
-            <div className="space-y-3">
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#EFECE6] border border-[#E2DDD3] rounded-full text-xs font-mono text-[#C85A32]">
+            <div className="space-y-2 sm:space-y-3">
+              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 py-1 sm:px-3 sm:py-1 bg-[#EFECE6] border border-[#E2DDD3] rounded-full text-[10px] sm:text-xs font-mono text-[#C85A32]">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C85A32] animate-pulse"></span>
                 <span>AUTHENTICATED ARCHIVES</span>
-                <span className="text-[#A5A096]">|</span>
-                <span className="text-[#1F1E1B] font-semibold">{filteredProducts.length} Pieces Available</span>
+                <span className="text-[#A5A096] hidden sm:inline">|</span>
+                <span className="text-[#1F1E1B] font-semibold hidden sm:inline">{filteredProducts.length} Pieces Available</span>
               </div>
 
-              <h1 className="font-serif text-4xl sm:text-6xl font-normal text-[#1F1E1B] tracking-tight">
+              <h1 className="font-serif text-2xl sm:text-4xl md:text-6xl font-normal text-[#1F1E1B] tracking-tight">
                 Shop the Archive
               </h1>
               
-              <p className="font-sans text-base text-[#625D54] font-light max-w-xl leading-relaxed">
+              <p className="font-sans text-xs sm:text-base text-[#625D54] font-light max-w-xl leading-relaxed">
                 Inspected pre-owned electronics, furniture, studio gear, and archival garments curated across Adama with 100% escrow protection.
               </p>
             </div>
@@ -308,7 +308,7 @@ export default function ShopBrowseClient({ initialProducts, apiUrl = process.env
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
             {filteredProducts.map((p) => {
               const isWishlisted = wishlistIds.includes(p.id);
               const inCart = cart.some((c) => c._id === p.id);
@@ -316,7 +316,7 @@ export default function ShopBrowseClient({ initialProducts, apiUrl = process.env
               return (
                 <div
                   key={p.id}
-                  className="group bg-white/85 backdrop-blur-md border border-white/70 rounded-3xl overflow-hidden hover:border-[#C85A32]/60 hover:shadow-2xl hover:bg-white/95 transition-all duration-500 flex flex-col justify-between shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
+                  className="group bg-white/85 backdrop-blur-md border border-white/70 rounded-2xl sm:rounded-3xl overflow-hidden hover:border-[#C85A32]/60 hover:shadow-2xl hover:bg-white/95 transition-all duration-500 flex flex-col justify-between shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
                 >
                   {/* Image & Badges */}
                   <div
@@ -333,8 +333,8 @@ export default function ShopBrowseClient({ initialProducts, apiUrl = process.env
                     />
 
                     {/* Category / Condition Badge */}
-                    <div className="absolute top-3 left-3 flex flex-col gap-1">
-                      <span className="px-2.5 py-1 bg-[#1F1E1B]/90 backdrop-blur-xs text-[#FAF8F5] text-[10px] font-mono uppercase tracking-wider rounded-md font-semibold">
+                    <div className="absolute top-2.5 left-2.5 sm:top-3 sm:left-3 flex flex-col gap-1">
+                      <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 bg-[#1F1E1B]/90 backdrop-blur-xs text-[#FAF8F5] text-[9px] sm:text-[10px] font-mono uppercase tracking-wider rounded-md font-semibold">
                         {p.condition}
                       </span>
                     </div>
@@ -345,17 +345,17 @@ export default function ShopBrowseClient({ initialProducts, apiUrl = process.env
                         e.stopPropagation();
                         toggleWishlist(p.id, apiUrl);
                       }}
-                      className="absolute top-3 right-3 p-2 bg-white/90 backdrop-blur-xs rounded-full text-[#1F1E1B] hover:text-[#C85A32] shadow-xs transition-colors"
+                      className="absolute top-2.5 right-2.5 sm:top-3 sm:right-3 p-1.5 sm:p-2 bg-white/90 backdrop-blur-xs rounded-full text-[#1F1E1B] hover:text-[#C85A32] shadow-xs transition-colors"
                       title="Add to wishlist"
                     >
-                      <Heart className={`w-4 h-4 ${isWishlisted ? 'fill-[#C85A32] text-[#C85A32]' : ''}`} />
+                      <Heart className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${isWishlisted ? 'fill-[#C85A32] text-[#C85A32]' : ''}`} />
                     </button>
                   </div>
 
                   {/* Body Content */}
-                  <div className="p-5 flex flex-col flex-1 justify-between space-y-4">
-                    <div className="space-y-1.5">
-                      <div className="flex items-center justify-between text-[11px] font-mono text-[#7C776E]">
+                  <div className="p-3.5 sm:p-5 flex flex-col flex-1 justify-between space-y-3 sm:space-y-4">
+                    <div className="space-y-1 sm:space-y-1.5">
+                      <div className="flex items-center justify-between text-[10px] sm:text-[11px] font-mono text-[#7C776E]">
                         <span>{p.tag}</span>
                         <span className="flex items-center gap-1">
                           <MapPin className="w-3 h-3 text-[#C85A32]" />
@@ -365,7 +365,7 @@ export default function ShopBrowseClient({ initialProducts, apiUrl = process.env
 
                       <h3
                         onClick={() => setSelectedProduct(p)}
-                        className="font-serif text-lg font-bold text-[#1F1E1B] group-hover:text-[#C85A32] transition-colors cursor-pointer line-clamp-1"
+                        className="font-serif text-base sm:text-lg font-bold text-[#1F1E1B] group-hover:text-[#C85A32] transition-colors cursor-pointer line-clamp-1"
                       >
                         {p.title}
                       </h3>

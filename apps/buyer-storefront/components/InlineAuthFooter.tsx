@@ -42,54 +42,54 @@ export default function InlineAuthFooter({
   };
 
   return (
-    <footer className="bg-[#1F1E1B] text-[#FAF8F5] pt-20 pb-28 md:pb-12 border-t border-[#363430]">
+    <footer className="bg-[#1F1E1B] text-[#FAF8F5] pt-10 pb-20 md:pt-20 md:pb-12 border-t border-[#363430]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Frame 14-279: Login Split Section */}
-        <div className="bg-[#2B2824] border border-[#3A3732] p-8 md:p-12 mb-16 rounded-2xl grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        <div className="bg-[#2B2824] border border-[#3A3732] p-5 sm:p-8 md:p-12 mb-10 sm:mb-16 rounded-2xl grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10 items-center">
           
           {/* Left Side: Editorial Prompt */}
-          <div className="lg:col-span-6 space-y-5">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#1F1E1B] border border-[#3A3732] rounded-full text-xs font-mono text-[#C85A32]">
+          <div className="lg:col-span-6 space-y-3 sm:space-y-5">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#1F1E1B] border border-[#3A3732] rounded-full text-[10px] sm:text-xs font-mono text-[#C85A32]">
               <span className="w-1.5 h-1.5 rounded-full bg-[#C85A32] animate-pulse"></span>
-              <span>IDENTITY & SECURITY GATEWAY</span>
+              <span>IDENTITY &amp; SECURITY GATEWAY</span>
             </div>
             
-            <h3 className="font-serif text-3xl sm:text-5xl font-normal text-white leading-tight">
+            <h3 className="font-serif text-2xl sm:text-4xl md:text-5xl font-normal text-white leading-tight">
               Make room for <br />
               <span className="italic text-[#C85A32]">better</span> finds.
             </h3>
             
-            <p className="font-sans text-sm text-[#A5A096] font-light leading-relaxed max-w-md">
+            <p className="font-sans text-xs sm:text-sm text-[#A5A096] font-light leading-relaxed max-w-md">
               Sign in to manage your saved archives, track physical escrow deliveries in real time, or list vintage goods across Adama.
             </p>
 
-            <div className="pt-2 flex flex-wrap items-center gap-3">
+            <div className="pt-2 flex flex-wrap items-center gap-2 sm:gap-3">
               <button
                 onClick={onAccountClick}
-                className="inline-flex items-center gap-2 px-5 py-3 bg-[#229ED9] text-white font-mono text-xs uppercase tracking-wider font-semibold hover:bg-[#1D82B2] transition-colors rounded-xl shadow-xs"
+                className="inline-flex items-center gap-1.5 sm:gap-2 px-4 py-2.5 sm:px-5 sm:py-3 bg-[#229ED9] text-white font-mono text-[11px] sm:text-xs uppercase tracking-wider font-semibold hover:bg-[#1D82B2] transition-colors rounded-xl shadow-xs"
               >
-                <Send className="w-4 h-4" /> 
+                <Send className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> 
                 <span>Telegram Bot Auth</span>
               </button>
 
               <button
                 onClick={onAccountClick}
-                className="inline-flex items-center gap-2 px-5 py-3 bg-[#363430] text-[#FAF8F5] font-mono text-xs uppercase tracking-wider font-semibold hover:bg-[#45423C] transition-colors rounded-xl"
+                className="inline-flex items-center gap-1.5 sm:gap-2 px-4 py-2.5 sm:px-5 sm:py-3 bg-[#363430] text-[#FAF8F5] font-mono text-[11px] sm:text-xs uppercase tracking-wider font-semibold hover:bg-[#45423C] transition-colors rounded-xl"
               >
-                <User className="w-4 h-4 text-[#C85A32]" />
+                <User className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C85A32]" />
                 <span>Account Hub</span>
               </button>
             </div>
           </div>
 
           {/* Right Side: Google & Identity Portal */}
-          <div className="lg:col-span-6 bg-[#1F1E1B] p-7 border border-[#3A3732] rounded-2xl shadow-xl space-y-5">
+          <div className="lg:col-span-6 bg-[#1F1E1B] p-4 sm:p-7 border border-[#3A3732] rounded-2xl shadow-xl space-y-4 sm:space-y-5">
             <div className="flex items-center justify-between border-b border-[#3A3732] pb-3">
-              <span className="font-serif text-xl font-medium text-white">
+              <span className="font-serif text-base sm:text-xl font-medium text-white">
                 {isAuthenticated && currentUser ? 'Active Account Session' : 'Sign In to ገልጋይ (Gelgay)'}
               </span>
-              <span className="font-mono text-xs text-[#EB5B00] font-semibold">100% ESCROW</span>
+              <span className="font-mono text-[10px] sm:text-xs text-[#EB5B00] font-semibold">100% ESCROW</span>
             </div>
 
             {authMsg ? (

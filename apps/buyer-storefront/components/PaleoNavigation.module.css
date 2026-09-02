@@ -649,11 +649,17 @@
 
 @media screen and (max-width: 675px) {
   .navigationBar {
-    padding: 12px 16px;
+    padding: 10px 14px;
+    height: 56px;
   }
 
   .brand {
-    font-size: 18px;
+    font-size: 16px;
+    height: 28px;
+  }
+
+  .brand img {
+    height: 28px !important;
   }
 
   .primaryLinks {
@@ -662,13 +668,25 @@
 
   .hamburgerButton {
     display: inline-flex;
+    width: 36px;
+    height: 36px;
   }
 
   .utilityActions {
-    gap: 12px;
+    gap: 10px;
+    height: auto;
+  }
+
+  .utilityButton {
+    width: 36px;
+    height: 36px;
   }
 
   .loginButton {
+    display: none;
+  }
+
+  .themeButton {
     display: none;
   }
 

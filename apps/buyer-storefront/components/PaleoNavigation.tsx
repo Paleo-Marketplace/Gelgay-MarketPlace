@@ -113,7 +113,7 @@ export default function PaleoNavigation({
   const initial = user?.displayName ? user.displayName[0] : (user?.telegramUsername ? user.telegramUsername[0] : 'U');
 
   const isSeller = isAuthenticated && (user?.role === 'vendor' || user?.role === 'VENDOR');
-  const isBuyer = isAuthenticated && !isSeller;
+  const isBuyer = !isSeller;
 
   return (
     <header className={`${styles.navigationBar} ${isDarkMode ? styles.darkNavigation : ''}`}>
@@ -190,11 +190,14 @@ export default function PaleoNavigation({
         <UtilityButton label="Search market" onClick={onOpenSearch}>
           <Search className={styles.utilityIcon} aria-hidden="true" />
         </UtilityButton>
-        <UtilityButton label="View wishlist" onClick={onOpenWishlist} badge={wishlistCount}>
-          <Heart className={styles.utilityIcon} aria-hidden="true" />
-        </UtilityButton>
 
-        {/* Cart is only shown for Buyer accounts */}
+        <div className="hidden sm:inline-flex">
+          <UtilityButton label="View wishlist" onClick={onOpenWishlist} badge={wishlistCount}>
+            <Heart className={styles.utilityIcon} aria-hidden="true" />
+          </UtilityButton>
+        </div>
+
+        {/* Cart is always accessible for buyers and browsing guests */}
         {isBuyer && (
           <UtilityButton label="Open cart" onClick={onOpenCart} badge={cartCount}>
             <ShoppingBag className={styles.utilityIcon} aria-hidden="true" />
@@ -202,14 +205,16 @@ export default function PaleoNavigation({
         )}
 
         {onOpenNotifications ? (
-          <UtilityButton label="Activity & Alerts" onClick={onOpenNotifications} badge={notificationCount}>
-            <Bell className={styles.utilityIcon} aria-hidden="true" />
-          </UtilityButton>
+          <div className="hidden sm:inline-flex">
+            <UtilityButton label="Activity & Alerts" onClick={onOpenNotifications} badge={notificationCount}>
+              <Bell className={styles.utilityIcon} aria-hidden="true" />
+            </UtilityButton>
+          </div>
         ) : null}
 
         {isAuthenticated && user ? (
           <button
-            className={styles.accountButton}
+            className={`${styles.accountButton} hidden sm:inline-flex`}
             type="button"
             onClick={onOpenAccount}
             title={`Signed in as ${displayName}`}
@@ -230,13 +235,13 @@ export default function PaleoNavigation({
             <span className={styles.accountRoleBadge}>{user.role || 'BUYER'}</span>
           </button>
         ) : (
-          <button className={styles.loginButton} type="button" onClick={onOpenAccount}>
+          <button className={`${styles.loginButton} hidden sm:inline-flex`} type="button" onClick={onOpenAccount}>
             Sign in / Sign up
           </button>
         )}
 
         <button
-          className={styles.themeButton}
+          className={`${styles.themeButton} hidden sm:grid`}
           type="button"
           onClick={toggleTheme}
           aria-pressed={isDarkMode}

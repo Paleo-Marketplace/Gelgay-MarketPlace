@@ -49,22 +49,22 @@ export default function BigSearchBar({ onSearchSubmit, onFilterClick }: BigSearc
         </h2>
 
         {/* Big Search Input Form */}
-        <form onSubmit={handleSubmit} className="relative max-w-3xl mx-auto mb-8">
+        <form onSubmit={handleSubmit} className="relative max-w-3xl mx-auto mb-6 sm:mb-8">
           <div className="relative flex items-center">
-            <Search className="absolute left-5 w-6 h-6 text-[#A5A096]" />
+            <Search className="absolute left-3.5 sm:left-5 w-5 h-5 sm:w-6 sm:h-6 text-[#A5A096]" />
             <input
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder='Try "vintage audio", "film camera", "desk lamp" or "teak chair"...'
-              className="w-full pl-14 pr-32 py-5 bg-[#2A2824] border border-[#423E37] text-lg font-sans text-[#FAF8F5] placeholder-[#858076] focus:outline-none focus:border-[#C85A32] transition-colors"
+              placeholder="Search vintage audio, cameras, furniture..."
+              className="w-full pl-11 sm:pl-14 pr-24 sm:pr-32 py-3.5 sm:py-5 bg-[#2A2824] border border-[#423E37] rounded-xl sm:rounded-2xl text-sm sm:text-lg font-sans text-[#FAF8F5] placeholder-[#858076] focus:outline-none focus:border-[#C85A32] transition-colors"
             />
             <button
               type="submit"
-              className="absolute right-3 px-5 py-2.5 bg-[#C85A32] text-white font-mono text-xs uppercase tracking-wider font-semibold hover:bg-[#D96B42] transition-colors flex items-center gap-2"
+              className="absolute right-2 sm:right-3 px-3.5 sm:px-5 py-2 sm:py-2.5 bg-[#C85A32] text-white font-mono text-[11px] sm:text-xs uppercase tracking-wider font-semibold hover:bg-[#D96B42] transition-colors flex items-center gap-1.5 sm:gap-2 rounded-lg sm:rounded-xl shadow-xs"
             >
               <span>Search</span>
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </button>
           </div>
         </form>
