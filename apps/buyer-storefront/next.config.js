@@ -19,6 +19,34 @@ const nextConfig = {
         ]
       }
     ];
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/vendor',
+        destination: '/vendor/index.html'
+      },
+      {
+        source: '/vendor/:path*',
+        destination: '/vendor/index.html'
+      },
+      {
+        source: '/admin',
+        destination: '/admin/index.html'
+      },
+      {
+        source: '/admin/:path*',
+        destination: '/admin/index.html'
+      },
+      {
+        source: '/courier',
+        destination: '/courier/index.html'
+      },
+      {
+        source: '/courier/:path*',
+        destination: '/courier/index.html'
+      }
+    ];
   }
 };
 
