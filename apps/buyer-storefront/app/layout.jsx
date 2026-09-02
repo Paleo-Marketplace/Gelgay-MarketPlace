@@ -15,13 +15,26 @@ export const viewport = {
 
 export const metadata = {
   title: 'ገልጋይ (Gelgay) | Good things deserve second life',
-  description: 'Ethiopian curated multi-vendor marketplace with escrow buyer protection, CBE/Telebirr verification, and live courier tracking. Good things deserve second life.'
+  description: 'Ethiopian curated multi-vendor marketplace with escrow buyer protection, CBE/Telebirr verification, and live courier tracking. Good things deserve second life.',
+  icons: {
+    icon: [
+      { url: '/assets/gelgay_icon.png', sizes: 'any', type: 'image/png' },
+      { url: '/icon.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon.ico' }
+    ],
+    apple: [
+      { url: '/assets/gelgay_icon.png', sizes: '180x180', type: 'image/png' }
+    ],
+    shortcut: ['/assets/gelgay_icon.png']
+  }
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <link rel="icon" type="image/png" href="/assets/gelgay_icon.png" />
+        <link rel="apple-touch-icon" href="/assets/gelgay_icon.png" />
         <script
           dangerouslySetInnerHTML={{
             __html: `(function() {
