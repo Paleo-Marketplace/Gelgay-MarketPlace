@@ -108,53 +108,52 @@ export default function HeroSection({
             </div>
           </div>
 
-          {/* Right Side: Rectangular Shaped Video Frame (animate.mp4) like mikiasabera.vercel.app */}
-          {/* Right Side: Rectangular Shaped Video Frame (animate.mp4) like mikiasabera.vercel.app */}
-          <div className="md:col-span-5 max-w-sm sm:max-w-md md:max-w-none mx-auto w-full">
-            <div className="relative bg-[#121316] text-[#FAF8F5] p-2 sm:p-3 border border-[#363430] shadow-2xl rounded-xl sm:rounded-2xl overflow-hidden group">
+          {/* Right Side: Rectangular Shaped Video Frame (animate.mp4) */}
+          <div className="md:col-span-5 max-w-[280px] sm:max-w-sm md:max-w-none mx-auto w-full">
+            <div className="relative bg-[#121316] text-[#FAF8F5] p-1.5 sm:p-3 border border-[#363430] shadow-2xl rounded-xl sm:rounded-2xl overflow-hidden group">
               
               {/* Window Header Bar (Browser / Screen Mockup) */}
-              <div className="flex items-center justify-between pb-2 sm:pb-3 px-1.5 sm:px-2 border-b border-[#2A2B30] mb-1.5 sm:mb-2 font-mono text-[10px] sm:text-[11px] text-[#A5A096]">
+              <div className="flex items-center justify-between pb-1.5 sm:pb-3 px-1.5 sm:px-2 border-b border-[#2A2B30] mb-1.5 sm:mb-2 font-mono text-[9px] sm:text-[11px] text-[#A5A096]">
                 <div className="flex items-center gap-1.5">
                   <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#EF4444]/80"></div>
                   <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#F59E0B]/80"></div>
                   <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#10B981]/80"></div>
-                  <span className="ml-1.5 sm:ml-2 text-white/50 text-[9px] sm:text-[10px]">gelgay-motion.mp4</span>
+                  <span className="ml-1 sm:ml-2 text-white/50 text-[8px] sm:text-[10px]">gelgay-motion.mp4</span>
                 </div>
                 <div className="flex items-center gap-1 text-[#EB5B00]">
-                  <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
-                  <span className="text-[9px] sm:text-xs">LIVE REEL</span>
+                  <Sparkles className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5" />
+                  <span className="text-[8px] sm:text-xs font-semibold">LIVE REEL</span>
                 </div>
               </div>
 
               {/* Video Player in Styled Rectangular Frame */}
-              <div className="relative aspect-16/9 sm:aspect-16/10 rounded-lg sm:rounded-xl overflow-hidden bg-[#0D0E11] border border-white/10 shadow-inner">
+              <div className="relative aspect-16/9 sm:aspect-16/10 rounded-md sm:rounded-xl overflow-hidden bg-[#0D0E11] border border-white/10 shadow-inner">
                 <video
                   src="/assets/animate.mp4"
                   autoPlay
                   loop
                   muted
                   playsInline
-                  className="w-full h-full object-cover rounded-lg transform group-hover:scale-[1.02] transition-transform duration-700 ease-out"
+                  className="w-full h-full object-cover rounded-md sm:rounded-lg transform group-hover:scale-[1.02] transition-transform duration-700 ease-out"
                 />
                 
                 {/* Floating Glassmorphic Pill */}
-                <div className="absolute bottom-2 left-2 right-2 sm:bottom-3 sm:left-3 sm:right-3 px-2 sm:px-3 py-1 sm:py-2 bg-black/60 backdrop-blur-md border border-white/15 rounded-md sm:rounded-lg flex items-center justify-between text-[10px] sm:text-xs font-mono text-white/90 z-10">
+                <div className="absolute bottom-1.5 left-1.5 right-1.5 sm:bottom-3 sm:left-3 sm:right-3 px-2 py-1 sm:px-3 sm:py-2 bg-black/60 backdrop-blur-md border border-white/15 rounded-md sm:rounded-lg flex items-center justify-between text-[9px] sm:text-xs font-mono text-white/90 z-10">
                   <div className="flex items-center gap-1.5 sm:gap-2">
                     <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-emerald-400 animate-ping"></span>
-                    <span className="font-semibold text-[10px] sm:text-[11px]">ገልጋይ Escrow Handoff</span>
+                    <span className="font-semibold text-[9px] sm:text-[11px]">ገልጋይ Escrow Handoff</span>
                   </div>
-                  <span className="text-[9px] sm:text-[10px] text-white/60">Posta Bet · Adama</span>
+                  <span className="text-[8px] sm:text-[10px] text-white/60">Posta Bet · Adama</span>
                 </div>
               </div>
 
               {/* Video Footer Metadata */}
-              <div className="p-2.5 sm:p-4 space-y-1 sm:space-y-2">
-                <div className="flex items-center justify-between text-[10px] sm:text-xs font-mono text-[#A5A096]">
+              <div className="p-2 sm:p-4 space-y-0.5 sm:space-y-2">
+                <div className="flex items-center justify-between text-[9px] sm:text-xs font-mono text-[#A5A096]">
                   <span>Curated Motion Reel</span>
-                  <span className="text-[#EB5B00] font-semibold">100% Escrow Protected</span>
+                  <span className="text-[#EB5B00] font-semibold">100% Escrow</span>
                 </div>
-                <h3 className="font-serif text-sm sm:text-lg md:text-xl font-medium text-white leading-snug">
+                <h3 className="hidden sm:block font-serif text-sm sm:text-lg md:text-xl font-medium text-white leading-snug">
                   Physical Inspection &amp; Same-Day Hand-off
                 </h3>
               </div>
