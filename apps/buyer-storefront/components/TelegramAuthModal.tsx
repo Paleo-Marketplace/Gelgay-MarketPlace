@@ -412,7 +412,8 @@ export default function TelegramAuthModal({
     setBusy(true);
     try {
       const returnUrl = typeof window !== 'undefined' ? window.location.pathname : '/';
-      const res = await fetch(`${apiUrl}/api/auth/google/url?role=${selectedRole}&returnUrl=${encodeURIComponent(returnUrl)}`, {
+      const clientOrigin = typeof window !== 'undefined' ? window.location.origin : '';
+      const res = await fetch(`${apiUrl}/api/auth/google/url?role=${selectedRole}&returnUrl=${encodeURIComponent(returnUrl)}&origin=${encodeURIComponent(clientOrigin)}`, {
         credentials: 'include'
       });
       const data = await res.json();
