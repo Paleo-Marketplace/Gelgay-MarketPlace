@@ -96,7 +96,7 @@ export const CATEGORIES = [
   }
 ];
 
-export const MOCK_PRODUCTS: Product[] = [
+export const PRODUCTS: Product[] = [
   {
     id: 'prod-1',
     title: 'Braun ET66 Calculator - Dieter Rams (1987)',
