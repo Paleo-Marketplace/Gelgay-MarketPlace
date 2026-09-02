@@ -44,7 +44,7 @@ export default function HeroSection({
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-8 items-center">
           
           {/* Main Headline & CTAs */}
-          <div className="md:col-span-7 space-y-4 md:space-y-8">
+          <div className="md:col-span-8 space-y-4 md:space-y-8">
             <h1 className="font-serif text-xl sm:text-4xl md:text-6xl lg:text-7xl tracking-tight text-[#1F1E1B] dark:text-[#FAF8F5] leading-[1.1] sm:leading-[1.05] md:leading-[1.02] font-normal break-words">
               Good things <br />
               <span className="italic font-light text-[#EB5B00]">deserve</span> second life.
@@ -109,53 +109,50 @@ export default function HeroSection({
           </div>
 
           {/* Right Side: Rectangular Shaped Video Frame (animate.mp4) */}
-          <div className="md:col-span-5 max-w-[190px] sm:max-w-[240px] md:max-w-none mx-auto w-full">
-            <div className="relative bg-[#121316] text-[#FAF8F5] p-1 sm:p-3 border border-[#363430] shadow-2xl rounded-lg sm:rounded-2xl overflow-hidden group">
+          <div className="md:col-span-4 lg:col-span-4 max-w-[120px] sm:max-w-[150px] md:max-w-[220px] lg:max-w-[250px] mx-auto w-full">
+            <div className="relative bg-[#121316] text-[#FAF8F5] p-1 sm:p-2 border border-[#363430] shadow-xl rounded-lg sm:rounded-xl overflow-hidden group">
               
               {/* Window Header Bar (Browser / Screen Mockup) */}
-              <div className="flex items-center justify-between pb-1.5 sm:pb-3 px-1.5 sm:px-2 border-b border-[#2A2B30] mb-1.5 sm:mb-2 font-mono text-[9px] sm:text-[11px] text-[#A5A096]">
-                <div className="flex items-center gap-1.5">
-                  <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#EF4444]/80"></div>
-                  <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#F59E0B]/80"></div>
-                  <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#10B981]/80"></div>
-                  <span className="ml-1 sm:ml-2 text-white/50 text-[8px] sm:text-[10px]">gelgay-motion.mp4</span>
+              <div className="flex items-center justify-between pb-1 sm:pb-1.5 px-1 sm:px-1.5 border-b border-[#2A2B30] mb-1 font-mono text-[7px] sm:text-[10px] text-[#A5A096]">
+                <div className="flex items-center gap-1">
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#EF4444]/80"></div>
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#F59E0B]/80"></div>
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#10B981]/80"></div>
+                  <span className="ml-1 text-white/50 text-[7px] sm:text-[9px] truncate max-w-[65px] sm:max-w-none">gelgay-motion.mp4</span>
                 </div>
-                <div className="flex items-center gap-1 text-[#EB5B00]">
-                  <Sparkles className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5" />
-                  <span className="text-[8px] sm:text-xs font-semibold">LIVE REEL</span>
+                <div className="flex items-center gap-0.5 text-[#EB5B00]">
+                  <Sparkles className="w-2 h-2 sm:w-3 sm:h-3" />
+                  <span className="text-[7px] sm:text-[10px] font-semibold">LIVE</span>
                 </div>
               </div>
 
               {/* Video Player in Styled Rectangular Frame */}
-              <div className="relative aspect-16/9 sm:aspect-16/10 rounded-md sm:rounded-xl overflow-hidden bg-[#0D0E11] border border-white/10 shadow-inner">
+              <div className="relative aspect-16/9 rounded-md sm:rounded-lg overflow-hidden bg-[#0D0E11] border border-white/10 shadow-inner">
                 <video
                   src="/assets/animate.mp4"
                   autoPlay
                   loop
                   muted
                   playsInline
-                  className="w-full h-full object-cover rounded-md sm:rounded-lg transform group-hover:scale-[1.02] transition-transform duration-700 ease-out"
+                  className="w-full h-full object-cover rounded-md transform group-hover:scale-[1.02] transition-transform duration-700 ease-out"
                 />
                 
                 {/* Floating Glassmorphic Pill */}
-                <div className="absolute bottom-1.5 left-1.5 right-1.5 sm:bottom-3 sm:left-3 sm:right-3 px-2 py-1 sm:px-3 sm:py-2 bg-black/60 backdrop-blur-md border border-white/15 rounded-md sm:rounded-lg flex items-center justify-between text-[9px] sm:text-xs font-mono text-white/90 z-10">
-                  <div className="flex items-center gap-1.5 sm:gap-2">
-                    <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-emerald-400 animate-ping"></span>
-                    <span className="font-semibold text-[9px] sm:text-[11px]">ገልጋይ Escrow Handoff</span>
+                <div className="absolute bottom-1 left-1 right-1 sm:bottom-2 sm:left-2 sm:right-2 px-1.5 py-0.5 sm:px-2 sm:py-1 bg-black/60 backdrop-blur-md border border-white/15 rounded flex items-center justify-between text-[7px] sm:text-[10px] font-mono text-white/90 z-10">
+                  <div className="flex items-center gap-1">
+                    <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+                    <span className="font-semibold text-[7px] sm:text-[9px] truncate">Escrow Handoff</span>
                   </div>
-                  <span className="text-[8px] sm:text-[10px] text-white/60">Posta Bet · Adama</span>
+                  <span className="hidden sm:inline text-[7px] sm:text-[9px] text-white/60">Adama</span>
                 </div>
               </div>
 
               {/* Video Footer Metadata */}
-              <div className="p-2 sm:p-4 space-y-0.5 sm:space-y-2">
-                <div className="flex items-center justify-between text-[9px] sm:text-xs font-mono text-[#A5A096]">
-                  <span>Curated Motion Reel</span>
-                  <span className="text-[#EB5B00] font-semibold">100% Escrow</span>
+              <div className="p-1 sm:p-2 space-y-0.5">
+                <div className="flex items-center justify-between text-[7px] sm:text-[10px] font-mono text-[#A5A096]">
+                  <span className="truncate">Motion Reel</span>
+                  <span className="text-[#EB5B00] font-semibold shrink-0">100% Escrow</span>
                 </div>
-                <h3 className="hidden sm:block font-serif text-sm sm:text-lg md:text-xl font-medium text-white leading-snug">
-                  Physical Inspection &amp; Same-Day Hand-off
-                </h3>
               </div>
             </div>
           </div>
