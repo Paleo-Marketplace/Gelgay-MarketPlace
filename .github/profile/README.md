@@ -1,7 +1,7 @@
 # ገልጋይ (Gelgay) · PALEO Marketplace
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/Paleo-Marketplace/Gelgay-MarketPlace/main/apps/buyer-storefront/public/assets/gelgay_logo_lockup.png" alt="ገልጋይ (Gelgay) Marketplace" width="340" />
+  <img src="https://raw.githubusercontent.com/Paleo-Marketplace/.github/main/assets/gelgay_logo_lockup.png" alt="ገልጋይ (Gelgay) Marketplace" width="340" />
 
   <p>
     <strong>"Good things deserve second life" · መልካም ነገሮች ሁለተኛ ሕይወት ይገባቸዋል</strong>
