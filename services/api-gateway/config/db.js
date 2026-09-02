@@ -10,7 +10,7 @@ const connectDB = async () => {
   if (mongoUri) {
     try {
       await mongoose.connect(mongoUri, {
-        serverSelectionTimeoutMS: 3000,
+        serverSelectionTimeoutMS: 10000,
         autoIndex: process.env.NODE_ENV !== 'production'
       });
       console.log('[MongoDB] Connected to external cluster at', mongoUri.split('@').pop() || mongoUri);
@@ -26,10 +26,14 @@ const connectDB = async () => {
         // Non-fatal if admin commands are restricted or already active
       }
 
-      return;
+      return true;
     } catch (err) {
-      console.warn('[MongoDB] Direct connection failed:', err.message);
-      if (process.env.NODE_ENV === 'production') throw err;
+      console.warn('[MongoDB] Direct connection attempt failed:', err.message);
+      if (process.env.NODE_ENV === 'production') {
+        console.warn('[MongoDB] Will keep attempting to connect in the background...');
+        setTimeout(() => connectDB().catch(() => {}), 5000);
+        return false;
+      }
       console.log('[MongoDB] Switching to In-Memory Replica Set for local testing & development...');
     }
   }
