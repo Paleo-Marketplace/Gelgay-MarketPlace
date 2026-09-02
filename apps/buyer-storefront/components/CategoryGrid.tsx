@@ -50,21 +50,21 @@ export default function CategoryGrid({ onSelectCategory }: CategoryGridProps) {
     switch (index) {
       case 0:
         // 01: Electronics (Hero Card: full width on mobile, 7 cols / 2 rows on tablet+)
-        return 'col-span-12 md:col-span-7 md:row-span-2 min-h-[200px] sm:min-h-[300px] md:min-h-[580px]';
+        return 'col-span-12 md:col-span-7 md:row-span-2 min-h-[160px] sm:min-h-[260px] md:min-h-[580px]';
       case 1:
         // 02: Furniture (6 cols on mobile = 2-column grid, 5 cols on tablet+)
-        return 'col-span-6 md:col-span-5 min-h-[140px] sm:min-h-[200px] md:min-h-[275px]';
+        return 'col-span-6 md:col-span-5 min-h-[115px] sm:min-h-[180px] md:min-h-[275px]';
       case 2:
         // 03: Studio Gear (6 cols on mobile = 2-column grid, 5 cols on tablet+)
-        return 'col-span-6 md:col-span-5 min-h-[140px] sm:min-h-[200px] md:min-h-[275px]';
+        return 'col-span-6 md:col-span-5 min-h-[115px] sm:min-h-[180px] md:min-h-[275px]';
       case 3:
         // 04: Archival Wear (6 cols on mobile = 2-column grid, 6 cols on tablet+)
-        return 'col-span-6 md:col-span-6 min-h-[140px] sm:min-h-[200px] md:min-h-[290px]';
+        return 'col-span-6 md:col-span-6 min-h-[115px] sm:min-h-[180px] md:min-h-[290px]';
       case 4:
         // 05: Rare Reads (6 cols on mobile = 2-column grid, 6 cols on tablet+)
-        return 'col-span-6 md:col-span-6 min-h-[140px] sm:min-h-[200px] md:min-h-[290px]';
+        return 'col-span-6 md:col-span-6 min-h-[115px] sm:min-h-[180px] md:min-h-[290px]';
       default:
-        return 'col-span-6 md:col-span-6 min-h-[140px]';
+        return 'col-span-6 md:col-span-6 min-h-[115px]';
     }
   };
 

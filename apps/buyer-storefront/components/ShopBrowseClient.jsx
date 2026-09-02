@@ -308,7 +308,7 @@ export default function ShopBrowseClient({ initialProducts, apiUrl = process.env
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2.5 sm:gap-6">
             {filteredProducts.map((p) => {
               const isWishlisted = wishlistIds.includes(p.id);
               const inCart = cart.some((c) => c._id === p.id);
@@ -316,12 +316,12 @@ export default function ShopBrowseClient({ initialProducts, apiUrl = process.env
               return (
                 <div
                   key={p.id}
-                  className="group bg-white/85 backdrop-blur-md border border-white/70 rounded-2xl sm:rounded-3xl overflow-hidden hover:border-[#C85A32]/60 hover:shadow-2xl hover:bg-white/95 transition-all duration-500 flex flex-col justify-between shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
+                  className="group bg-white/85 backdrop-blur-md border border-white/70 rounded-xl sm:rounded-3xl overflow-hidden hover:border-[#C85A32]/60 hover:shadow-2xl hover:bg-white/95 transition-all duration-500 flex flex-col justify-between shadow-xs sm:shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
                 >
                   {/* Image & Badges */}
                   <div
                     onClick={() => setSelectedProduct(p)}
-                    className="relative aspect-4/3 overflow-hidden bg-[#EFECE6] cursor-pointer"
+                    className="relative aspect-square sm:aspect-4/3 overflow-hidden bg-[#EFECE6] cursor-pointer"
                   >
                     <img
                       src={p.image}
@@ -333,8 +333,8 @@ export default function ShopBrowseClient({ initialProducts, apiUrl = process.env
                     />
 
                     {/* Category / Condition Badge */}
-                    <div className="absolute top-2.5 left-2.5 sm:top-3 sm:left-3 flex flex-col gap-1">
-                      <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 bg-[#1F1E1B]/90 backdrop-blur-xs text-[#FAF8F5] text-[9px] sm:text-[10px] font-mono uppercase tracking-wider rounded-md font-semibold">
+                    <div className="absolute top-1.5 left-1.5 sm:top-3 sm:left-3 flex flex-col gap-1">
+                      <span className="px-1.5 py-0.5 sm:px-2.5 sm:py-1 bg-[#1F1E1B]/90 backdrop-blur-xs text-[#FAF8F5] text-[8px] sm:text-[10px] font-mono uppercase tracking-wider rounded-sm font-semibold">
                         {p.condition}
                       </span>
                     </div>
@@ -345,41 +345,41 @@ export default function ShopBrowseClient({ initialProducts, apiUrl = process.env
                         e.stopPropagation();
                         toggleWishlist(p.id, apiUrl);
                       }}
-                      className="absolute top-2.5 right-2.5 sm:top-3 sm:right-3 p-1.5 sm:p-2 bg-white/90 backdrop-blur-xs rounded-full text-[#1F1E1B] hover:text-[#C85A32] shadow-xs transition-colors"
+                      className="absolute top-1.5 right-1.5 sm:top-3 sm:right-3 w-6 h-6 sm:w-8 sm:h-8 flex items-center justify-center bg-white/90 backdrop-blur-xs rounded-full text-[#1F1E1B] hover:text-[#C85A32] shadow-xs transition-colors"
                       title="Add to wishlist"
                     >
-                      <Heart className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${isWishlisted ? 'fill-[#C85A32] text-[#C85A32]' : ''}`} />
+                      <Heart className={`w-3 h-3 sm:w-4 sm:h-4 ${isWishlisted ? 'fill-[#C85A32] text-[#C85A32]' : ''}`} />
                     </button>
                   </div>
 
                   {/* Body Content */}
-                  <div className="p-3.5 sm:p-5 flex flex-col flex-1 justify-between space-y-3 sm:space-y-4">
-                    <div className="space-y-1 sm:space-y-1.5">
-                      <div className="flex items-center justify-between text-[10px] sm:text-[11px] font-mono text-[#7C776E]">
-                        <span>{p.tag}</span>
-                        <span className="flex items-center gap-1">
-                          <MapPin className="w-3 h-3 text-[#C85A32]" />
+                  <div className="p-2 sm:p-4 flex flex-col flex-1 justify-between space-y-2 sm:space-y-3">
+                    <div className="space-y-1">
+                      <div className="flex items-center justify-between text-[9px] sm:text-[11px] font-mono text-[#7C776E]">
+                        <span className="truncate max-w-[50%]">{p.tag?.split('/')[1] || p.tag}</span>
+                        <span className="flex items-center gap-0.5 sm:gap-1 shrink-0">
+                          <MapPin className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-[#C85A32]" />
                           {p.location.split(',')[0]}
                         </span>
                       </div>
 
                       <h3
                         onClick={() => setSelectedProduct(p)}
-                        className="font-serif text-base sm:text-lg font-bold text-[#1F1E1B] group-hover:text-[#C85A32] transition-colors cursor-pointer line-clamp-1"
+                        className="font-serif text-xs sm:text-base font-bold text-[#1F1E1B] group-hover:text-[#C85A32] transition-colors cursor-pointer line-clamp-1"
                       >
                         {p.title}
                       </h3>
 
-                      <p className="font-sans text-xs text-[#625D54] font-light line-clamp-2 leading-relaxed">
+                      <p className="hidden sm:block font-sans text-xs text-[#625D54] font-light line-clamp-2 leading-relaxed">
                         {p.description}
                       </p>
                     </div>
 
                     {/* Price & Add to Cart */}
-                    <div className="pt-3 border-t border-[#E8E4DC] flex items-center justify-between">
+                    <div className="pt-1.5 sm:pt-3 border-t border-[#E8E4DC] flex items-center justify-between">
                       <div>
-                        <span className="font-mono text-[10px] text-[#7C776E] block uppercase">Escrow Price</span>
-                        <span className="font-mono text-base font-bold text-[#1F1E1B]">
+                        <span className="font-mono text-[8px] sm:text-[10px] text-[#7C776E] block uppercase">Price</span>
+                        <span className="font-mono text-xs sm:text-base font-bold text-[#1F1E1B]">
                           {formatPrice(p.priceETB)}
                         </span>
                       </div>
@@ -395,7 +395,7 @@ export default function ShopBrowseClient({ initialProducts, apiUrl = process.env
                           });
                           setIsCartOpen(true);
                         }}
-                        className={`px-3.5 py-2 rounded-xl font-mono text-xs font-semibold uppercase tracking-wider transition-all flex items-center gap-1.5 ${
+                        className={`px-2 py-1 sm:px-3.5 sm:py-2 rounded-md sm:rounded-xl font-mono text-[9px] sm:text-xs font-semibold uppercase tracking-wider transition-all flex items-center gap-1 ${
                           inCart
                             ? 'bg-emerald-600 text-white'
                             : 'bg-[#1F1E1B] text-[#FAF8F5] hover:bg-[#C85A32]'
@@ -403,18 +403,17 @@ export default function ShopBrowseClient({ initialProducts, apiUrl = process.env
                       >
                         {inCart ? (
                           <>
-                            <CheckCircle2 className="w-3.5 h-3.5" />
+                            <CheckCircle2 className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                             <span>In Cart</span>
                           </>
                         ) : (
                           <>
-                            <ShoppingBag className="w-3.5 h-3.5" />
+                            <ShoppingBag className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                             <span>Add</span>
                           </>
                         )}
                       </button>
                     </div>
-
                   </div>
                 </div>
               );
