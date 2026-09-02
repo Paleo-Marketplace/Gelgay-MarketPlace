@@ -1,0 +1,39 @@
+{
+  "name": "@paleo/api-gateway",
+  "version": "1.0.0",
+  "description": "PALEO central Express API gateway with escrow, Telegram auth, OCR verification, Socket.io, Redis, Typesense and Cloudflare R2",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "check": "node --check server.js && find config constants middleware models routes services -name '*.js' -print0 | xargs -0 -n1 node --check",
+    "test": "node --test tests/commerce.test.js tests/security.test.js",
+    "db:clean": "node scripts/clean-db.js",
+    "seed": "SEED_DEMO_DATA=true node server.js",
+    "seed:demo": "SEED_DEMO_DATA=true node server.js"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.1108.0",
+    "bcrypt": "^6.0.0",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.3.1",
+    "form-data": "^4.0.0",
+    "google-auth-library": "^11.0.2",
+    "helmet": "^7.1.0",
+    "ioredis": "^6.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.5.2",
+    "multer": "^1.4.5-lts.1",
+    "node-cron": "^4.6.0",
+    "node-fetch": "^2.7.0",
+    "socket.io": "^4.8.3"
+  },
+  "devDependencies": {
+    "mongodb-memory-server": "^11.2.0",
+    "nodemon": "^3.1.4"
+  }
+}
