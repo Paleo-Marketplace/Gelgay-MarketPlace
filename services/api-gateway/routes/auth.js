@@ -185,12 +185,18 @@ const resolveOrCreateGoogleUser = async ({ googleId, email, displayName, avatar,
 
 // ---------------- Google OAuth Routes ----------------
 
+const sanitizeUrl = (url) => {
+  if (!url || typeof url !== 'string') return '';
+  return url.trim().replace(/[)\]'",\s]+$/, '').replace(/\/+$/, '');
+};
+
 const getGoogleCallbackUrl = (req) => {
   if (process.env.GOOGLE_CALLBACK_URL && process.env.GOOGLE_CALLBACK_URL.trim() !== '') {
-    return process.env.GOOGLE_CALLBACK_URL.trim();
+    const cleaned = sanitizeUrl(process.env.GOOGLE_CALLBACK_URL);
+    return cleaned.endsWith('/callback') ? cleaned : `${cleaned}/api/auth/google/callback`;
   }
   if (process.env.PUBLIC_API_URL && process.env.PUBLIC_API_URL.trim() !== '') {
-    return `${process.env.PUBLIC_API_URL.replace(/\/+$/, '')}/api/auth/google/callback`;
+    return `${sanitizeUrl(process.env.PUBLIC_API_URL)}/api/auth/google/callback`;
   }
   if (req) {
     const host = req.get('host');
@@ -205,10 +211,10 @@ const getGoogleCallbackUrl = (req) => {
 
 const getFrontendBaseUrl = (req, stateOrigin = null) => {
   if (stateOrigin && typeof stateOrigin === 'string' && stateOrigin.startsWith('http')) {
-    return stateOrigin.replace(/\/+$/, '');
+    return sanitizeUrl(stateOrigin);
   }
   if (process.env.BUYER_STORE_URL && process.env.BUYER_STORE_URL.trim() !== '') {
-    return process.env.BUYER_STORE_URL.replace(/\/+$/, '');
+    return sanitizeUrl(process.env.BUYER_STORE_URL);
   }
   if (req && req.headers.origin && !req.headers.origin.includes('localhost') && !req.headers.origin.includes('127.0.0.1')) {
     return req.headers.origin.replace(/\/+$/, '');
