@@ -41,7 +41,7 @@ export default function InlineAuthFooter({
   };
 
   return (
-    <footer className="bg-[#1F1E1B] text-[#FAF8F5] pt-20 pb-12 border-t border-[#363430]">
+    <footer className="bg-[#1F1E1B] text-[#FAF8F5] pt-20 pb-28 md:pb-12 border-t border-[#363430]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Frame 14-279: Login Split Section */}
