@@ -8,6 +8,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 const connectDB = require('./config/db');
+const mongoose = require('mongoose');
 const { initSocketServer } = require('./services/SocketService');
 const LogisticsService = require('./services/LogisticsService');
 const { captureException } = require('./config/sentry');
@@ -146,8 +147,12 @@ app.get(['/api/logistics/route', '/api/v1/logistics/route', '/api/logistics/rout
 });
 
 app.get('/health', (req, res) => {
-  res.json({
+  const dbStates = ['disconnected', 'connected', 'connecting', 'disconnecting'];
+  const dbStatus = dbStates[mongoose.connection.readyState] || 'unknown';
+
+  res.status(200).json({
     status: 'online',
+    database: dbStatus,
     service: 'ገልጋይ (GELGAY) API Gateway',
     integrations: {
       realtime: 'Socket.io WSS',
@@ -171,37 +176,41 @@ app.use((err, req, res, next) => {
   });
 });
 
-connectDB()
-  .then(async () => {
-    if (process.env.SEED_DEMO_DATA === 'true') {
-      await seedDemoData();
-    } else {
-      await initSystemData();
-    }
+// Immediately bind and listen on PORT to pass Render and cloud platform health checks
+httpServer.listen(PORT, () => {
+  console.log(`ገልጋይ (GELGAY) API Gateway listening on port ${PORT}`);
+});
 
-    // Start background Telegram polling for local development if Bot Token is present
-    if (process.env.TELEGRAM_BOT_TOKEN && !process.env.TELEGRAM_WEBHOOK_URL) {
-      try {
-        const TelegramPollingService = require('./services/TelegramPollingService');
-        TelegramPollingService.start();
-      } catch (err) {
-        console.warn('[Telegram Polling] Could not start polling daemon:', err.message);
+// Asynchronously initialize database, demo seeds, and background services
+(async () => {
+  try {
+    const isConnected = await connectDB();
+    if (isConnected) {
+      if (process.env.SEED_DEMO_DATA === 'true') {
+        await seedDemoData();
+      } else {
+        await initSystemData();
       }
     }
+  } catch (error) {
+    console.warn('[Database Init] Non-fatal startup warning:', error.message);
+  }
 
-    // Start background inventory cleanup cron (every 15 minutes)
+  // Start background Telegram polling for local development or polling daemons
+  if (process.env.TELEGRAM_BOT_TOKEN && !process.env.TELEGRAM_WEBHOOK_URL) {
     try {
-      const { initInventoryCleanupCron } = require('./services/InventoryCleanupCron');
-      initInventoryCleanupCron();
+      const TelegramPollingService = require('./services/TelegramPollingService');
+      TelegramPollingService.start();
     } catch (err) {
-      console.warn('[Inventory Cleanup Cron] Could not initialize cron job:', err.message);
+      console.warn('[Telegram Polling] Could not start polling daemon:', err.message);
     }
+  }
 
-    httpServer.listen(PORT, () => {
-      console.log(`ገልጋይ (GELGAY) API Gateway listening on http://localhost:${PORT}`);
-    });
-  })
-  .catch((error) => {
-    console.error('[Startup] failed:', error.message);
-    process.exit(1);
-  });
+  // Start background inventory cleanup cron (every 15 minutes)
+  try {
+    const { initInventoryCleanupCron } = require('./services/InventoryCleanupCron');
+    initInventoryCleanupCron();
+  } catch (err) {
+    console.warn('[Inventory Cleanup Cron] Could not initialize cron job:', err.message);
+  }
+})();
