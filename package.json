@@ -1,0 +1,39 @@
+{
+  "name": "paleo-marketplace",
+  "version": "1.0.0",
+  "private": true,
+  "description": "PALEO multi-vendor Ethiopian marketplace with escrow payments, Telegram auth, OCR verification and live courier tracking.",
+  "scripts": {
+    "dev": "concurrently -k -p \"[{name}]\" -n \"API,BUYER,VENDOR,ADMIN,COURIER\" -c \"cyan,green,yellow,blue,magenta\" \"npm run dev:api\" \"npm run dev:buyer\" \"npm run dev:vendor\" \"npm run dev:admin\" \"npm run dev:courier\"",
+    "dev:api": "npm run dev --workspace=@paleo/api-gateway",
+    "dev:buyer": "npm run dev --workspace=@paleo/buyer-storefront",
+    "dev:vendor": "npm run dev --workspace=@paleo/vendor-dashboard",
+    "dev:admin": "npm run dev --workspace=@paleo/admin-console",
+    "dev:courier": "npm run dev --workspace=@paleo/courier-web-view",
+    "build": "npm run build --workspace=@paleo/buyer-storefront && npm run build --workspace=@paleo/vendor-dashboard && npm run build --workspace=@paleo/admin-console && npm run build --workspace=@paleo/courier-web-view",
+    "check:api": "npm run check --workspace=@paleo/api-gateway",
+    "check": "npm run check:api",
+    "test": "npm run test --workspace=@paleo/api-gateway",
+    "test:security": "npm run test --workspace=@paleo/api-gateway",
+    "db:clean": "npm run db:clean --workspace=@paleo/api-gateway",
+    "seed:demo": "npm run seed:demo --workspace=@paleo/api-gateway",
+    "deploy": "bash scripts/deploy.sh",
+    "docker:up": "docker compose up -d --build",
+    "docker:down": "docker compose down",
+    "docker:logs": "docker compose logs -f"
+  },
+  "workspaces": [
+    "apps/buyer-storefront",
+    "apps/vendor-dashboard",
+    "apps/admin-console",
+    "apps/courier-web-view",
+    "services/api-gateway"
+  ],
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "overrides": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}
