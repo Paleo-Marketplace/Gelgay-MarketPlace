@@ -18,7 +18,6 @@ import ProductDetailModal from '../components/ProductDetailModal';
 import TelegramAuthModal from '../components/TelegramAuthModal';
 import NotificationDrawer from '../components/NotificationDrawer';
 import ReviewModal from '../components/ReviewModal';
-import MobileBottomNav from '../components/MobileBottomNav';
 import { useCartStore } from './stores/useCartStore';
 import { useWishlistStore } from './stores/useWishlistStore';
 
@@ -91,27 +90,34 @@ export default function StorefrontClient({ initialProducts, apiUrl }) {
   });
 
   const products = useMemo(() => {
-    if (!Array.isArray(rawProducts) || rawProducts.length === 0) return [];
-    return rawProducts.map((item, i) => {
-      const vendorName = typeof item.vendorId === 'object' && item.vendorId?.storeName ? item.vendorId.storeName : 'ገልጋይ Verified Seller';
-      const vendorRating = typeof item.vendorId === 'object' && item.vendorId?.rating?.average ? item.vendorId.rating.average : 4.9;
+    const sourceList = (Array.isArray(rawProducts) && rawProducts.length > 0)
+      ? rawProducts
+      : (Array.isArray(initialProducts) && initialProducts.length > 0 ? initialProducts : []);
+    
+    return sourceList.map((item, i) => {
+      const vendorName = typeof item.vendorId === 'object' && item.vendorId?.storeName 
+        ? item.vendorId.storeName 
+        : (item.vendorName || 'ገልጋይ Verified Seller');
+      const vendorRating = typeof item.vendorId === 'object' && item.vendorId?.rating?.average 
+        ? item.vendorId.rating.average 
+        : (item.vendorRating || 4.9);
       return {
-        id: item._id || `p-${i}`,
+        id: item._id || item.id || `p-${i}`,
         title: item.title,
         category: item.category || 'Everyday Carry',
-        tag: item.category === 'Everyday Carry' ? '01 / EVERYDAY CARRY' : item.category === 'Home Archive' ? '02 / HOME ARCHIVE' : item.category === 'Creative Tools' ? '03 / CREATIVE TOOLS' : item.category === 'Archival Wear' ? '04 / ARCHIVAL WEAR' : '05 / PAPER ARCHIVE',
-        priceETB: item.price,
+        tag: item.tag || (item.category === 'Everyday Carry' ? '01 / EVERYDAY CARRY' : item.category === 'Home Archive' ? '02 / HOME ARCHIVE' : item.category === 'Creative Tools' ? '03 / CREATIVE TOOLS' : item.category === 'Archival Wear' ? '04 / ARCHIVAL WEAR' : '05 / PAPER ARCHIVE'),
+        priceETB: item.priceETB ?? item.price ?? 0,
         condition: item.condition || 'Archival Condition',
         location: item.location?.label || (typeof item.location === 'string' ? item.location : (item.vendorId && typeof item.vendorId === 'object' && item.vendorId.address ? item.vendorId.address.split(',')[0].trim() : 'Adama')),
         vendorName,
         vendorRating,
-        image: item.images?.[0] || 'https://images.unsplash.com/photo-1587049352851-8d4e89133924?auto=format&fit=crop&w=1200&q=80',
+        image: item.image || item.images?.[0] || 'https://images.unsplash.com/photo-1587049352851-8d4e89133924?auto=format&fit=crop&w=1200&q=80',
         description: item.description || '',
-        specs: item.specs && typeof item.specs === 'object' ? (item.specs instanceof Map ? Object.fromEntries(item.specs) : item.specs) : { 'Archival Status': 'Verified Authenticity' },
-        escrowStatus: item.stock > 0 ? 'Available' : 'Out of Stock'
+        specs: item.specs && typeof item.specs === 'object' ? (item.specs instanceof Map ? Object.fromEntries(item.specs) : item.specs) : (item.specs || { 'Archival Status': 'Verified Authenticity' }),
+        escrowStatus: (item.stock === undefined || item.stock > 0) ? 'Available' : 'Out of Stock'
       };
     });
-  }, [rawProducts]);
+  }, [rawProducts, initialProducts]);
 
   const cartItems = useMemo(() => {
     return cart.map((item, i) => ({
@@ -314,12 +320,6 @@ export default function StorefrontClient({ initialProducts, apiUrl }) {
           apiUrl={apiUrl}
         />
       )}
-
-      {/* 16. Fluid Mobile Bottom Navigation Bar (iOS & Android) */}
-      <MobileBottomNav
-        onOpenCart={() => setIsCartOpen(true)}
-        onOpenSell={() => setIsSellOpen(true)}
-      />
 
     </div>
   );
