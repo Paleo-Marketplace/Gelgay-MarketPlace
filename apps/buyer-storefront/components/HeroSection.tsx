@@ -41,23 +41,23 @@ export default function HeroSection({
         </div>
 
         {/* Main Headline Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-8 items-center">
           
           {/* Main Headline & CTAs */}
-          <div className="lg:col-span-7 space-y-8">
-            <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-[#1F1E1B] leading-[1.02] font-normal">
+          <div className="md:col-span-7 space-y-5 md:space-y-8">
+            <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-[#1F1E1B] leading-[1.05] md:leading-[1.02] font-normal">
               Good things <br />
               <span className="italic font-light text-[#EB5B00]">deserve</span> second life.
             </h1>
 
-            <p className="font-sans text-lg sm:text-xl text-[#524E46] max-w-2xl leading-relaxed font-light">
+            <p className="font-sans text-base sm:text-xl text-[#524E46] max-w-2xl leading-relaxed font-light">
               <strong className="text-[#1F1E1B] font-semibold">ገልጋይ (Gelgay)</strong> connects design enthusiasts, collectors, and verified vendors across Ethiopia. 
               Discover authenticated vintage electronics, mid-century furniture, archival fashion, 
               and studio gear with safe escrow buyer protection.
             </p>
 
             {/* Action Buttons */}
-            <div className="flex flex-wrap items-center gap-3 pt-2">
+            <div className="flex flex-wrap items-center gap-3 pt-1 md:pt-2">
               {isSeller ? (
                 <>
                   <button
@@ -109,7 +109,7 @@ export default function HeroSection({
           </div>
 
           {/* Right Side: Rectangular Shaped Video Frame (animate.mp4) like mikiasabera.vercel.app */}
-          <div className="lg:col-span-5">
+          <div className="md:col-span-5">
             <div className="relative bg-[#121316] text-[#FAF8F5] p-3 border border-[#363430] shadow-2xl rounded-2xl overflow-hidden group">
               
               {/* Window Header Bar (Browser / Screen Mockup) */}
