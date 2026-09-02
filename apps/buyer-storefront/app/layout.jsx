@@ -3,6 +3,16 @@ import Providers from './providers';
 import './globals.css';
 import 'leaflet/dist/leaflet.css';
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#FAF8F5' },
+    { media: '(prefers-color-scheme: dark)', color: '#141312' }
+  ]
+};
+
 export const metadata = {
   title: 'ገልጋይ (Gelgay) | Good things deserve second life',
   description: 'Ethiopian curated multi-vendor marketplace with escrow buyer protection, CBE/Telebirr verification, and live courier tracking. Good things deserve second life.'
