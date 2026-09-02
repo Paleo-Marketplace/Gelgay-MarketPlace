@@ -195,7 +195,9 @@ const getGoogleCallbackUrl = (req) => {
   if (req) {
     const host = req.get('host');
     if (host && !host.includes('localhost') && !host.includes('127.0.0.1')) {
-      return `${req.protocol}://${host}/api/auth/google/callback`;
+      const proto = req.headers['x-forwarded-proto'] || req.protocol || 'https';
+      const scheme = (process.env.NODE_ENV === 'production' || proto.includes('https')) ? 'https' : 'http';
+      return `${scheme}://${host}/api/auth/google/callback`;
     }
   }
   return 'http://localhost:5000/api/auth/google/callback';
