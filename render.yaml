@@ -1,0 +1,32 @@
+services:
+  - type: web
+    name: gelgay-api
+    runtime: node
+    plan: free
+    region: frankfurt
+    rootDir: services/api-gateway
+    buildCommand: npm install
+    startCommand: node server.js
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRES_IN
+        value: 7d
+      - key: ALLOWED_ORIGINS
+        value: https://gelgay-marketplace.vercel.app,http://localhost:3000
+      - key: COOKIE_SAMESITE
+        value: none
+      - key: SEED_DEMO_DATA
+        value: "true"
+      - key: MONGO_URI
+        sync: false
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: PUBLIC_API_URL
+        sync: false
