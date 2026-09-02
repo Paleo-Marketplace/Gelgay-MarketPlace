@@ -35,7 +35,7 @@ export default function MobileBottomNav({
   const isBuyer = isAuthenticated && !isSeller;
 
   return (
-    <div className="block md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#FAF8F5]/95 backdrop-blur-xl border-t border-[#E2DDD3] pb-safe shadow-lg">
+    <div className="block md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#FAF8F5]/95 dark:bg-[#151412]/95 backdrop-blur-xl border-t border-[#E2DDD3] dark:border-[#2C2924] pb-safe shadow-lg">
       <div className="grid grid-cols-5 h-16 max-w-md mx-auto items-center px-1">
         
         {/* 1. Explore / Shop */}
@@ -43,8 +43,8 @@ export default function MobileBottomNav({
           href="/shop"
           className={`flex flex-col items-center justify-center gap-1 py-1 tap-feedback transition-colors ${
             pathname === '/shop' || pathname === '/'
-              ? 'text-[#C85A32]'
-              : 'text-[#7C776E] hover:text-[#1F1E1B]'
+              ? 'text-[#C85A32] font-semibold'
+              : 'text-[#7C776E] hover:text-[#1F1E1B] dark:text-[#A5A096] dark:hover:text-[#FAF8F5]'
           }`}
         >
           <Compass className="w-5 h-5" />
@@ -56,8 +56,8 @@ export default function MobileBottomNav({
           href="/shops"
           className={`flex flex-col items-center justify-center gap-1 py-1 tap-feedback transition-colors relative ${
             pathname === '/shops' || pathname === '/nearby'
-              ? 'text-[#C85A32]'
-              : 'text-[#7C776E] hover:text-[#1F1E1B]'
+              ? 'text-[#C85A32] font-semibold'
+              : 'text-[#7C776E] hover:text-[#1F1E1B] dark:text-[#A5A096] dark:hover:text-[#FAF8F5]'
           }`}
         >
           <div className="relative">
@@ -73,8 +73,8 @@ export default function MobileBottomNav({
           href="/categories"
           className={`flex flex-col items-center justify-center gap-1 py-1 tap-feedback transition-colors ${
             pathname === '/categories'
-              ? 'text-[#C85A32]'
-              : 'text-[#7C776E] hover:text-[#1F1E1B]'
+              ? 'text-[#C85A32] font-semibold'
+              : 'text-[#7C776E] hover:text-[#1F1E1B] dark:text-[#A5A096] dark:hover:text-[#FAF8F5]'
           }`}
         >
           <Grid className="w-5 h-5" />
@@ -87,8 +87,8 @@ export default function MobileBottomNav({
             href="/orders"
             className={`flex flex-col items-center justify-center gap-1 py-1 tap-feedback transition-colors ${
               pathname === '/orders'
-                ? 'text-[#C85A32]'
-                : 'text-[#7C776E] hover:text-[#1F1E1B]'
+                ? 'text-[#C85A32] font-semibold'
+                : 'text-[#7C776E] hover:text-[#1F1E1B] dark:text-[#A5A096] dark:hover:text-[#FAF8F5]'
             }`}
           >
             <ClipboardList className="w-5 h-5" />
@@ -99,8 +99,8 @@ export default function MobileBottomNav({
             href="/track"
             className={`flex flex-col items-center justify-center gap-1 py-1 tap-feedback transition-colors ${
               pathname === '/track'
-                ? 'text-[#C85A32]'
-                : 'text-[#7C776E] hover:text-[#1F1E1B]'
+                ? 'text-[#C85A32] font-semibold'
+                : 'text-[#7C776E] hover:text-[#1F1E1B] dark:text-[#A5A096] dark:hover:text-[#FAF8F5]'
             }`}
           >
             <Truck className="w-5 h-5" />
@@ -111,8 +111,8 @@ export default function MobileBottomNav({
             href="/buyer-protection"
             className={`flex flex-col items-center justify-center gap-1 py-1 tap-feedback transition-colors ${
               pathname === '/buyer-protection'
-                ? 'text-[#C85A32]'
-                : 'text-[#7C776E] hover:text-[#1F1E1B]'
+                ? 'text-[#C85A32] font-semibold'
+                : 'text-[#7C776E] hover:text-[#1F1E1B] dark:text-[#A5A096] dark:hover:text-[#FAF8F5]'
             }`}
           >
             <ShieldCheck className="w-5 h-5" />
@@ -136,7 +136,7 @@ export default function MobileBottomNav({
           <button
             type="button"
             onClick={onOpenCart}
-            className="flex flex-col items-center justify-center gap-1 py-1 text-[#7C776E] hover:text-[#1F1E1B] tap-feedback relative"
+            className="flex flex-col items-center justify-center gap-1 py-1 text-[#7C776E] hover:text-[#1F1E1B] dark:text-[#A5A096] dark:hover:text-[#FAF8F5] tap-feedback relative"
           >
             <div className="relative">
               <ShoppingBag className="w-5 h-5" />
