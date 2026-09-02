@@ -1,0 +1,678 @@
+/* Generated PALEO navigation: design tokens remain in app/globals.css. */
+.navigationBar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0;
+  padding: 14px 32px;
+  background-color: rgba(251, 249, 244, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-antiquewhite);
+  color: var(--color-gray);
+  font-family: var(--font-manrope);
+  font-size: var(--fs-14);
+  letter-spacing: normal;
+  line-height: normal;
+  text-align: left;
+  transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease;
+}
+
+/* Compact brand lockup from the generated design. */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 34px;
+  color: inherit;
+  font-size: var(--fs-22);
+  text-decoration: none;
+}
+
+.brandName {
+  font: 800 inherit;
+}
+
+.brandMark {
+  color: var(--color-salmon);
+  font-family: var(--font-fraunces);
+  font-weight: 700;
+}
+
+.primaryLinks {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.navLink,
+.loginButton,
+.utilityButton,
+.themeButton {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+}
+
+.navLink {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 0;
+  color: var(--color-gray);
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 140ms ease, opacity 140ms ease;
+}
+
+.navLinkIcon {
+  width: 14px;
+  height: 14px;
+  stroke-width: 2;
+  opacity: 0.8;
+  transition: transform 140ms ease, opacity 140ms ease;
+  shrink: 0;
+}
+
+.navLink:hover {
+  color: var(--color-salmon);
+}
+
+.navLink:hover .navLinkIcon {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+.utilityActions {
+  display: flex;
+  align-items: center;
+  gap: 23.8px;
+  height: var(--height-26);
+}
+
+.utilityButton {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--width-20);
+  height: var(--height-20);
+  padding: 0;
+  cursor: pointer;
+}
+
+.utilityIcon {
+  width: var(--width-20);
+  height: var(--height-20);
+  stroke-width: 1.75;
+}
+
+.actionBadge {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  display: grid;
+  min-width: 14px;
+  height: 14px;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--color-salmon);
+  color: var(--color-floralwhite);
+  font-size: 9px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.loginButton {
+  padding: 0;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.accountButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px 4px 4px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--color-antiquewhite);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 160ms ease;
+  font-family: var(--font-manrope);
+  color: inherit;
+}
+
+.accountButton:hover {
+  border-color: var(--color-salmon);
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.accountAvatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #faf3f0;
+  border: 1px solid var(--color-salmon);
+  color: var(--color-salmon);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-fraunces);
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.accountName {
+  font-size: 12px;
+  font-weight: 600;
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.accountRoleBadge {
+  font-size: 9px;
+  font-family: monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: #1f1e1b;
+  color: #faf8f5;
+  padding: 2px 6px;
+  border-radius: 999px;
+  letter-spacing: 0.5px;
+}
+
+.themeButton {
+  display: grid;
+  width: 26px;
+  height: var(--height-26);
+  padding: 0;
+  place-items: center;
+  border-radius: 100px;
+  cursor: pointer;
+}
+
+.themeButton img {
+  width: 14px;
+  height: 14px;
+}
+
+.navLink:hover,
+.loginButton:hover,
+.utilityButton:hover {
+  color: var(--color-salmon);
+}
+
+.themeButton:hover {
+  background: var(--color-antiquewhite);
+}
+
+.navLink:focus-visible,
+.loginButton:focus-visible,
+.utilityButton:focus-visible,
+.themeButton:focus-visible,
+.brand:focus-visible {
+  outline: 2px solid var(--color-salmon);
+  outline-offset: 4px;
+}
+
+/* Theme button affects the header only, avoiding unintended global theme changes. */
+.darkNavigation {
+  background-color: #141312 !important;
+  color: #FAF8F5 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
+.darkNavigation .themeButton {
+  background: rgba(255, 255, 255, 0.12);
+  color: #FAF8F5;
+  border-radius: 999px;
+}
+
+.darkNavigation .themeButton:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.darkNavigation .accountButton {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #FAF8F5;
+}
+
+.darkNavigation .accountButton:hover {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: var(--color-salmon);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+}
+
+.darkNavigation .accountAvatar {
+  background: rgba(200, 90, 50, 0.3);
+  border-color: var(--color-salmon);
+  color: #FFA07A;
+}
+
+.darkNavigation .accountName {
+  color: #FAF8F5;
+}
+
+.darkNavigation .accountRoleBadge {
+  background: var(--color-salmon);
+  color: #FFFFFF;
+}
+
+.darkNavigation .loginButton {
+  color: #FAF8F5;
+}
+
+.darkNavigation .loginButton:hover {
+  color: var(--color-salmon);
+}
+
+.darkNavigation .utilityIcon {
+  stroke: #FAF8F5;
+}
+
+.darkNavigation .navLink {
+  color: #FAF8F5 !important;
+}
+
+.darkNavigation .navLink:hover {
+  color: var(--color-salmon) !important;
+}
+
+.hamburgerButton {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: var(--width-20);
+  height: var(--height-20);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* Mobile Drawer Backdrop */
+.mobileDrawerBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(15, 14, 12, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  animation: backdropFadeIn 200ms ease forwards;
+}
+
+@keyframes backdropFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Mobile Drawer Panel */
+.mobileDrawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2001;
+  width: 88vw;
+  max-width: 400px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #FAF9F4;
+  color: #1F1E1B;
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.15);
+  transform: translateX(100%);
+  transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1);
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.mobileDrawerOpen {
+  transform: translateX(0);
+}
+
+.mobileDrawerHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--color-antiquewhite);
+}
+
+.mobileDrawerHeaderActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mobileDrawerCloseBtn {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--color-antiquewhite);
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  transition: background 140ms ease;
+}
+
+.mobileDrawerCloseBtn:hover {
+  background: var(--color-antiquewhite);
+  color: var(--color-salmon);
+}
+
+/* Mobile Auth Banner */
+.mobileAuthCard {
+  padding: 16px 20px;
+  background: rgba(200, 90, 50, 0.05);
+  border-bottom: 1px solid var(--color-antiquewhite);
+}
+
+.mobileUserBox {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mobileUserHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mobileUserInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mobileUserName {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1F1E1B;
+}
+
+.mobileAccountActionBtn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background: #FFFFFF;
+  border: 1px solid var(--color-antiquewhite);
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1F1E1B;
+  cursor: pointer;
+  text-align: center;
+  transition: border-color 140ms ease;
+}
+
+.mobileAccountActionBtn:hover {
+  border-color: var(--color-salmon);
+  color: var(--color-salmon);
+}
+
+.mobileLoginPrimaryBtn {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background: #1F1E1B;
+  color: #FAF8F5;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  letter-spacing: 0.3px;
+  transition: background-color 140ms ease;
+}
+
+.mobileLoginPrimaryBtn:hover {
+  background: #C85A32;
+}
+
+/* Mobile Nav Links */
+.mobileNavLinks {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0;
+  flex: 1;
+}
+
+.mobileNavLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #2D2B26;
+  text-decoration: none;
+  border-left: 3px solid transparent;
+  transition: background 140ms ease, color 140ms ease;
+}
+
+.mobileNavLinkBtn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 13px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #2D2B26;
+  background: transparent;
+  border: none;
+  border-left: 3px solid transparent;
+  text-align: left;
+  cursor: pointer;
+  transition: background 140ms ease, color 140ms ease;
+}
+
+.mobileNavLink:hover,
+.mobileNavLinkBtn:hover {
+  background: rgba(200, 90, 50, 0.08);
+  border-left-color: var(--color-salmon);
+  color: var(--color-salmon);
+}
+
+.mobileNavLinkHighlight {
+  color: var(--color-salmon);
+  font-weight: 700;
+}
+
+.mobileNavLinkAdmin {
+  color: #C85A32;
+  font-weight: 700;
+  background: rgba(200, 90, 50, 0.06);
+}
+
+.mobileNavChevron {
+  font-size: 14px;
+  opacity: 0.5;
+  transition: transform 140ms ease;
+}
+
+.mobileNavLink:hover .mobileNavChevron,
+.mobileNavLinkBtn:hover .mobileNavChevron {
+  transform: translateX(3px);
+  opacity: 1;
+}
+
+.mobileNavDivider {
+  height: 1px;
+  background: var(--color-antiquewhite);
+  margin: 8px 20px;
+}
+
+/* Mobile Drawer Footer */
+.mobileDrawerFooter {
+  padding: 18px 20px;
+  border-top: 1px solid var(--color-antiquewhite);
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.mobileQuickActions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.mobileQuickActionBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px;
+  background: #FFFFFF;
+  border: 1px solid var(--color-antiquewhite);
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #524E46;
+  cursor: pointer;
+  transition: all 140ms ease;
+}
+
+.mobileQuickActionBtn:hover {
+  border-color: var(--color-salmon);
+  color: var(--color-salmon);
+}
+
+.mobileDrawerTrustTag {
+  text-align: center;
+  font-family: monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #8C877D;
+}
+
+/* Dark theme overrides for Mobile Drawer */
+.darkMobileDrawer {
+  background-color: #191816;
+  color: #FAF8F5;
+  box-shadow: -10px 0 35px rgba(0, 0, 0, 0.6);
+}
+
+.darkMobileDrawer .mobileDrawerHeader,
+.darkMobileDrawer .mobileAuthCard,
+.darkMobileDrawer .mobileNavDivider,
+.darkMobileDrawer .mobileDrawerFooter {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.darkMobileDrawer .mobileDrawerCloseBtn {
+  border-color: rgba(255, 255, 255, 0.15);
+  color: #FAF8F5;
+}
+
+.darkMobileDrawer .mobileDrawerCloseBtn:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.darkMobileDrawer .mobileUserName {
+  color: #FAF8F5;
+}
+
+.darkMobileDrawer .mobileAccountActionBtn {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: #FAF8F5;
+}
+
+.darkMobileDrawer .mobileLoginPrimaryBtn {
+  background: #C85A32;
+  color: #FFFFFF;
+}
+
+.darkMobileDrawer .mobileNavLink,
+.darkMobileDrawer .mobileNavLinkBtn {
+  color: #E2DDD3;
+}
+
+.darkMobileDrawer .mobileNavLink:hover,
+.darkMobileDrawer .mobileNavLinkBtn:hover {
+  background: rgba(200, 90, 50, 0.15);
+  color: #FFFFFF;
+}
+
+.darkMobileDrawer .mobileDrawerFooter {
+  background: #141312;
+}
+
+.darkMobileDrawer .mobileQuickActionBtn {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: #E2DDD3;
+}
+
+.darkMobileDrawer .mobileDrawerTrustTag {
+  color: #7A756D;
+}
+
+@media screen and (max-width: 1024px) {
+  .navigationBar {
+    padding: 16px 24px;
+  }
+
+  .primaryLinks {
+    display: none;
+  }
+
+  .hamburgerButton {
+    display: inline-flex;
+  }
+}
+
+@media screen and (max-width: 675px) {
+  .navigationBar {
+    padding: 12px 16px;
+  }
+
+  .brand {
+    font-size: 18px;
+  }
+
+  .primaryLinks {
+    display: none;
+  }
+
+  .hamburgerButton {
+    display: inline-flex;
+  }
+
+  .utilityActions {
+    gap: 12px;
+  }
+
+  .loginButton {
+    display: none;
+  }
+
+  .accountName {
+    display: none;
+  }
+}
