@@ -185,12 +185,51 @@ const resolveOrCreateGoogleUser = async ({ googleId, email, displayName, avatar,
 
 // ---------------- Google OAuth Routes ----------------
 
+const getGoogleCallbackUrl = (req) => {
+  if (process.env.GOOGLE_CALLBACK_URL && process.env.GOOGLE_CALLBACK_URL.trim() !== '') {
+    return process.env.GOOGLE_CALLBACK_URL.trim();
+  }
+  if (process.env.PUBLIC_API_URL && process.env.PUBLIC_API_URL.trim() !== '') {
+    return `${process.env.PUBLIC_API_URL.replace(/\/+$/, '')}/api/auth/google/callback`;
+  }
+  if (req) {
+    const host = req.get('host');
+    if (host && !host.includes('localhost') && !host.includes('127.0.0.1')) {
+      return `${req.protocol}://${host}/api/auth/google/callback`;
+    }
+  }
+  return 'http://localhost:5000/api/auth/google/callback';
+};
+
+const getFrontendBaseUrl = (req, stateOrigin = null) => {
+  if (stateOrigin && typeof stateOrigin === 'string' && stateOrigin.startsWith('http')) {
+    return stateOrigin.replace(/\/+$/, '');
+  }
+  if (process.env.BUYER_STORE_URL && process.env.BUYER_STORE_URL.trim() !== '') {
+    return process.env.BUYER_STORE_URL.replace(/\/+$/, '');
+  }
+  if (req && req.headers.origin && !req.headers.origin.includes('localhost') && !req.headers.origin.includes('127.0.0.1')) {
+    return req.headers.origin.replace(/\/+$/, '');
+  }
+  if (req && req.headers.referer) {
+    try {
+      const refUrl = new URL(req.headers.referer);
+      if (!refUrl.hostname.includes('localhost') && !refUrl.hostname.includes('127.0.0.1')) {
+        return refUrl.origin;
+      }
+    } catch (_) {}
+  }
+  if (process.env.NODE_ENV === 'production') {
+    return 'https://gelgay-marketplace.vercel.app';
+  }
+  return 'http://localhost:3000';
+};
+
 router.get('/google/url', (req, res) => {
   const clientId = process.env.GOOGLE_CLIENT_ID;
   const clientSecret = process.env.GOOGLE_CLIENT_SECRET;
   const role = ['buyer', 'vendor', 'admin'].includes(req.query.role) ? req.query.role : 'buyer';
   const returnUrl = req.query.returnUrl || '/';
-  const publicApiUrl = process.env.PUBLIC_API_URL || 'http://localhost:5000';
   const forceDev = req.query.dev === 'true' || process.env.USE_DEV_GOOGLE_AUTH === 'true';
 
   const isConfigured = Boolean(
@@ -204,14 +243,17 @@ router.get('/google/url', (req, res) => {
     !forceDev
   );
 
+  const frontendOrigin = getFrontendBaseUrl(req, req.query.origin);
+
   if (!isConfigured) {
     // Development fallback: built-in simulated Google Account Chooser
-    const authUrl = `${publicApiUrl}/api/auth/google/dev-consent?role=${role}&returnUrl=${encodeURIComponent(returnUrl)}`;
+    const publicApiUrl = (process.env.PUBLIC_API_URL || `${req.protocol}://${req.get('host')}`).replace(/\/+$/, '');
+    const authUrl = `${publicApiUrl}/api/auth/google/dev-consent?role=${role}&returnUrl=${encodeURIComponent(returnUrl)}&origin=${encodeURIComponent(frontendOrigin)}`;
     return res.json({ success: true, authUrl, isDevMock: true });
   }
 
-  const redirectUri = req.query.redirectUri || `${publicApiUrl}/api/auth/google/callback`;
-  const state = Buffer.from(JSON.stringify({ role, returnUrl })).toString('base64');
+  const redirectUri = req.query.redirectUri || getGoogleCallbackUrl(req);
+  const state = Buffer.from(JSON.stringify({ role, returnUrl, frontendOrigin })).toString('base64');
 
   const params = new URLSearchParams({
     client_id: clientId,
@@ -228,8 +270,9 @@ router.get('/google/url', (req, res) => {
 });
 
 router.get('/google/dev-consent', (req, res) => {
-  const { role = 'buyer', returnUrl = '/' } = req.query;
-  const publicApiUrl = process.env.PUBLIC_API_URL || 'http://localhost:5000';
+  const { role = 'buyer', returnUrl = '/', origin } = req.query;
+  const publicApiUrl = (process.env.PUBLIC_API_URL || `${req.protocol}://${req.get('host')}`).replace(/\/+$/, '');
+  const frontendOrigin = getFrontendBaseUrl(req, origin);
 
   const html = `
   <!DOCTYPE html>
@@ -271,6 +314,7 @@ router.get('/google/dev-consent', (req, res) => {
       <form method="POST" action="${publicApiUrl}/api/auth/google/dev-confirm">
         <input type="hidden" name="role" value="${role}">
         <input type="hidden" name="returnUrl" value="${returnUrl}">
+        <input type="hidden" name="origin" value="${frontendOrigin}">
 
         <button type="submit" name="preset" value="alex" class="account-item" style="width:100%; background:#fff; text-align:left;">
           <div class="avatar" style="background: #e11d48;">A</div>
@@ -308,7 +352,7 @@ router.get('/google/dev-consent', (req, res) => {
 });
 
 router.post('/google/dev-confirm', async (req, res) => {
-  const { preset, role = 'buyer', returnUrl = '/', customEmail, customName } = req.body;
+  const { preset, role = 'buyer', returnUrl = '/', origin, customEmail, customName } = req.body;
   let googleId, email, displayName, avatar;
 
   if (preset === 'alex') {
@@ -332,8 +376,8 @@ router.post('/google/dev-confirm', async (req, res) => {
   const user = await resolveOrCreateGoogleUser({ googleId, email, displayName, avatar, role });
   await issueAuthCookie(res, user);
 
-  const baseFrontendUrl = process.env.BUYER_STORE_URL || 'http://localhost:3000';
-  const target = returnUrl.startsWith('http') ? returnUrl : `${baseFrontendUrl}${returnUrl}`;
+  const baseFrontendUrl = getFrontendBaseUrl(req, origin);
+  const target = returnUrl.startsWith('http') ? returnUrl : `${baseFrontendUrl}${returnUrl.startsWith('/') ? returnUrl : `/${returnUrl}`}`;
   const verificationParam = !user.isEmailVerified ? '&needs_verification=true' : '';
   return res.redirect(`${target}${target.includes('?') ? '&' : '?'}auth_success=true${verificationParam}`);
 });
@@ -347,7 +391,7 @@ router.post('/google', async (req, res) => {
     if (idToken) {
       googleProfile = await verifyGoogleIdToken(idToken);
     } else if (code) {
-      const callbackUrl = redirectUri || `${process.env.PUBLIC_API_URL || 'http://localhost:5000'}/api/auth/google/callback`;
+      const callbackUrl = redirectUri || getGoogleCallbackUrl(req);
       googleProfile = await exchangeGoogleCode(code, callbackUrl);
     } else {
       return res.status(400).json({ success: false, message: 'token (Google ID Token) or authorization code is required' });
@@ -680,7 +724,7 @@ router.post('/dev-session', async (req, res) => {
 
 router.get('/google/callback', async (req, res) => {
   const { code, state, error } = req.query;
-  let parsedState = { role: 'buyer', returnUrl: '/' };
+  let parsedState = { role: 'buyer', returnUrl: '/', frontendOrigin: null };
 
   if (state) {
     try {
@@ -688,15 +732,18 @@ router.get('/google/callback', async (req, res) => {
     } catch (e) {}
   }
 
-  const baseFrontendUrl = process.env.BUYER_STORE_URL || 'http://localhost:3000';
-  const returnUrl = parsedState.returnUrl?.startsWith('http') ? parsedState.returnUrl : `${baseFrontendUrl}${parsedState.returnUrl || '/'}`;
+  const baseFrontendUrl = getFrontendBaseUrl(req, parsedState.frontendOrigin);
+  const targetPath = parsedState.returnUrl || '/';
+  const returnUrl = targetPath.startsWith('http') 
+    ? targetPath 
+    : `${baseFrontendUrl}${targetPath.startsWith('/') ? targetPath : `/${targetPath}`}`;
 
   if (error || !code) {
-    return res.redirect(`${returnUrl}?auth_error=${encodeURIComponent(error || 'Google login was canceled')}`);
+    return res.redirect(`${returnUrl}${returnUrl.includes('?') ? '&' : '?'}auth_error=${encodeURIComponent(error || 'Google login was canceled')}`);
   }
 
   try {
-    const redirectUri = `${process.env.PUBLIC_API_URL || 'http://localhost:5000'}/api/auth/google/callback`;
+    const redirectUri = getGoogleCallbackUrl(req);
     const profile = await exchangeGoogleCode(code, redirectUri);
     const user = await resolveOrCreateGoogleUser({ ...profile, role: parsedState.role });
     await issueAuthCookie(res, user);
@@ -704,7 +751,7 @@ router.get('/google/callback', async (req, res) => {
     return res.redirect(`${returnUrl}${returnUrl.includes('?') ? '&' : '?'}auth_success=true${verificationParam}`);
   } catch (err) {
     console.error('[Google Callback Error]:', err.message);
-    return res.redirect(`${returnUrl}?auth_error=${encodeURIComponent(err.message)}`);
+    return res.redirect(`${returnUrl}${returnUrl.includes('?') ? '&' : '?'}auth_error=${encodeURIComponent(err.message)}`);
   }
 });
 
